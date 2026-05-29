@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final(Dis)Order - Film Dashboard</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #fdfdfb;
+      --surface-soft: #f7f9fa;
+      --surface-tint: #edf6f8;
+      --text: #20242a;
+      --muted: #69717b;
+      --line: #dfe5ea;
+      --accent: #2f7d8c;
+      --accent-dark: #246676;
+      --accent-soft: #dceff2;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --shadow-sm: 0 1px 2px rgba(22, 31, 39, 0.06);
+      --shadow-md: 0 12px 30px rgba(22, 31, 39, 0.08);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 82px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 28px 0 18px;
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 14px;
+      font-size: clamp(2.25rem, 6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    .hero-status {
+      padding: 14px;
+      background: var(--surface-tint);
+      border: 1px solid var(--accent-soft);
+      border-radius: var(--radius-md);
+    }
+
+    .hero-status span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-status strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 1rem;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 10px 0;
+      background: rgba(244, 246, 248, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(223, 229, 234, 0.85);
+    }
+
+    .section-nav {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .section-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 8px 13px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease), transform 220ms var(--ease);
+    }
+
+    .section-nav a:hover,
+    .section-nav a:focus-visible {
+      color: var(--accent-dark);
+      background: var(--surface-tint);
+      border-color: var(--accent-soft);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    main {
+      padding: 22px 0 54px;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat-card,
+    .panel,
+    .mini-card,
+    .person-card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
+    }
+
+    .stat-card:hover,
+    .panel:hover,
+    .mini-card:hover,
+    .person-card:hover,
+    .contact-card:hover {
+      transform: translateY(-3px);
+      border-color: #cbd8df;
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-card {
+      padding: 16px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .value {
+      display: block;
+      color: var(--text);
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      grid-column: span 12;
+      padding: 24px;
+    }
+
+    .panel.half {
+      grid-column: span 6;
+    }
+
+    .panel.third {
+      grid-column: span 4;
+    }
+
+    .panel.two-thirds {
+      grid-column: span 8;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin-bottom: 6px;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-note {
+      max-width: 680px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 10px;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 1px solid #c8e5ea;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .appointment {
+      padding: 16px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .appointment-date {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+      font-weight: 850;
+    }
+
+    .appointment-time {
+      color: var(--muted);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .appointment-location {
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .appointment-note {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 16px;
+      color: #f8fbfc;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), background 220ms var(--ease);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--accent-dark);
+      box-shadow: 0 10px 22px rgba(47, 125, 140, 0.22);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .script-box {
+      display: grid;
+      gap: 14px;
+    }
+
+    .script-meta {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .script-meta li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .script-meta li:last-child {
+      border-bottom: 0;
+    }
+
+    .script-meta strong {
+      color: var(--text);
+    }
+
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini-card {
+      padding: 15px;
+      background: var(--surface-soft);
+    }
+
+    .day-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      height: 32px;
+      margin-bottom: 12px;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      font-weight: 850;
+    }
+
+    .mini-card h3 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .mini-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .person-card {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      background: var(--surface-soft);
+    }
+
+    .avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border-radius: 50%;
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .person-name {
+      display: block;
+      font-weight: 850;
+      overflow-wrap: anywhere;
+    }
+
+    .person-role {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .contact-card {
+      display: block;
+      padding: 16px;
+      background: var(--surface-soft);
+      text-decoration: none;
+    }
+
+    .contact-card .value {
+      color: var(--accent-dark);
+      overflow-wrap: anywhere;
+    }
+
+    .catering-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .catering-list li {
+      padding: 14px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+    }
+
+    .catering-list strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .catering-list span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .footer {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      padding: 0 0 40px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 560ms var(--ease), transform 560ms var(--ease);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .hero-actions {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        min-width: 0;
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .panel.half,
+      .panel.third,
+      .panel.two-thirds {
+        grid-column: span 12;
+      }
+
+      .schedule-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .day-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page,
+      .section-nav,
+      .footer {
+        width: min(100% - 22px, var(--max));
+      }
+
+      .hero {
+        padding-top: 14px;
+      }
+
+      .hero-card {
+        padding: 22px;
+        border-radius: 18px;
+      }
+
+      .hero-actions,
+      .quick-grid,
+      .schedule-grid,
+      .day-grid,
+      .people-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .panel-header {
+        display: block;
+      }
+
+      .pill {
+        margin-top: 12px;
+      }
+
+      .appointment-date {
+        display: block;
+      }
+
+      .appointment-time {
+        display: block;
+        margin-top: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="page">
+      <div class="hero-card reveal">
+        <div>
+          <p class="eyebrow">Studentisches Filmprojekt</p>
+          <h1>Final(Dis)Order</h1>
+          <p class="intro">Ein übersichtliches Dashboard für Cast und Crew: Termine, Tagesplanung, Skript, Kontakt und Catering an einem Ort.</p>
+        </div>
+        <div class="hero-actions" aria-label="Projektübersicht">
+          <div class="hero-status">
+            <span>Status</span>
+            <strong>Pre-Production</strong>
+          </div>
+          <div class="hero-status">
+            <span>Drehzeitraum</span>
+            <strong>04.07. bis 18.07.2026</strong>
+          </div>
+          <div class="hero-status">
+            <span>Hauptlocation</span>
+            <strong>Industriehalle Nord</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-wrap" aria-label="Dashboard Navigation">
+    <div class="section-nav">
+      <a href="#drehtermine">Drehtermine</a>
+      <a href="#skript">Skript</a>
+      <a href="#drehtage">Drehtage</a>
+      <a href="#cast">Cast</a>
+      <a href="#crew">Crew</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#catering">Catering</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="quick-grid reveal" aria-label="Kurzstatus">
+      <div class="stat-card">
+        <span class="label">Drehtage</span>
+        <span class="value">12 geplant</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Nächster Call</span>
+        <span class="value">04.07.2026, 07:30</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Skript</span>
+        <span class="value">PDF verfügbar</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Kontakt</span>
+        <span class="value">Produktionsleitung</span>
+      </div>
+    </section>
+
+    <div class="dashboard">
+      <section class="panel reveal" id="drehtermine">
+        <div class="panel-header">
+          <div>
+            <h2>Drehtermine</h2>
+            <p class="panel-note">Die wichtigsten Termine für den Dreh. Detailänderungen werden über die Produktionsleitung bestätigt.</p>
+          </div>
+          <span class="pill">Aktueller Plan</span>
+        </div>
+        <div class="schedule-grid">
+          <article class="appointment">
+            <div class="appointment-date">
+              <span>Sa, 04.07.2026</span>
+              <span class="appointment-time">07:30 bis 18:00</span>
+            </div>
+            <div class="appointment-location">Industriehalle Nord</div>
+            <p class="appointment-note">Gewerbestraße 14, Berlin. Aufbau, Technikcheck, Szenen 1 bis 3.</p>
+          </article>
+          <article class="appointment">
+            <div class="appointment-date">
+              <span>So, 05.07.2026</span>
+              <span class="appointment-time">08:30 bis 18:00</span>
+            </div>
+            <div class="appointment-location">Industriehalle Nord</div>
+            <p class="appointment-note">Dialogblock und Innenraum. Toncheck vor Drehbeginn.</p>
+          </article>
+          <article class="appointment">
+            <div class="appointment-date">
+              <span>Mo, 06.07.2026</span>
+              <span class="appointment-time">09:00 bis 17:30</span>
+            </div>
+            <div class="appointment-location">Altbauwohnung Prenzlauer Berg</div>
+            <p class="appointment-note">Kleines Team vor Ort. Adresse folgt per Crew-Mail.</p>
+          </article>
+          <article class="appointment">
+            <div class="appointment-date">
+              <span>Di, 07.07.2026</span>
+              <span class="appointment-time">07:30 bis 18:00</span>
+            </div>
+            <div class="appointment-location">Industriehalle Nord</div>
+            <p class="appointment-note">Szenen 4 bis 6. Lichtumbau nach der Mittagspause.</p>
+          </article>
+          <article class="appointment">
+            <div class="appointment-date">
+              <span>Mi, 08.07.2026</span>
+              <span class="appointment-time">Ruhetag</span>
+            </div>
+            <div class="appointment-location">Kein Dreh</div>
+            <p class="appointment-note">Material sortieren, Daten sichern, Tagespläne aktualisieren.</p>
+          </article>
+          <article class="appointment">
+            <div class="appointment-date">
+              <span>09.07. bis 18.07.2026</span>
+              <span class="appointment-time">laut Tagesplan</span>
+            </div>
+            <div class="appointment-location">Haupt- und Zusatzlocations</div>
+            <p class="appointment-note">Callsheets werden jeweils am Vorabend verschickt.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel third reveal" id="skript">
+        <div class="panel-header">
+          <div>
+            <h2>Skript</h2>
+            <p class="panel-note">Aktuelle Fassung als PDF.</p>
+          </div>
+        </div>
+        <div class="script-box">
+          <a class="button" href="drehbuch.pdf" download>Drehbuch öffnen</a>
+          <ul class="script-meta">
+            <li><span>Datei</span><strong>drehbuch.pdf</strong></li>
+            <li><span>Verwendung</span><strong>Cast und Crew</strong></li>
+            <li><span>Hinweis</span><strong>Änderungen im Callsheet prüfen</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel two-thirds reveal" id="drehtage">
+        <div class="panel-header">
+          <div>
+            <h2>Drehtage</h2>
+            <p class="panel-note">Strukturierter Überblick für Call Time, Tagesziel und wichtige Hinweise.</p>
+          </div>
+          <span class="pill">12 Tage</span>
+        </div>
+        <div class="day-grid">
+          <article class="mini-card">
+            <span class="day-number">Tag 1</span>
+            <h3>Setup und Szenen 1 bis 3</h3>
+            <p>Call Time 07:30 Crew, 08:30 Cast. Frühstück am Set.</p>
+          </article>
+          <article class="mini-card">
+            <span class="day-number">Tag 2</span>
+            <h3>Dialogblock</h3>
+            <p>Innenraum, ruhige Takes, Toncheck vor Drehbeginn.</p>
+          </article>
+          <article class="mini-card">
+            <span class="day-number">Tag 3</span>
+            <h3>Wohnung</h3>
+            <p>Zusatzlocation, kleines Team, Szenen 4 bis 5.</p>
+          </article>
+          <article class="mini-card">
+            <span class="day-number">Tag 4</span>
+            <h3>Industriehalle</h3>
+            <p>Szenen 6 bis 8, Lichtumbau nach der Pause.</p>
+          </article>
+          <article class="mini-card">
+            <span class="day-number">Tag 5 bis 12</span>
+            <h3>Restplan</h3>
+            <p>Pickups, Materialsicherung und Anpassungen nach Drehfortschritt.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel half reveal" id="cast">
+        <div class="panel-header">
+          <div>
+            <h2>Cast</h2>
+            <p class="panel-note">Schauspielerinnen und Schauspieler mit Rollen.</p>
+          </div>
+        </div>
+        <ul class="people-grid">
+          <li class="person-card">
+            <span class="avatar">SP</span>
+            <span>
+              <span class="person-name">Silas Pokall</span>
+              <span class="person-role">Hauptrolle</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">?</span>
+            <span>
+              <span class="person-name">Unbekannt</span>
+              <span class="person-role">Hauptrolle</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">?</span>
+            <span>
+              <span class="person-name">Unbekannt</span>
+              <span class="person-role">Nebenrolle</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">?</span>
+            <span>
+              <span class="person-name">Unbekannt</span>
+              <span class="person-role">Nebenrolle</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel half reveal" id="crew">
+        <div class="panel-header">
+          <div>
+            <h2>Crew</h2>
+            <p class="panel-note">Teamrollen und Zuständigkeiten am Set.</p>
+          </div>
+        </div>
+        <ul class="people-grid">
+          <li class="person-card">
+            <span class="avatar">R</span>
+            <span>
+              <span class="person-name">Regie</span>
+              <span class="person-role">Künstlerische Leitung, Szenenarbeit</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">K</span>
+            <span>
+              <span class="person-name">Kamera</span>
+              <span class="person-role">Bildgestaltung, Framing, Equipment</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">T</span>
+            <span>
+              <span class="person-name">Ton</span>
+              <span class="person-role">Set-Ton, Atmo, Backup</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">AL</span>
+            <span>
+              <span class="person-name">Aufnahmeleitung</span>
+              <span class="person-role">Zeitplan, Kommunikation, Ablauf</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">A</span>
+            <span>
+              <span class="person-name">Ausstattung</span>
+              <span class="person-role">Set-Dressing, Requisiten, Continuity</span>
+            </span>
+          </li>
+          <li class="person-card">
+            <span class="avatar">M</span>
+            <span>
+              <span class="person-name">Kostüm und Maske</span>
+              <span class="person-role">Garderobe, Makeup, Continuity-Fotos</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel half reveal" id="kontakt">
+        <div class="panel-header">
+          <div>
+            <h2>Kontakt</h2>
+            <p class="panel-note">Für Fragen, Verspätungen oder kurzfristige Änderungen.</p>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-card" href="tel:+436605642644">
+            <span class="label">Telefon</span>
+            <span class="value">+43 660 5642644</span>
+          </a>
+          <a class="contact-card" href="mailto:POKALL.silas@stundents.boga3.at">
+            <span class="label">E-Mail</span>
+            <span class="value">POKALL.silas@stundents.boga3.at</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel half reveal" id="catering">
+        <div class="panel-header">
+          <div>
+            <h2>Catering</h2>
+            <p class="panel-note">Kurze Infos zu Essen, Getränken und Organisation am Set.</p>
+          </div>
+        </div>
+        <ul class="catering-list">
+          <li>
+            <strong>Verpflegung</strong>
+            <span>Mittagessen, Abendessen, Snacks und Getränke stehen am Set bereit.</span>
+          </li>
+          <li>
+            <strong>Unverträglichkeiten</strong>
+            <span>Bitte spätestens drei Tage vor Drehstart an die Produktionsleitung melden.</span>
+          </li>
+          <li>
+            <strong>Pausen</strong>
+            <span>Pausenzeiten stehen im Tagesplan und werden am Set angesagt.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Final(Dis)Order - internes Dashboard für Cast und Crew
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (!('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -32px 0px'
+      });
+
+      revealElements.forEach((element) => {
+        observer.observe(element);
+      });
+    }
+  </script>
+</body>
+</html>

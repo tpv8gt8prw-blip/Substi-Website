@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOULA | Mindful Eatery &amp; Drinks</title>
+  <meta name="description" content="SOULA in Wien Neubau: 100% plantbased, zero-proof, good for your soul.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1d1b18;
+      --ink-soft: #4a463f;
+      --muted: #7a7468;
+      --paper: #f1ece3;
+      --paper-warm: #ebe4d6;
+      --cream: #faf6ee;
+      --line: rgba(29, 27, 24, 0.10);
+      --line-strong: rgba(29, 27, 24, 0.18);
+      --herb: #4d6651;
+      --night: #15140f;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+      --max: 1140px;
+      --radius: 4px;
+      --radius-lg: 10px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.005em;
+      overflow-x: hidden;
+    }
+
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    h1, h2, h3, p { margin: 0; }
+
+    .serif {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+    }
+
+    /* ---------- Skip link ---------- */
+    .skip {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      z-index: 1000;
+      transform: translateY(-140%);
+      background: var(--cream);
+      color: var(--ink);
+      padding: .7rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      transition: transform .35s var(--ease);
+    }
+    .skip:focus { transform: translateY(0); }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 1.4rem 1.6rem;
+      transition: background .5s var(--ease), padding .5s var(--ease), border-color .5s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.is-solid {
+      background: rgba(241, 236, 227, 0.78);
+      backdrop-filter: saturate(140%) blur(18px);
+      -webkit-backdrop-filter: saturate(140%) blur(18px);
+      border-color: var(--line);
+      padding-block: .9rem;
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: .55rem;
+      color: var(--cream);
+      transition: color .5s var(--ease);
+    }
+
+    .site-header.is-solid .brand { color: var(--ink); }
+
+    .brand strong {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.45rem;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      font-size: .72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: .65;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .nav-links a {
+      color: rgba(250, 246, 238, 0.82);
+      font-size: .89rem;
+      padding: .55rem .95rem;
+      transition: color .35s var(--ease);
+    }
+
+    .site-header.is-solid .nav-links a { color: var(--ink-soft); }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--cream);
+      outline: none;
+    }
+
+    .site-header.is-solid .nav-links a:hover,
+    .site-header.is-solid .nav-links a:focus-visible {
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      font-size: .88rem;
+      padding: .7rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 246, 238, 0.4);
+      color: var(--cream);
+      transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .4s var(--ease);
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      background: var(--cream);
+      color: var(--ink);
+      border-color: var(--cream);
+      outline: none;
+    }
+
+    .site-header.is-solid .nav-cta {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .site-header.is-solid .nav-cta:hover,
+    .site-header.is-solid .nav-cta:focus-visible {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      isolation: isolate;
+      overflow: hidden;
+      background: var(--night);
+      color: var(--cream);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: -8% 0 0 0;
+      z-index: -2;
+      will-change: transform;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 108%;
+      object-fit: cover;
+      object-position: 50% 55%;
+      filter: saturate(.88) contrast(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(21, 20, 15, 0.55) 0%, rgba(21, 20, 15, 0.15) 35%, rgba(21, 20, 15, 0.85) 100%);
+    }
+
+    .hero-content {
+      width: min(var(--max), calc(100% - 3rem));
+      margin: 0 auto;
+      padding: 9rem 0 7rem;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      color: rgba(250, 246, 238, 0.78);
+      font-size: .8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 2.4rem;
+      height: 1px;
+      background: currentColor;
+      opacity: .6;
+    }
+
+    h1.hero-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(4.5rem, 12vw, 9.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+    }
+
+    .hero-copy {
+      max-width: 520px;
+      margin-top: 1.8rem;
+      color: rgba(250, 246, 238, 0.82);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: 2.4rem;
+    }
+
+    /* ---------- Buttons ---------- */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-height: 48px;
+      padding: .8rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+      cursor: pointer;
+      font-size: .92rem;
+      letter-spacing: -0.005em;
+      transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .5s var(--ease);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: transparent;
+      color: var(--ink);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .button.light {
+      background: var(--cream);
+      color: var(--ink);
+      border-color: var(--cream);
+    }
+
+    .button.light:hover,
+    .button.light:focus-visible {
+      background: transparent;
+      color: var(--cream);
+      border-color: var(--cream);
+    }
+
+    .button.ghost {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(250, 246, 238, 0.4);
+    }
+
+    .button.ghost:hover,
+    .button.ghost:focus-visible {
+      background: var(--cream);
+      color: var(--ink);
+      border-color: var(--cream);
+    }
+
+    /* ---------- Sections ---------- */
+    .section {
+      position: relative;
+      padding: 8rem 1.6rem;
+    }
+
+    .section-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--herb);
+      font-size: .76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 22ch;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+    }
+
+    .lead {
+      margin-top: 1.4rem;
+      color: var(--ink-soft);
+      font-size: 1.04rem;
+      line-height: 1.65;
+      max-width: 52ch;
+    }
+
+    /* ---------- Intro / Story ---------- */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.85fr);
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 2rem;
+    }
+
+    .pill {
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: .5rem .9rem;
+      font-size: .82rem;
+      color: var(--ink-soft);
+    }
+
+    .feature-image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: var(--paper-warm);
+    }
+
+    .feature-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+
+    .feature-image:hover img { transform: scale(1.03); }
+
+    .feature-caption {
+      position: absolute;
+      left: 1.2rem;
+      bottom: 1.2rem;
+      padding: .55rem .85rem;
+      border-radius: 999px;
+      background: rgba(21, 20, 15, 0.6);
+      color: var(--cream);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: .8rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- Menu ---------- */
+    .menu-section { padding-top: 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.5fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-note {
+      color: var(--ink-soft);
+      max-width: 38ch;
+      font-size: .98rem;
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .menu-tab {
+      position: relative;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 1rem 1.4rem 1rem 0;
+      margin-right: 1.6rem;
+      cursor: pointer;
+      font-size: .95rem;
+      letter-spacing: -0.005em;
+      transition: color .35s var(--ease);
+    }
+
+    .menu-tab::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 1.4rem;
+      bottom: -1px;
+      height: 1px;
+      background: var(--ink);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .5s var(--ease);
+    }
+
+    .menu-tab:hover { color: var(--ink); outline: none; }
+    .menu-tab:focus-visible { color: var(--ink); outline: none; }
+
+    .menu-tab[aria-selected="true"] { color: var(--ink); }
+    .menu-tab[aria-selected="true"]::after { transform: scaleX(1); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+
+    .menu-grid.is-switching {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .menu-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem 2rem;
+      align-items: baseline;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left .5s var(--ease);
+    }
+
+    .menu-card:nth-child(odd) { padding-right: 2rem; border-right: 1px solid var(--line); }
+    .menu-card:nth-child(even) { padding-left: 2rem; }
+
+    .menu-card:hover { padding-left: calc(2rem + .35rem); }
+    .menu-card:nth-child(odd):hover { padding-left: .35rem; padding-right: calc(2rem - .35rem); }
+
+    .menu-card h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+    }
+
+    .menu-card p {
+      color: var(--ink-soft);
+      margin-top: .45rem;
+      font-size: .94rem;
+      line-height: 1.55;
+      max-width: 42ch;
+    }
+
+    .menu-tag {
+      display: inline-block;
+      margin-top: .7rem;
+      color: var(--muted);
+      font-size: .74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      color: var(--ink);
+      font-size: 1.15rem;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+
+    /* ---------- Gallery ---------- */
+    .gallery-section {
+      background: var(--night);
+      color: var(--cream);
+    }
+
+    .gallery-section .section-label { color: rgba(173, 187, 173, 0.78); }
+    .gallery-section .display { color: var(--cream); }
+    .gallery-section .section-note { color: rgba(250, 246, 238, 0.65); }
+
+    .masonry {
+      columns: 3 280px;
+      column-gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .tile {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0 0 1.2rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      break-inside: avoid;
+      background: rgba(250, 246, 238, 0.04);
+      transform: translateZ(0);
+    }
+
+    .tile img {
+      transition: transform 1.4s var(--ease), filter 1s var(--ease);
+      filter: saturate(.95);
+    }
+
+    .tile.tall img { aspect-ratio: 3 / 4; object-fit: cover; }
+    .tile.mid img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+    .tile:hover img {
+      transform: scale(1.04);
+      filter: saturate(1.05);
+    }
+
+    .tile figcaption {
+      position: absolute;
+      left: 1.1rem;
+      bottom: 1.1rem;
+      color: var(--cream);
+      font-size: .82rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+    }
+
+    .tile:hover figcaption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .quote-tile {
+      padding: 1.8rem;
+      aspect-ratio: 4 / 3;
+      display: grid;
+      align-content: center;
+      border: 1px solid rgba(250, 246, 238, 0.12);
+      background: transparent;
+    }
+
+    .quote-tile p {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.65rem;
+      line-height: 1.18;
+      letter-spacing: -0.015em;
+      color: var(--cream);
+    }
+
+    /* ---------- Reservation ---------- */
+    .reservation-section { background: var(--paper); }
+
+    .reservation-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    .reservation-form {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem 1rem;
+    }
+
+    .field { display: grid; gap: .5rem; }
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      color: var(--muted);
+      font-size: .74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 0;
+      border: 0;
+      border-bottom: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+      padding: .55rem 0;
+      outline: none;
+      font-size: .98rem;
+      transition: border-color .35s var(--ease);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+      padding: .65rem 0;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--ink);
+    }
+
+    .field small {
+      min-height: 1rem;
+      color: var(--herb);
+      font-size: .76rem;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .form-status {
+      color: var(--herb);
+      min-height: 1.4rem;
+      font-size: .92rem;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-section { padding-bottom: 9rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 6rem 1fr;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .contact-item:last-child { border-bottom: 1px solid var(--line); }
+
+    .contact-item span {
+      color: var(--muted);
+      font-size: .74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .contact-item strong, .contact-item a {
+      font-weight: 500;
+      color: var(--ink);
+      transition: color .35s var(--ease);
+    }
+
+    .contact-item a:hover { color: var(--herb); }
+
+    .hours {
+      display: grid;
+      gap: 0;
+      margin-top: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .hours div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+    }
+
+    .hours div:last-child { border-bottom: 1px solid var(--line); }
+    .hours div span { color: var(--muted); }
+    .hours div strong { font-weight: 500; color: var(--ink); }
+
+    .hours-note {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: var(--night);
+      color: rgba(250, 246, 238, 0.6);
+      padding: 3rem 1.6rem;
+    }
+
+    .footer-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: .85rem;
+      letter-spacing: 0.02em;
+    }
+
+    .footer a:hover { color: var(--cream); }
+
+    /* ---------- Reveal animation ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .reveal.delay-1 { transition-delay: .1s; }
+    .reveal.delay-2 { transition-delay: .2s; }
+    .reveal.delay-3 { transition-delay: .3s; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+
+      .editorial-grid,
+      .section-head,
+      .reservation-wrap,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-card { padding: 1.4rem 0 !important; border-right: 0 !important; }
+
+      .section { padding: 6rem 1.4rem; }
+      .hero-content { padding: 8rem 0 5.5rem; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 15px; }
+
+      .site-header { padding: 1.1rem 1.2rem; }
+      .site-header.is-solid { padding-block: .75rem; }
+
+      .brand strong { font-size: 1.2rem; }
+      .brand span { display: none; }
+
+      .nav-cta { padding: .58rem .9rem; font-size: .82rem; }
+
+      .hero-content { padding: 7rem 0 4.5rem; width: calc(100% - 2rem); }
+      .hero-copy { font-size: .98rem; }
+
+      .section { padding: 5rem 1.2rem; }
+      .section-head { margin-bottom: 2.5rem; }
+
+      .form-grid { grid-template-columns: 1fr; }
+      .masonry { columns: 1; }
+      .contact-item { grid-template-columns: 5rem 1fr; gap: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      [data-parallax] { transform: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="brand" href="#top" aria-label="SOULA Home">
+        <strong>SOULA</strong>
+        <span>Wien</span>
+      </a>
+      <div class="nav-links">
+        <a href="#story">Konzept</a>
+        <a href="#menu">Men&uuml;</a>
+        <a href="#gallery">Momente</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      <a class="nav-cta" href="#reserve">Reservieren</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-label="SOULA">
+      <div class="hero-media" aria-hidden="true" data-parallax="0.18">
+        <img
+          src="https://static.wixstatic.com/media/aae6c0_12d2dbebeaf0423a82946082c9f019ef~mv2.png/v1/fill/w_1800,h_2400,al_c,q_85,enc_avif,quality_auto/aae6c0_12d2dbebeaf0423a82946082c9f019ef~mv2.png"
+          alt="">
+      </div>
+      <div class="hero-content">
+        <p class="kicker reveal">Mindful eatery &amp; drinks &mdash; Wien Neubau</p>
+        <h1 class="hero-title reveal delay-1">Soula</h1>
+        <p class="hero-copy reveal delay-2">Wiener Klassiker, pflanzlich weitergedacht. Dazu alkoholfreie Spritzer, Cocktails und Botanicals mit echter Bar-Energie.</p>
+        <div class="hero-actions reveal delay-3">
+          <a class="button light" href="#reserve">Tisch anfragen</a>
+          <a class="button ghost" href="#menu">Men&uuml; ansehen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="section-inner editorial-grid">
+        <div class="reveal">
+          <p class="section-label">Good for your soul</p>
+          <h2 class="display">Warm wie ein Abend in einer Neubauer Altbauk&uuml;che, klar wie eine moderne Bar.</h2>
+          <p class="lead">SOULA verbindet vertraute &ouml;sterreichische Gerichte mit pflanzlicher K&uuml;che und einem eigenst&auml;ndigen Zero-Proof-Getr&auml;nkeprogramm. Nicht als Verzicht, sondern als neue Form von Genuss.</p>
+          <div class="pill-row" aria-label="Restaurant Merkmale">
+            <span class="pill">Pflanzliche K&uuml;che</span>
+            <span class="pill">Zero-Proof Mixology</span>
+            <span class="pill">Schanigarten</span>
+            <span class="pill">Hunde willkommen</span>
+          </div>
+        </div>
+        <figure class="feature-image reveal delay-1">
+          <img
+            src="https://static.wixstatic.com/media/aae6c0_180937403998437f9dcad06a59cddf17~mv2.jpg/v1/fill/w_1300,h_1700,al_c,q_85,enc_avif,quality_auto/aae6c0_180937403998437f9dcad06a59cddf17~mv2.jpg"
+            alt="Blick in die offene SOULA K&uuml;che mit leuchtendem good for your soul Schriftzug"
+            loading="lazy"
+            decoding="async">
+          <figcaption class="feature-caption">Offene K&uuml;che, leise Barstimmung.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-label">Men&uuml;</p>
+            <h2 class="display">Klassiker, Spritzer und kleine Dinge zum Teilen.</h2>
+          </div>
+          <p class="section-note">Wechsle zwischen K&uuml;che, Drinks und Dessert &mdash; alles pflanzlich, alles alkoholfrei.</p>
+        </div>
+
+        <div class="menu-tabs reveal delay-1" role="tablist" aria-label="Men&uuml; Kategorien">
+          <button class="menu-tab" type="button" role="tab" aria-selected="true" data-category="kitchen">K&uuml;che</button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" data-category="drinks">Mindful Drinks</button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" data-category="sweet">S&uuml;&szlig; &amp; Kaffee</button>
+        </div>
+
+        <div class="menu-grid reveal delay-2" id="menuGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-label">@soula.vienna</p>
+            <h2 class="display">Plates, light, and late lunches.</h2>
+          </div>
+          <p class="section-note">Eine ruhige Sammlung &mdash; warmes Licht, nahe Crops, ehrliche Gerichte.</p>
+        </div>
+
+        <div class="masonry">
+          <figure class="tile tall reveal">
+            <img src="https://static.wixstatic.com/media/aae6c0_9c1589574b1c45838d5c2896da4a6032~mv2.png/v1/fill/w_1200,h_1600,al_c,q_85,enc_avif,quality_auto/aae6c0_9c1589574b1c45838d5c2896da4a6032~mv2.png" alt="Pflanzliche Gerichte auf Messingtisch" loading="lazy" decoding="async">
+            <figcaption>Sharing plates &mdash; brass, herbs.</figcaption>
+          </figure>
+          <figure class="tile mid reveal delay-1">
+            <img src="https://static.wixstatic.com/media/aae6c0_12d2dbebeaf0423a82946082c9f019ef~mv2.png/v1/fill/w_1100,h_1300,al_c,q_85,enc_avif,quality_auto/aae6c0_12d2dbebeaf0423a82946082c9f019ef~mv2.png" alt="SOULA Eingang bei Nacht" loading="lazy" decoding="async">
+            <figcaption>Neon in der Schrankgasse.</figcaption>
+          </figure>
+          <figure class="tile quote-tile reveal delay-2">
+            <p>100% plantbased.<br>Zero-proof.<br>Full of taste.</p>
+          </figure>
+          <figure class="tile tall reveal">
+            <img src="https://static.wixstatic.com/media/aae6c0_180937403998437f9dcad06a59cddf17~mv2.jpg/v1/fill/w_1200,h_1700,al_c,q_85,enc_avif,quality_auto/aae6c0_180937403998437f9dcad06a59cddf17~mv2.jpg" alt="SOULA Innenraum mit offener K&uuml;che" loading="lazy" decoding="async">
+            <figcaption>Good for your soul.</figcaption>
+          </figure>
+          <figure class="tile mid reveal delay-1">
+            <img src="https://static.wixstatic.com/media/aae6c0_9c1589574b1c45838d5c2896da4a6032~mv2.png/v1/fill/w_1200,h_1050,fp_0.42_0.68,q_85,enc_avif,quality_auto/aae6c0_9c1589574b1c45838d5c2896da4a6032~mv2.png" alt="Risotto und Tomaten Detail" loading="lazy" decoding="async">
+            <figcaption>Seasonal, soft, generous.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reservation-section" id="reserve">
+      <div class="section-inner reservation-wrap">
+        <div class="reveal">
+          <p class="section-label">Reservierung</p>
+          <h2 class="display">Ein Tisch, zwei Stunden, viel Ruhe.</h2>
+          <p class="lead">Reservierungen sind Mittwoch bis Sonntag m&ouml;glich. F&uuml;r Gruppen ab 5 Personen wird die Anfrage manuell best&auml;tigt.</p>
+        </div>
+
+        <form class="reservation-form reveal delay-1" id="reservationForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="guests">Personen</label>
+              <select id="guests" name="guests" required>
+                <option value="">Ausw&auml;hlen</option>
+                <option>1 Person</option>
+                <option>2 Personen</option>
+                <option>3 Personen</option>
+                <option>4 Personen</option>
+                <option>5 Personen</option>
+                <option>6 Personen</option>
+                <option>7 Personen</option>
+                <option>8 Personen</option>
+                <option>9 Personen</option>
+                <option>10 Personen</option>
+              </select>
+              <small></small>
+            </div>
+            <div class="field">
+              <label for="date">Datum</label>
+              <input id="date" name="date" type="date" required>
+              <small></small>
+            </div>
+            <div class="field">
+              <label for="time">Uhrzeit</label>
+              <input id="time" name="time" type="time" min="11:30" max="21:00" step="900" required>
+              <small></small>
+            </div>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+              <small></small>
+            </div>
+            <div class="field">
+              <label for="email">E-Mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <small></small>
+            </div>
+            <div class="field">
+              <label for="phone">Telefon</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+              <small></small>
+            </div>
+            <div class="field full">
+              <label for="notes">Anmerkungen</label>
+              <textarea id="notes" name="notes" placeholder="Kinderwagen, Hund, Allergien oder mehr Zeit am Tisch"></textarea>
+              <small></small>
+            </div>
+          </div>
+          <button class="button" type="submit">Reservierung anfragen</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="section-inner contact-grid">
+        <div class="reveal">
+          <p class="section-label">Besuch</p>
+          <h2 class="display">Spittelberg, Schrankgasse 10.</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <span>Adresse</span>
+              <strong>Schrankgasse 10, 1070 Wien</strong>
+            </div>
+            <div class="contact-item">
+              <span>Map</span>
+              <a href="https://www.google.com/maps/search/?api=1&query=Schrankgasse%2010%2C%201070%20Wien%2C%20Austria" target="_blank" rel="noreferrer">Route &ouml;ffnen &nearr;</a>
+            </div>
+            <div class="contact-item">
+              <span>E-Mail</span>
+              <a href="mailto:info@soula.wien">info@soula.wien</a>
+            </div>
+            <div class="contact-item">
+              <span>Telefon</span>
+              <strong>R&uuml;ckruf via Formular</strong>
+            </div>
+            <div class="contact-item">
+              <span>Instagram</span>
+              <a href="https://www.instagram.com/soula.vienna/" target="_blank" rel="noreferrer">@soula.vienna &nearr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal delay-1">
+          <p class="section-label">&Ouml;ffnungszeiten</p>
+          <h3 class="display">Mittwoch bis Sonntag.</h3>
+          <div class="hours" aria-label="&Ouml;ffnungszeiten">
+            <div><span>Mi</span><strong>11:00 &mdash; 22:00</strong></div>
+            <div><span>Do</span><strong>11:00 &mdash; 22:00</strong></div>
+            <div><span>Fr</span><strong>11:00 &mdash; 23:00</strong></div>
+            <div><span>Sa</span><strong>11:00 &mdash; 23:00</strong></div>
+            <div><span>So</span><strong>11:00 &mdash; 22:00</strong></div>
+            <div><span>Mo &amp; Di</span><strong>geschlossen</strong></div>
+          </div>
+          <p class="hours-note">K&uuml;che 11:30 &mdash; 21:30. Innenbereich mit Stufen, Au&szlig;enbereich ebenerdig.</p>
+          <a class="button" href="#reserve">Tisch anfragen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>SOULA &mdash; mindful eatery &amp; drinks</span>
+      <span>100% plantbased &amp; zero-proof</span>
+      <a href="https://www.soula.wien" target="_blank" rel="noreferrer">soula.wien &nearr;</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuData = {
+      kitchen: [
+        { name: "Cashewprese", desc: "Cashewprese, Tomaten, hausgemachtes Basilikumpesto, Balsamico-Glaze.", price: "10", tag: "Vorspeise" },
+        { name: "Soula Sticks", desc: "Tofu, Noriblätter und Tamari-Glaze.", price: "7", tag: "Signature" },
+        { name: "Kleines Saftgulasch", desc: "Mit Braterdäpfel oder Salzerdäpfel.", price: "9", tag: "Klein" },
+        { name: "Spargelcremesuppe", desc: "Weiße Spargelcremesuppe mit gegrillten grünen Spargelspitzen.", price: "7", tag: "Saisonal" },
+        { name: "Zwiebelrostbraten", desc: "Sojabraten mit Braterdäpfel und glutenfreien Röstzwiebeln.", price: "22", tag: "Hauptspeise" },
+        { name: "Saftgulasch", desc: "Mit Sojaschnetzel, Fächergurkerl und Braterdäpfel oder Salzerdäpfel.", price: "17", tag: "Klassiker" },
+        { name: "Solo Spargel Grün", desc: "Mit Petersilerdäpfel und Sauce Hollandaise, optional mit mariniertem Räuchertofu.", price: "18", tag: "Saisonal" },
+        { name: "Gemischter Salat", desc: "Blattsalat, Erdäpfelsalat und Gurkenrahmsalat.", price: "5,5", tag: "Beilage" },
+        { name: "Pommes mit Dip", desc: "Knusprig, unkompliziert, mit Dip nach Wahl.", price: "5,5", tag: "Side" }
+      ],
+      drinks: [
+        { name: "Soula Spritzer", desc: "Zero-Gin, Nozeco, Litschi, Himbeere, Zitrone und Soda.", price: "8", tag: "Spritzer" },
+        { name: "Hibiskus Rosé Spritzer", desc: "Hibiskus, Orange, Sparkling Rosé 0%, Rose und Soda.", price: "7,5", tag: "Floral" },
+        { name: "Litschi Spritzer", desc: "Litschi, Holunder, Grapefruit, Nozeco und Soda.", price: "7,5", tag: "Fruity" },
+        { name: "Noperol Spritzer", desc: "Bitter Orange Italian, Nozeco und Soda.", price: "7,5", tag: "Bitter" },
+        { name: "Rosé 75", desc: "Zero-Gin, Sparkling Rosé, Zitrone, Rose und Simple Sirup.", price: "10", tag: "Cocktail" },
+        { name: "Pineapple Sour", desc: "Zero-Gin, Ananas, Limette, rosa Pfeffer und Aquafaba.", price: "10", tag: "Sour" },
+        { name: "Espresso Maltini", desc: "REBELS 0.0% Malt Blend, Espresso doppio, Vanille und Aquafaba.", price: "12", tag: "After dinner" },
+        { name: "Nozeco", desc: "Sparkling, fruchtig, leicht. Glas oder Flasche.", price: "4,5", tag: "Zero Wine" },
+        { name: "Green Jasmine Mango", desc: "Grüntee Jasmin, Mango und Zucker.", price: "6,9", tag: "Iced tea" }
+      ],
+      sweet: [
+        { name: "Cheesecake", desc: "Hausgemachter cremiger Cheesecake auf Sojabasis mit glutenfreiem Boden und Himbeersauce.", price: "7", tag: "Dessert" },
+        { name: "Vanilleeis mit Erdbeeren", desc: "Zwei Kugeln Vanilleeis mit frischen Erdbeeren und pflanzlichem Schlagobers.", price: "7", tag: "Dessert" },
+        { name: "Espresso", desc: "Klassisch, kurz, fairtrade.", price: "3", tag: "Café" },
+        { name: "Cappuccino", desc: "Mit BIO-Haferdrink, optional mit ungesüßtem BIO-Sojadrink.", price: "4,7", tag: "Café" },
+        { name: "Brown Sugar Shaken Espresso", desc: "Iced, Espresso doppio, brauner Zucker und Hafer.", price: "6", tag: "Iced" },
+        { name: "Wiener Eiskaffee", desc: "Kaffee, Vanilleeis und pflanzliches Schlagobers.", price: "7,5", tag: "Cold" }
+      ]
+    };
+
+    const header = document.getElementById("siteHeader");
+    const menuGrid = document.getElementById("menuGrid");
+    const tabs = Array.from(document.querySelectorAll(".menu-tab"));
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function renderMenu(category) {
+      menuGrid.innerHTML = menuData[category].map(item => `
+        <article class="menu-card">
+          <div>
+            <h3>${item.name}</h3>
+            <p>${item.desc}</p>
+            <span class="menu-tag">${item.tag}</span>
+          </div>
+          <span class="price">&euro;&nbsp;${item.price}</span>
+        </article>
+      `).join("");
+    }
+
+    renderMenu("kitchen");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const category = tab.dataset.category;
+        if (tab.getAttribute("aria-selected") === "true") return;
+
+        tabs.forEach(item => item.setAttribute("aria-selected", String(item === tab)));
+        menuGrid.classList.add("is-switching");
+
+        window.setTimeout(() => {
+          renderMenu(category);
+          requestAnimationFrame(() => menuGrid.classList.remove("is-switching"));
+        }, 220);
+      });
+    });
+
+    let headerTicking = false;
+    function updateHeader() {
+      header.classList.toggle("is-solid", window.scrollY > 32);
+      headerTicking = false;
+    }
+    window.addEventListener("scroll", () => {
+      if (!headerTicking) {
+        requestAnimationFrame(updateHeader);
+        headerTicking = true;
+      }
+    }, { passive: true });
+    updateHeader();
+
+    const revealItems = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    if (!prefersReduced) {
+      const parallaxItems = Array.from(document.querySelectorAll("[data-parallax]"));
+      let parallaxTicking = false;
+
+      function updateParallax() {
+        const vh = window.innerHeight;
+        parallaxItems.forEach(item => {
+          const speed = Number(item.dataset.parallax) || 0;
+          const rect = item.getBoundingClientRect();
+          if (rect.bottom < -200 || rect.top > vh + 200) return;
+          const offset = (rect.top + rect.height / 2 - vh / 2) * speed * -1;
+          item.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+        });
+        parallaxTicking = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!parallaxTicking) {
+          requestAnimationFrame(updateParallax);
+          parallaxTicking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener("resize", updateParallax, { passive: true });
+      updateParallax();
+    }
+
+    const form = document.getElementById("reservationForm");
+    const formStatus = document.getElementById("formStatus");
+    const dateInput = document.getElementById("date");
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+    function setFieldError(field, message) {
+      const small = field.closest(".field").querySelector("small");
+      small.textContent = message || "";
+      field.setAttribute("aria-invalid", message ? "true" : "false");
+    }
+
+    function validateForm() {
+      let valid = true;
+      formStatus.textContent = "";
+
+      Array.from(form.elements).forEach(field => {
+        if (!field.matches("input, select, textarea")) return;
+        setFieldError(field, "");
+
+        if (field.hasAttribute("required") && !field.value.trim()) {
+          setFieldError(field, "Bitte ausfüllen.");
+          valid = false;
+        }
+
+        if (field.type === "email" && field.value && !field.validity.valid) {
+          setFieldError(field, "Bitte eine gültige E-Mail eingeben.");
+          valid = false;
+        }
+      });
+
+      if (dateInput.value) {
+        const day = new Date(`${dateInput.value}T12:00:00`).getDay();
+        if (day === 1 || day === 2) {
+          setFieldError(dateInput, "Montag und Dienstag ist geschlossen.");
+          valid = false;
+        }
+      }
+
+      return valid;
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!validateForm()) {
+        formStatus.textContent = "Bitte prüfe die markierten Felder.";
+        return;
+      }
+
+      formStatus.textContent = "Danke, deine Anfrage ist vorbereitet. Das SOULA-Team meldet sich zur Bestätigung.";
+      form.reset();
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    });
+
+    form.addEventListener("input", event => {
+      if (event.target.matches("input, select, textarea")) {
+        setFieldError(event.target, "");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#05070d" />
+    <title>Trading Replay Simulator — Can you beat the market without knowing the future?</title>
+    <meta name="description" content="A cinematic trading replay simulator. Replay historical market moments tick by tick. Trade. Get coached." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- Ambient layers -->
+    <div class="ambient">
+      <div class="ambient__grid" aria-hidden="true"></div>
+      <div class="ambient__glow ambient__glow--a" aria-hidden="true"></div>
+      <div class="ambient__glow ambient__glow--b" aria-hidden="true"></div>
+      <div class="ambient__noise" aria-hidden="true"></div>
+    </div>
+
+    <!-- LANDING SCREEN -->
+    <section id="landing" class="landing" aria-label="Welcome">
+      <div class="landing__inner">
+        <div class="landing__brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22"><path d="M2 22 L10 14 L16 18 L24 8 L30 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand-text">REPLAY<span class="brand-text__dot">.</span>FX</span>
+        </div>
+
+        <div class="landing__chartwrap" aria-hidden="true">
+          <canvas id="landingChart"></canvas>
+          <div class="landing__chart-glow"></div>
+        </div>
+
+        <h1 class="landing__title">
+          <span class="reveal-line"><span>Can you beat the market</span></span>
+          <span class="reveal-line"><span class="grad">without knowing the future?</span></span>
+        </h1>
+
+        <p class="landing__sub reveal-fade">
+          Step into a real historical market session. The chart replays tick by tick.
+          You decide when to buy, when to sell, when to walk away. An AI coach reviews every move.
+        </p>
+
+        <div class="landing__cta reveal-fade">
+          <button id="startBtn" class="btn btn--primary btn--lg" type="button">
+            <span class="btn__label">Start Simulation</span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </button>
+          <button id="demoBtn" class="btn btn--ghost btn--lg" type="button">
+            <span class="btn__label">Watch Demo</span>
+          </button>
+        </div>
+
+        <ul class="landing__chips reveal-fade" role="list">
+          <li><span class="dot dot--g"></span>Live tick replay</li>
+          <li><span class="dot dot--b"></span>Risk management</li>
+          <li><span class="dot dot--p"></span>AI psychology coach</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SIMULATOR -->
+    <main id="sim" class="sim" aria-hidden="true">
+      <header class="topbar">
+        <div class="topbar__left">
+          <button id="backBtn" class="iconbtn" aria-label="Back to menu" type="button">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M15 6 L9 12 L15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="symbol">
+            <div class="symbol__name"><span id="symName">AURA / USD</span><span class="symbol__tag" id="symTag">15M · LIVE REPLAY</span></div>
+            <div class="symbol__price">
+              <span id="lastPrice" class="symbol__last">0.0000</span>
+              <span id="priceChange" class="symbol__chg">+0.00 (0.00%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar__center">
+          <div class="stat">
+            <span class="stat__k">Balance</span>
+            <span class="stat__v" id="statBalance">$10,000</span>
+          </div>
+          <div class="stat">
+            <span class="stat__k">Equity</span>
+            <span class="stat__v" id="statEquity">$10,000</span>
+          </div>
+          <div class="stat">
+            <span class="stat__k">Open P/L</span>
+            <span class="stat__v" id="statOpenPnl">$0.00</span>
+          </div>
+          <div class="stat">
+            <span class="stat__k">Session</span>
+            <span class="stat__v" id="statSession">0 / 0</span>
+          </div>
+        </div>
+
+        <div class="topbar__right">
+          <button id="muteBtn" class="iconbtn" aria-label="Toggle sound" type="button" data-on="true">
+            <svg class="ic-on" viewBox="0 0 24 24" width="18" height="18"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8a5 5 0 010 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+          <button id="endBtn" class="btn btn--ghost btn--sm" type="button">End Session</button>
+        </div>
+      </header>
+
+      <section class="grid">
+        <!-- CHART AREA -->
+        <div class="panel panel--chart">
+          <div class="panel__head">
+            <div class="legend">
+              <span class="legend__item"><i class="sw sw--bull"></i>Bullish</span>
+              <span class="legend__item"><i class="sw sw--bear"></i>Bearish</span>
+              <span class="legend__item"><i class="sw sw--ema"></i>EMA 20</span>
+            </div>
+            <div class="panel__meta">
+              <span id="candleCount">0 candles</span>
+            </div>
+          </div>
+          <div class="chartwrap">
+            <canvas id="chart"></canvas>
+            <div class="chart__overlay" id="chartOverlay">
+              <div class="overlay__crosshair" id="crossX"></div>
+              <div class="overlay__crosshair overlay__crosshair--h" id="crossY"></div>
+              <div class="overlay__readout" id="overlayReadout"></div>
+            </div>
+            <div class="chart__hud">
+              <div class="hud-pill" id="hudPosition" hidden>
+                <span class="hud-pill__dir" id="hudDir">LONG</span>
+                <span class="hud-pill__price" id="hudEntry">@ 0.0000</span>
+                <span class="hud-pill__pnl" id="hudPnl">+0.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="replay">
+            <div class="replay__controls">
+              <button id="restartBtn" class="iconbtn" aria-label="Restart" type="button">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 12a8 8 0 1 0 3-6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 4v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button id="playBtn" class="iconbtn iconbtn--accent" aria-label="Play / Pause" type="button">
+                <svg class="ic-play" viewBox="0 0 24 24" width="18" height="18"><path d="M7 5l12 7-12 7z" fill="currentColor"/></svg>
+                <svg class="ic-pause" viewBox="0 0 24 24" width="18" height="18" hidden><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+              </button>
+              <div class="speed">
+                <button class="speed__btn" data-speed="0.5">0.5×</button>
+                <button class="speed__btn is-active" data-speed="1">1×</button>
+                <button class="speed__btn" data-speed="2">2×</button>
+                <button class="speed__btn" data-speed="4">4×</button>
+              </div>
+            </div>
+            <div class="replay__progresswrap">
+              <div class="replay__progress" id="progress">
+                <div class="replay__progress-fill" id="progressFill"></div>
+                <div class="replay__progress-thumb" id="progressThumb"></div>
+              </div>
+              <span class="replay__time" id="replayTime">00:00 / 00:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRADE PANEL -->
+        <aside class="panel panel--trade">
+          <div class="panel__head">
+            <h2 class="panel__title">Order Ticket</h2>
+            <span class="panel__meta" id="positionStatus">No position</span>
+          </div>
+
+          <div class="ticket">
+            <div class="field">
+              <label for="qtyInput" class="field__label">Size <span class="field__hint">units</span></label>
+              <div class="field__row">
+                <button class="step" data-step="-1" aria-label="Decrease">−</button>
+                <input id="qtyInput" type="number" min="100" step="100" value="1000" inputmode="numeric" />
+                <button class="step" data-step="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="slInput" class="field__label">Stop Loss <span class="field__hint">price</span></label>
+                <input id="slInput" type="number" step="0.0001" placeholder="auto" />
+              </div>
+              <div class="field">
+                <label for="tpInput" class="field__label">Take Profit <span class="field__hint">price</span></label>
+                <input id="tpInput" type="number" step="0.0001" placeholder="auto" />
+              </div>
+            </div>
+
+            <div class="risk">
+              <span>Risk</span>
+              <span id="riskPct">—</span>
+              <span class="risk__bar"><span id="riskFill"></span></span>
+            </div>
+
+            <div class="actions">
+              <button id="buyBtn" class="trade trade--buy" type="button">
+                <span class="trade__k">BUY</span>
+                <span class="trade__v" id="buyPrice">0.0000</span>
+              </button>
+              <button id="sellBtn" class="trade trade--sell" type="button">
+                <span class="trade__k">SELL</span>
+                <span class="trade__v" id="sellPrice">0.0000</span>
+              </button>
+            </div>
+
+            <button id="closeBtn" class="btn btn--ghost btn--block" disabled>Close Position</button>
+          </div>
+
+          <div class="panel__divider"></div>
+
+          <div class="panel__head">
+            <h2 class="panel__title">Trade Log</h2>
+            <span class="panel__meta" id="tradeCount">0 trades</span>
+          </div>
+          <ul id="tradeLog" class="tradelog" role="list">
+            <li class="tradelog__empty">No trades yet. The market is patient.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <!-- COACH MODAL -->
+    <div id="coach" class="modal" aria-hidden="true" role="dialog" aria-labelledby="coachTitle">
+      <div class="modal__scrim"></div>
+      <div class="modal__card">
+        <header class="modal__head">
+          <div>
+            <p class="modal__eyebrow">Session Review</p>
+            <h2 id="coachTitle" class="modal__title">Coach is reviewing your session…</h2>
+          </div>
+          <button id="coachClose" class="iconbtn" aria-label="Close" type="button">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </header>
+
+        <div class="modal__metrics" id="coachMetrics"></div>
+
+        <div class="modal__sections">
+          <section class="modal__section">
+            <h3>Notes from your coach</h3>
+            <ul id="coachNotes" class="notes"></ul>
+          </section>
+          <section class="modal__section">
+            <h3>What to work on next</h3>
+            <ul id="coachLessons" class="lessons"></ul>
+          </section>
+        </div>
+
+        <footer class="modal__foot">
+          <button id="coachReplay" class="btn btn--primary">Replay Session</button>
+          <button id="coachNew" class="btn btn--ghost">New Scenario</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

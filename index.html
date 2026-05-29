@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f5efe6" />
+<title>Soula — Mediterrane Küche im Herzen Wiens</title>
+<meta name="description" content="Soula. Eine moderne mediterrane Tafel im Herzen Wiens. Geteilte Teller, ehrliche Zutaten, warme Gastfreundschaft." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   SOULA — Vienna · Mediterranean
+   single-file craft build
+   ========================================================== */
+
+:root{
+  --bg:        #f5efe6;        /* warm white / linen      */
+  --bg-2:      #ece4d6;        /* sand                    */
+  --bg-3:      #e3d9c6;        /* deeper sand             */
+  --paper:     #faf6ef;        /* card paper              */
+  --ink:       #1d1b18;        /* charcoal                */
+  --ink-2:     #3a3631;        /* secondary text          */
+  --ink-3:     #6e665b;        /* muted text              */
+  --line:      rgba(29,27,24,.12);
+  --line-2:    rgba(29,27,24,.06);
+  --accent:    #b3502a;        /* terracotta — single accent */
+  --accent-2:  #8c3d1f;
+  --olive:     #4a5a3a;        /* used very rarely        */
+
+  --ease:      cubic-bezier(.22,1,.36,1);
+  --ease-soft: cubic-bezier(.6,.05,.2,1);
+
+  --radius:    14px;
+  --radius-lg: 22px;
+
+  --maxw:      1240px;
+  --pad:       clamp(20px, 4vw, 56px);
+
+  --serif:     'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--bg);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+}
+img{display:block; max-width:100%; height:auto;}
+a{color:inherit; text-decoration:none;}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px;}
+::selection{background:var(--accent); color:#fff;}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  font-weight:400;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin:0;
+  font-variation-settings:"opsz" 96;
+}
+h1{font-size:clamp(48px, 8.6vw, 132px); line-height:.95; letter-spacing:-.025em;}
+h2{font-size:clamp(36px, 5.2vw, 76px); line-height:1.02; letter-spacing:-.02em;}
+h3{font-size:clamp(22px, 2.4vw, 32px); line-height:1.15;}
+p {color:var(--ink-2);}
+
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  font-weight:500;
+}
+
+/* ---------- layout helpers ---------- */
+.container{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding-left:var(--pad);
+  padding-right:var(--pad);
+}
+.section{padding:clamp(80px,12vw,160px) 0; position:relative;}
+
+/* ---------- noise grain (handcrafted feel) ---------- */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.05;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ===========================================================
+   PRELOADER
+   =========================================================== */
+#preloader{
+  position:fixed; inset:0; z-index:1000;
+  background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:24px;
+  transition:opacity .9s var(--ease), visibility .9s var(--ease);
+}
+#preloader .pl-mark{
+  font-family:var(--serif);
+  font-size:clamp(40px,7vw,72px);
+  font-weight:300;
+  letter-spacing:.04em;
+  color:var(--ink);
+  font-style:italic;
+  position:relative;
+  overflow:hidden;
+  display:inline-block;
+}
+#preloader .pl-mark span{
+  display:inline-block;
+  transform:translate3d(0,110%,0);
+  animation:plRise .9s var(--ease) forwards;
+}
+#preloader .pl-mark span:nth-child(2){animation-delay:.05s}
+#preloader .pl-mark span:nth-child(3){animation-delay:.1s}
+#preloader .pl-mark span:nth-child(4){animation-delay:.15s}
+#preloader .pl-mark span:nth-child(5){animation-delay:.2s}
+@keyframes plRise{to{transform:translate3d(0,0,0);}}
+#preloader .pl-bar{
+  width:200px; height:1px; background:rgba(29,27,24,.12); position:relative; overflow:hidden;
+}
+#preloader .pl-bar::after{
+  content:""; position:absolute; inset:0;
+  background:var(--ink);
+  transform:translate3d(-100%,0,0);
+  animation:plLoad 1.4s var(--ease) .3s forwards;
+}
+@keyframes plLoad{to{transform:translate3d(0,0,0);}}
+body.loaded #preloader{opacity:0; visibility:hidden;}
+
+/* ===========================================================
+   NAV
+   =========================================================== */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:60;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px var(--pad);
+  transition:background .6s var(--ease), padding .6s var(--ease), backdrop-filter .6s var(--ease), border-color .6s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(245,239,230,.82);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+          backdrop-filter:blur(14px) saturate(140%);
+  padding:14px var(--pad);
+  border-bottom:1px solid var(--line-2);
+}
+.nav .brand{
+  font-family:var(--serif);
+  font-size:24px;
+  font-style:italic;
+  letter-spacing:.02em;
+  font-weight:400;
+}
+.nav .brand sup{
+  font-size:9px; font-style:normal; vertical-align:super;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3);
+  margin-left:4px;
+  font-family:var(--sans);
+}
+.nav-links{
+  display:flex; gap:36px; align-items:center;
+  font-size:13px; letter-spacing:.04em;
+}
+.nav-links a{
+  position:relative; padding:6px 0; color:var(--ink-2);
+  transition:color .3s var(--ease);
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; right:0; bottom:0;
+  height:1px; background:var(--ink);
+  transform:scaleX(0); transform-origin:right center;
+  transition:transform .5s var(--ease);
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a:hover::after{transform:scaleX(1); transform-origin:left center;}
+
+.nav-cta{
+  border:1px solid var(--ink);
+  color:var(--ink);
+  padding:11px 22px;
+  border-radius:999px;
+  font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:10px;
+  transition:background .4s var(--ease), color .4s var(--ease), transform .4s var(--ease);
+  cursor:pointer;
+}
+.nav-cta:hover{background:var(--ink); color:var(--bg);}
+.nav-cta .dot{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 0 rgba(179,80,42,.55);
+  animation:pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(179,80,42,.45);}
+  50%   {box-shadow:0 0 0 6px rgba(179,80,42,0);}
+}
+
+/* burger */
+.burger{display:none; width:36px; height:36px; align-items:center; justify-content:center; flex-direction:column; gap:5px;}
+.burger span{display:block; width:22px; height:1px; background:var(--ink); transition:transform .4s var(--ease), opacity .3s;}
+.burger.open span:nth-child(1){transform:translateY(3px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-3px) rotate(-45deg);}
+
+/* mobile menu */
+.mobile-menu{
+  position:fixed; inset:0; z-index:55;
+  background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:32px;
+  opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity .5s var(--ease), visibility .5s;
+}
+.mobile-menu.open{opacity:1; visibility:visible; pointer-events:auto;}
+.mobile-menu a{
+  font-family:var(--serif); font-size:36px; font-style:italic; color:var(--ink);
+  position:relative;
+  transform:translateY(20px); opacity:0;
+  transition:transform .6s var(--ease), opacity .6s var(--ease);
+}
+.mobile-menu.open a{transform:translateY(0); opacity:1;}
+.mobile-menu.open a:nth-child(1){transition-delay:.05s}
+.mobile-menu.open a:nth-child(2){transition-delay:.1s}
+.mobile-menu.open a:nth-child(3){transition-delay:.15s}
+.mobile-menu.open a:nth-child(4){transition-delay:.2s}
+.mobile-menu.open a:nth-child(5){transition-delay:.25s}
+
+@media (max-width:860px){
+  .nav-links, .nav .nav-cta{display:none;}
+  .burger{display:flex;}
+}
+
+/* ===========================================================
+   HERO
+   =========================================================== */
+.hero{
+  position:relative;
+  height:100svh;
+  min-height:680px;
+  overflow:hidden;
+  display:flex; align-items:flex-end;
+  background:var(--ink);
+  color:#fff;
+}
+.hero-media{
+  position:absolute; inset:0;
+  overflow:hidden;
+}
+.hero-media .img{
+  position:absolute; inset:-6%;
+  background-size:cover;
+  background-position:center;
+  transform:translate3d(0,0,0) scale(1.06);
+  will-change:transform;
+}
+.hero-media .img.is-1{
+  background-image:
+    linear-gradient(180deg, rgba(20,17,14,.18) 0%, rgba(20,17,14,.55) 60%, rgba(20,17,14,.85) 100%),
+    url("https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=2200&q=80");
+  animation:slowZoom 18s var(--ease) infinite alternate;
+}
+@keyframes slowZoom{
+  from{transform:scale(1.04) translate3d(0,0,0);}
+  to  {transform:scale(1.14) translate3d(-1%,-1%,0);}
+}
+.hero-media::after{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(110% 70% at 30% 80%, transparent 30%, rgba(0,0,0,.45) 100%);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative; z-index:2;
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 var(--pad) clamp(60px, 10vw, 120px);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:48px;
+  align-items:end;
+}
+
+.hero-meta{
+  display:flex; flex-direction:column; gap:10px;
+  font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+  color:rgba(255,255,255,.78);
+}
+.hero-meta .line{
+  width:50px; height:1px; background:rgba(255,255,255,.5); margin-top:6px;
+}
+
+.hero h1{color:#fff; font-weight:300;}
+.hero h1 .it{font-style:italic; color:#f5e9d6;}
+.hero h1 .word{
+  display:inline-block; overflow:hidden; vertical-align:bottom;
+}
+.hero h1 .word > span{
+  display:inline-block;
+  transform:translate3d(0,110%,0) rotate(8deg);
+  transition:transform 1.4s var(--ease);
+}
+body.loaded .hero h1 .word > span{transform:translate3d(0,0,0) rotate(0);}
+.hero h1 .word:nth-child(1) > span{transition-delay:.6s}
+.hero h1 .word:nth-child(2) > span{transition-delay:.7s}
+.hero h1 .word:nth-child(3) > span{transition-delay:.8s}
+.hero h1 .word:nth-child(4) > span{transition-delay:.9s}
+.hero h1 .word:nth-child(5) > span{transition-delay:1.0s}
+
+.hero-side{
+  text-align:right;
+  font-size:13px;
+  color:rgba(255,255,255,.78);
+  max-width:300px;
+  opacity:0; transform:translateY(20px);
+  transition:opacity 1s var(--ease) 1.2s, transform 1s var(--ease) 1.2s;
+}
+body.loaded .hero-side{opacity:1; transform:translateY(0);}
+.hero-side p{color:inherit; margin:0 0 18px;}
+
+.hero-actions{
+  display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 24px;
+  border-radius:999px;
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  border:1px solid currentColor;
+  cursor:pointer;
+  transition:background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease);
+  position:relative; overflow:hidden;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-light{color:#fff;}
+.btn-light:hover{background:#fff; color:var(--ink);}
+.btn-fill{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+.btn-fill:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+.btn-ghost{color:var(--ink);}
+.btn-ghost:hover{background:var(--ink); color:var(--bg);}
+.btn .arrow{display:inline-block; transition:transform .4s var(--ease);}
+.btn:hover .arrow{transform:translateX(4px);}
+
+/* hero scroll cue */
+.scroll-cue{
+  position:absolute;
+  bottom:24px; left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  font-size:10px; letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+  opacity:0;
+  transition:opacity 1s var(--ease) 1.6s;
+}
+body.loaded .scroll-cue{opacity:1;}
+.scroll-cue .bar{
+  width:1px; height:46px; background:rgba(255,255,255,.5); position:relative; overflow:hidden;
+}
+.scroll-cue .bar::after{
+  content:""; position:absolute; inset:0;
+  background:#fff;
+  transform:translate3d(0,-100%,0);
+  animation:scrollMove 2.4s var(--ease) infinite;
+}
+@keyframes scrollMove{
+  0%{transform:translate3d(0,-100%,0);}
+  60%{transform:translate3d(0,100%,0);}
+  100%{transform:translate3d(0,100%,0);}
+}
+
+/* hero ticker */
+.hero-ticker{
+  position:absolute; left:0; right:0; bottom:-1px;
+  height:42px; display:flex; align-items:center;
+  background:var(--bg);
+  color:var(--ink);
+  border-top:1px solid var(--line-2);
+  overflow:hidden;
+  z-index:4;
+}
+.ticker-track{
+  display:flex; gap:60px; white-space:nowrap;
+  animation:ticker 40s linear infinite;
+  font-size:11px; letter-spacing:.32em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ticker-track span::before{content:"✦"; margin-right:60px; color:var(--accent);}
+@keyframes ticker{from{transform:translate3d(0,0,0);} to{transform:translate3d(-50%,0,0);}}
+
+@media (max-width:740px){
+  .hero-inner{grid-template-columns:1fr; gap:24px;}
+  .hero-side{text-align:left; max-width:none;}
+  .hero-actions{justify-content:flex-start;}
+  .hero{min-height:620px;}
+}
+
+/* ===========================================================
+   SECTION HEAD
+   =========================================================== */
+.sec-head{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:48px;
+  align-items:end;
+  margin-bottom:64px;
+}
+.sec-head .lead{font-size:17px; color:var(--ink-2); max-width:560px;}
+@media (max-width:780px){
+  .sec-head{grid-template-columns:1fr; gap:24px;}
+}
+
+/* reveal animation */
+.reveal{
+  opacity:0;
+  transform:translate3d(0,40px,0);
+  transition:opacity 1s var(--ease), transform 1s var(--ease);
+  will-change:transform, opacity;
+}
+.reveal.in{opacity:1; transform:translate3d(0,0,0);}
+.reveal.d1{transition-delay:.05s}
+.reveal.d2{transition-delay:.15s}
+.reveal.d3{transition-delay:.25s}
+.reveal.d4{transition-delay:.35s}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important;}
+  .reveal{opacity:1; transform:none;}
+  .hero h1 .word > span{transform:none;}
+}
+
+/* ===========================================================
+   STORY (overlapping intro)
+   =========================================================== */
+.story{
+  background:var(--bg);
+  position:relative;
+  margin-top:-1px;
+}
+.story-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.story-text h2{margin-bottom:28px;}
+.story-text h2 .it{font-style:italic; color:var(--accent);}
+.story-text p{font-size:17px; max-width:540px; margin-bottom:18px;}
+.story-text .sig{
+  font-family:var(--serif); font-style:italic; font-size:22px;
+  margin-top:28px; color:var(--ink); display:inline-flex; gap:14px; align-items:center;
+}
+.story-text .sig::before{
+  content:""; width:36px; height:1px; background:var(--ink);
+}
+.story-img{
+  position:relative;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  aspect-ratio: 4/5;
+  background:var(--bg-3);
+  transform:translate3d(0,0,0);
+}
+.story-img img{
+  width:100%; height:100%; object-fit:cover;
+  transform:scale(1.06) translate3d(0,0,0);
+  transition:transform 1.4s var(--ease);
+  will-change:transform;
+}
+.story-img:hover img{transform:scale(1.0) translate3d(0,0,0);}
+.story-img .badge{
+  position:absolute; left:18px; bottom:18px;
+  background:var(--paper); color:var(--ink);
+  padding:8px 14px; border-radius:999px;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  border:1px solid var(--line);
+}
+.story-stats{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+  margin-top:64px;
+  padding-top:48px;
+  border-top:1px solid var(--line);
+}
+.stat{display:flex; flex-direction:column; gap:6px;}
+.stat .num{font-family:var(--serif); font-size:48px; line-height:1; font-weight:400;}
+.stat .lbl{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3);}
+
+@media (max-width:880px){
+  .story-grid{grid-template-columns:1fr; gap:48px;}
+  .story-stats{grid-template-columns:1fr 1fr; gap:18px; margin-top:48px;}
+  .stat .num{font-size:40px;}
+}
+
+/* ===========================================================
+   FEATURED DISH STRIP (cinematic horizontal showcase)
+   =========================================================== */
+.feature{
+  background:var(--bg-2);
+  padding:clamp(80px,10vw,120px) 0;
+  position:relative;
+  overflow:hidden;
+}
+.feature h2{margin-bottom:48px;}
+.feature h2 .it{font-style:italic; color:var(--accent);}
+.feat-row{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+.feat-card{
+  position:relative;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  aspect-ratio: 3/4;
+  background:var(--ink);
+  cursor:pointer;
+  isolation:isolate;
+}
+.feat-card .ph{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  transform:scale(1.05) translate3d(0,0,0);
+  transition:transform 1.4s var(--ease), filter 1s var(--ease);
+  will-change:transform;
+}
+.feat-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.7) 100%);
+  z-index:1;
+}
+.feat-card:hover .ph{transform:scale(1.12) translate3d(0,0,0); filter:brightness(1.05);}
+.feat-card .meta{
+  position:absolute; left:24px; right:24px; bottom:24px;
+  z-index:2;
+  color:#fff;
+}
+.feat-card .meta .tag{
+  display:inline-block; font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(255,255,255,.85); margin-bottom:10px;
+}
+.feat-card .meta h3{
+  color:#fff; font-style:italic; font-weight:400;
+  font-size:clamp(22px, 2.2vw, 28px);
+}
+.feat-card .meta p{
+  color:rgba(255,255,255,.78); font-size:13px; margin:8px 0 0;
+}
+
+.feat-card .ph.f1{background-image:url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1400&q=80");}
+.feat-card .ph.f2{background-image:url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=80");}
+.feat-card .ph.f3{background-image:url("https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1400&q=80");}
+
+@media (max-width:880px){
+  .feat-row{grid-template-columns:1fr; gap:18px;}
+  .feat-card{aspect-ratio:4/5;}
+}
+
+/* ===========================================================
+   MENU
+   =========================================================== */
+.menu{
+  background:var(--bg);
+  position:relative;
+  padding-bottom:clamp(80px,10vw,140px);
+}
+.menu .menu-tabs{
+  display:flex; gap:8px; flex-wrap:wrap;
+  margin-bottom:48px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 0;
+  position:sticky;
+  top:64px;
+  background:rgba(245,239,230,.92);
+  -webkit-backdrop-filter:blur(8px);
+          backdrop-filter:blur(8px);
+  z-index:30;
+}
+.menu-tab{
+  position:relative;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3);
+  cursor:pointer;
+  transition:color .4s var(--ease), background .4s var(--ease);
+  border:1px solid transparent;
+}
+.menu-tab:hover{color:var(--ink);}
+.menu-tab.active{
+  background:var(--ink);
+  color:var(--bg);
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px 64px;
+  position:relative;
+}
+@media (max-width:880px){
+  .menu-grid{grid-template-columns:1fr; gap:40px;}
+  .menu .menu-tabs{top:60px;}
+}
+
+.dish{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line-2);
+  transition:transform .5s var(--ease), border-color .4s var(--ease);
+  position:relative;
+  opacity:0; transform:translateY(20px);
+  animation:dishIn .6s var(--ease) forwards;
+}
+@keyframes dishIn{to{opacity:1; transform:translateY(0);}}
+.dish:hover{border-color:var(--ink); transform:translateX(4px);}
+.dish-row{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+}
+.dish .name{
+  font-family:var(--serif);
+  font-size:22px; line-height:1.2;
+  font-weight:400;
+  color:var(--ink);
+}
+.dish .name em{font-style:italic; color:var(--accent);}
+.dish .dots{
+  flex:1;
+  border-bottom:1px dotted rgba(29,27,24,.3);
+  transform:translateY(-4px);
+  margin:0 10px;
+}
+.dish .price{
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.dish .desc{
+  color:var(--ink-3);
+  font-size:14px;
+  max-width:90%;
+}
+.dish .tags{
+  display:flex; gap:8px; margin-top:6px;
+  font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3);
+}
+.dish .tags span{
+  border:1px solid var(--line);
+  padding:3px 8px;
+  border-radius:999px;
+}
+
+/* menu category fade */
+.menu-cat{display:none;}
+.menu-cat.active{display:contents;}
+
+/* ===========================================================
+   QUOTE / EDITORIAL BLOCK
+   =========================================================== */
+.editorial{
+  background:var(--bg-3);
+  padding:clamp(100px, 14vw, 180px) 0;
+  position:relative;
+  overflow:hidden;
+}
+.editorial::before{
+  content:""; position:absolute; inset:0;
+  background-image:url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80");
+  background-size:cover; background-position:center;
+  opacity:.10; mix-blend-mode:multiply;
+  filter:saturate(.7);
+  transform:translate3d(0,0,0);
+}
+.editorial-inner{
+  position:relative; z-index:1;
+  max-width:920px;
+  text-align:center;
+  margin:0 auto;
+}
+.editorial blockquote{
+  font-family:var(--serif);
+  font-size:clamp(28px, 4.4vw, 56px);
+  line-height:1.2;
+  font-weight:300;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin:0;
+  font-style:italic;
+}
+.editorial blockquote em{color:var(--accent); font-style:italic;}
+.editorial cite{
+  display:block;
+  font-style:normal;
+  margin-top:32px;
+  font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+
+/* ===========================================================
+   GALLERY  (Instagram-inspired, masonry-ish)
+   =========================================================== */
+.gallery{background:var(--bg); padding-top:clamp(100px, 12vw, 160px);}
+.gallery .sec-head{margin-bottom:48px;}
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  grid-auto-rows:90px;
+  gap:14px;
+}
+.gal{
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  background:var(--bg-3);
+}
+.gal img{
+  width:100%; height:100%; object-fit:cover;
+  transform:scale(1.04) translate3d(0,0,0);
+  transition:transform 1.2s var(--ease), filter 1s var(--ease);
+  will-change:transform;
+}
+.gal:hover img{transform:scale(1.12) translate3d(0,0,0);}
+.gal::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.45) 100%);
+  opacity:0;
+  transition:opacity .5s var(--ease);
+}
+.gal:hover::after{opacity:1;}
+.gal .gtag{
+  position:absolute; left:14px; bottom:12px;
+  z-index:2;
+  font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#fff;
+  opacity:0; transform:translateY(8px);
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
+}
+.gal:hover .gtag{opacity:1; transform:translateY(0);}
+
+.gal.g1{grid-column:span 5; grid-row:span 4;}
+.gal.g2{grid-column:span 4; grid-row:span 3;}
+.gal.g3{grid-column:span 3; grid-row:span 3;}
+.gal.g4{grid-column:span 4; grid-row:span 4;}
+.gal.g5{grid-column:span 3; grid-row:span 4;}
+.gal.g6{grid-column:span 5; grid-row:span 3;}
+
+@media (max-width:880px){
+  .gal-grid{grid-template-columns:repeat(6,1fr); grid-auto-rows:70px;}
+  .gal.g1{grid-column:span 6; grid-row:span 4;}
+  .gal.g2{grid-column:span 3; grid-row:span 3;}
+  .gal.g3{grid-column:span 3; grid-row:span 3;}
+  .gal.g4{grid-column:span 3; grid-row:span 4;}
+  .gal.g5{grid-column:span 3; grid-row:span 4;}
+  .gal.g6{grid-column:span 6; grid-row:span 3;}
+}
+
+.gallery-foot{
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  margin-top:36px;
+  padding-top:24px;
+  border-top:1px solid var(--line-2);
+  flex-wrap:wrap;
+}
+.gallery-foot .ig-link{
+  display:inline-flex; align-items:center; gap:12px;
+  font-size:13px; letter-spacing:.04em; color:var(--ink);
+}
+.gallery-foot .ig-link svg{width:18px; height:18px;}
+.gallery-foot .ig-link:hover .ig-name{text-decoration:underline; text-underline-offset:4px;}
+
+/* ===========================================================
+   RESERVATION / CONTACT
+   =========================================================== */
+.reserve{
+  background:var(--ink);
+  color:var(--bg);
+  position:relative;
+  padding:clamp(100px,12vw,160px) 0;
+}
+.reserve h2{color:var(--bg); margin-bottom:24px;}
+.reserve h2 .it{color:#e9c39a; font-style:italic;}
+.reserve .lead{color:rgba(245,239,230,.72); font-size:17px; max-width:520px;}
+.reserve-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:80px;
+  align-items:start;
+}
+
+.reserve-info{
+  display:flex; flex-direction:column; gap:36px;
+  position:sticky; top:120px;
+}
+.info-block{
+  display:flex; flex-direction:column; gap:6px;
+  padding-bottom:22px;
+  border-bottom:1px solid rgba(245,239,230,.12);
+}
+.info-block:last-child{border-bottom:0;}
+.info-block .lbl{
+  font-size:10px; letter-spacing:.28em; text-transform:uppercase;
+  color:rgba(245,239,230,.55);
+}
+.info-block .val{
+  font-family:var(--serif); font-size:24px; line-height:1.25;
+  color:var(--bg); font-weight:400;
+}
+.info-block .val a{transition:color .3s var(--ease);}
+.info-block .val a:hover{color:#e9c39a;}
+.info-block ul{margin:0; padding:0; list-style:none; color:rgba(245,239,230,.78); font-size:14px;}
+.info-block ul li{display:flex; justify-content:space-between; padding:5px 0;}
+.info-block .actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;}
+.info-block .actions .btn{color:var(--bg); border-color:rgba(245,239,230,.4); padding:11px 18px;}
+.info-block .actions .btn:hover{background:var(--bg); color:var(--ink); border-color:var(--bg);}
+
+/* form */
+.form-card{
+  background:var(--paper);
+  color:var(--ink);
+  border-radius:var(--radius-lg);
+  padding:clamp(28px,4vw,48px);
+  position:relative;
+  box-shadow:0 30px 80px -40px rgba(0,0,0,.6);
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px 18px;
+}
+.field{
+  display:flex; flex-direction:column; gap:6px;
+  position:relative;
+}
+.field.full{grid-column:1 / -1;}
+.field label{
+  font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.field input, .field select, .field textarea{
+  font-family:var(--sans);
+  font-size:15px;
+  color:var(--ink);
+  background:transparent;
+  border:0;
+  border-bottom:1px solid rgba(29,27,24,.18);
+  padding:10px 0 12px;
+  outline:0;
+  border-radius:0;
+  transition:border-color .3s var(--ease);
+  width:100%;
+}
+.field textarea{resize:vertical; min-height:90px; padding-top:12px;}
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-bottom-color:var(--accent);
+}
+.field.error input, .field.error select, .field.error textarea{
+  border-bottom-color:#b3502a;
+}
+.field .err{
+  font-size:11px; color:#b3502a; min-height:14px;
+  letter-spacing:.05em;
+}
+.form-foot{
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  margin-top:22px;
+  flex-wrap:wrap;
+}
+.form-foot .note{font-size:12px; color:var(--ink-3);}
+.form-success{
+  display:none;
+  padding:24px;
+  background:var(--bg-2);
+  border-radius:14px;
+  margin-top:18px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:18px;
+  color:var(--ink);
+  border-left:3px solid var(--accent);
+}
+.form-success.show{display:block; animation:dishIn .6s var(--ease) forwards;}
+
+@media (max-width:880px){
+  .reserve-grid{grid-template-columns:1fr; gap:48px;}
+  .reserve-info{position:static;}
+  .form-grid{grid-template-columns:1fr;}
+}
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+footer{
+  background:var(--bg-2);
+  padding:64px 0 28px;
+  color:var(--ink-2);
+}
+.foot-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:48px;
+  padding-bottom:48px;
+  border-bottom:1px solid var(--line);
+}
+.foot-grid h4{
+  font-family:var(--sans);
+  font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:14px; font-weight:500;
+}
+.foot-grid a{display:block; padding:4px 0; color:var(--ink-2); transition:color .3s var(--ease);}
+.foot-grid a:hover{color:var(--ink);}
+.foot-brand{font-family:var(--serif); font-size:34px; font-style:italic; color:var(--ink); margin-bottom:12px;}
+.foot-bottom{
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:24px;
+  font-size:12px; color:var(--ink-3); flex-wrap:wrap; gap:12px;
+}
+@media (max-width:780px){
+  .foot-grid{grid-template-columns:1fr 1fr; gap:32px;}
+}
+
+/* ===========================================================
+   CURSOR (subtle)
+   =========================================================== */
+.cursor{
+  position:fixed; top:0; left:0; pointer-events:none;
+  width:8px; height:8px; border-radius:50%;
+  background:var(--accent);
+  transform:translate3d(-50%,-50%,0);
+  z-index:9998;
+  mix-blend-mode:multiply;
+  transition:transform .15s var(--ease-soft), width .3s var(--ease), height .3s var(--ease), opacity .3s;
+  opacity:0;
+}
+.cursor.active{opacity:1;}
+.cursor.lg{width:38px; height:38px; background:rgba(179,80,42,.2);}
+@media (max-width:980px), (pointer:coarse){.cursor{display:none;}}
+
+</style>
+</head>
+<body>
+
+<!-- ====== preloader ====== -->
+<div id="preloader" aria-hidden="true">
+  <div class="pl-mark">
+    <span>S</span><span>o</span><span>u</span><span>l</span><span>a</span>
+  </div>
+  <div class="pl-bar"></div>
+</div>
+
+<!-- ====== custom cursor ====== -->
+<div class="cursor" id="cursor"></div>
+
+<!-- ====== nav ====== -->
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Soula — Home">
+    Soula<sup>Wien</sup>
+  </a>
+
+  <nav class="nav-links" aria-label="Hauptnavigation">
+    <a href="#story">Haus</a>
+    <a href="#menu">Karte</a>
+    <a href="#gallery">Atelier</a>
+    <a href="#reserve">Besuch</a>
+  </nav>
+
+  <a href="#reserve" class="nav-cta">
+    <span class="dot" aria-hidden="true"></span>
+    Tisch reservieren
+  </a>
+
+  <button class="burger" id="burger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#story">Haus</a>
+  <a href="#menu">Karte</a>
+  <a href="#gallery">Atelier</a>
+  <a href="#reserve">Besuch</a>
+  <a href="#reserve">Reservieren →</a>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="top">
+  <div class="hero-media" aria-hidden="true">
+    <div class="img is-1" id="heroImg"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-meta" aria-hidden="true">
+        <span>Soula · Est. Vienna</span>
+        <span>Mediterran · Saisonal · Geteilt</span>
+        <span class="line"></span>
+      </div>
+      <h1 style="margin-top:18px;">
+        <span class="word"><span>Mediterrane</span></span>
+        <span class="word"><span>Küche</span></span>
+        <span class="word"><span>im</span></span>
+        <span class="word"><span class="it">Herzen</span></span>
+        <span class="word"><span>Wiens.</span></span>
+      </h1>
+    </div>
+
+    <aside class="hero-side">
+      <p>Eine ruhige Tafel zwischen Sonne und Stein. Wir kochen, was die Saison gibt — geteilt, langsam, mit Olivenöl, Feuer und Zeit.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-light">Speisekarte <span class="arrow">→</span></a>
+        <a href="#reserve" class="btn btn-light">Reservieren</a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="bar"></div>
+  </div>
+
+  <div class="hero-ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Geteilte Teller</span><span>Wood Fire</span><span>Olivenöl Erste Pressung</span><span>Levante & Ägäis</span><span>Saisonal aus Wien</span><span>Geteilte Teller</span><span>Wood Fire</span><span>Olivenöl Erste Pressung</span><span>Levante & Ägäis</span><span>Saisonal aus Wien</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== STORY ====== -->
+<section class="section story" id="story">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">— 01 · Das Haus</span>
+      </div>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <h2>Eine kleine Tafel, <span class="it">grosse Gastfreundschaft</span>.</h2>
+        <p>Soula ist kein Restaurant im klassischen Sinn. Es ist ein Wohnzimmer mit offenem Feuer, ein langer Tisch, eine Hand voll Stühle, eine Karte, die sich täglich verändert.</p>
+        <p>Was wir kochen, kommt aus dem Mittelmeer und seinem Hinterland — mit Respekt für die Bauern, die Fischer, die Händler, mit denen wir hier in Wien arbeiten. Wir bestellen wenig, wir verarbeiten alles, wir teilen alles.</p>
+        <span class="sig">Mit Liebe gemacht — Soula</span>
+      </div>
+
+      <div class="story-img reveal d2">
+        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1400&q=80" alt="Tisch im Restaurant Soula bei warmem Licht" />
+        <span class="badge">Seit 2022 · Wien</span>
+      </div>
+    </div>
+
+    <div class="story-stats reveal d3">
+      <div class="stat">
+        <span class="num">14</span>
+        <span class="lbl">Plätze am Tisch</span>
+      </div>
+      <div class="stat">
+        <span class="num">7</span>
+        <span class="lbl">Tage Saisonküche</span>
+      </div>
+      <div class="stat">
+        <span class="num">100%</span>
+        <span class="lbl">Hausgemacht</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== FEATURE STRIP ====== -->
+<section class="section feature">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">— 02 · Aus dem Feuer</span>
+        <h2 style="margin-top:14px;">Drei Teller, die wir <span class="it">gerade lieben</span>.</h2>
+      </div>
+      <p class="lead">Saisonal, geteilt, ohne Eile. Was heute gut war, kann morgen schon anders sein — und das ist genau der Punkt.</p>
+    </div>
+
+    <div class="feat-row">
+      <article class="feat-card reveal">
+        <div class="ph f1" aria-hidden="true"></div>
+        <div class="meta">
+          <span class="tag">Mezze</span>
+          <h3>Burrata mit gerösteten Feigen</h3>
+          <p>Honig aus dem Burgenland · Pistazie · Olivenöl Mani</p>
+        </div>
+      </article>
+      <article class="feat-card reveal d2">
+        <div class="ph f2" aria-hidden="true"></div>
+        <div class="meta">
+          <span class="tag">Vom Feuer</span>
+          <h3>Lammschulter, langsam geschmort</h3>
+          <p>Zitrone · Knoblauch · Rosmarin · Joghurt</p>
+        </div>
+      </article>
+      <article class="feat-card reveal d3">
+        <div class="ph f3" aria-hidden="true"></div>
+        <div class="meta">
+          <span class="tag">Süss</span>
+          <h3>Olivenöl-Kuchen, lauwarm</h3>
+          <p>Sauerrahmeis · Salz · Bitterorange</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== EDITORIAL QUOTE ====== -->
+<section class="editorial reveal">
+  <div class="container editorial-inner">
+    <blockquote>
+      „Wir kochen nicht für viele.<br>
+      Wir kochen für <em>die, die da sind</em>."
+    </blockquote>
+    <cite>— Die Küche von Soula</cite>
+  </div>
+</section>
+
+<!-- ====== MENU ====== -->
+<section class="section menu" id="menu">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">— 03 · Die Karte</span>
+        <h2 style="margin-top:14px;">Speisen,<br><em style="font-style:italic; color:var(--accent);">geteilt &amp; geliebt</em>.</h2>
+      </div>
+      <p class="lead">Unsere Karte verändert sich mit der Saison. Was Sie hier sehen, ist eine Auswahl — am Tisch erzählen wir Ihnen, was heute frisch ist.</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist">
+      <button class="menu-tab active" data-cat="mezze" role="tab">Mezze</button>
+      <button class="menu-tab" data-cat="hauptgang" role="tab">Hauptgänge</button>
+      <button class="menu-tab" data-cat="feuer" role="tab">Vom Feuer</button>
+      <button class="menu-tab" data-cat="suess" role="tab">Süsses</button>
+      <button class="menu-tab" data-cat="trinken" role="tab">Trinken</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+
+      <!-- MEZZE -->
+      <div class="menu-cat active" data-cat="mezze">
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Hummus, <em>warm</em></span>
+            <span class="dots"></span>
+            <span class="price">9</span>
+          </div>
+          <p class="desc">Kichererbse, Tahini aus Nablus, geröstetes Sesamöl, Sauerteigfladen.</p>
+          <div class="tags"><span>vegan</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Labneh mit Za'atar</span>
+            <span class="dots"></span>
+            <span class="price">10</span>
+          </div>
+          <p class="desc">Hausgemachter Frischkäse, wildes Za'atar, Olivenöl Koroneiki, Granatapfel.</p>
+          <div class="tags"><span>vegetarisch</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Auberginen, <em>verkohlt</em></span>
+            <span class="dots"></span>
+            <span class="price">11</span>
+          </div>
+          <p class="desc">Über offenem Feuer geröstet, Tahini, Granatapfelmelasse, Petersilie, Pinienkerne.</p>
+          <div class="tags"><span>vegan</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Burrata mit Feigen</span>
+            <span class="dots"></span>
+            <span class="price">14</span>
+          </div>
+          <p class="desc">Frische Burrata, geröstete Feigen, Akazienhonig, Pistazie, schwarzer Pfeffer.</p>
+          <div class="tags"><span>vegetarisch</span><span>signature</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Sardinen, geräuchert</span>
+            <span class="dots"></span>
+            <span class="price">13</span>
+          </div>
+          <p class="desc">Hausgeräucherte Sardinen, geschmorte Tomate, Kapern, Toast.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Oliven &amp; Mandeln</span>
+            <span class="dots"></span>
+            <span class="price">7</span>
+          </div>
+          <p class="desc">Drei Sorten Oliven aus Kreta, geröstete Marcona-Mandeln, Zitronenschale.</p>
+          <div class="tags"><span>vegan</span></div>
+        </article>
+      </div>
+
+      <!-- HAUPTGANG -->
+      <div class="menu-cat" data-cat="hauptgang">
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Orzo mit Meeresfrüchten</span>
+            <span class="dots"></span>
+            <span class="price">26</span>
+          </div>
+          <p class="desc">Cremige Reisnudeln, Tintenfisch, Garnelen, Krustentier-Bisque, Bottarga.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Mafalde, <em>Zitrone</em></span>
+            <span class="dots"></span>
+            <span class="price">22</span>
+          </div>
+          <p class="desc">Hausgemachte Pasta, Amalfi-Zitrone, Kapern, Mandel, Pecorino.</p>
+          <div class="tags"><span>vegetarisch</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Risotto mit Safran</span>
+            <span class="dots"></span>
+            <span class="price">24</span>
+          </div>
+          <p class="desc">Carnaroli, Safran aus Sardinien, geschmolzene Markknochen, Petersilie.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Lasagne aus Wildgemüse</span>
+            <span class="dots"></span>
+            <span class="price">19</span>
+          </div>
+          <p class="desc">Spinat, Mangold, Ricotta, Béchamel, Zitronenzeste, Muskat.</p>
+          <div class="tags"><span>vegetarisch</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Brodetto, weiss</span>
+            <span class="dots"></span>
+            <span class="price">28</span>
+          </div>
+          <p class="desc">Fischsuppe nach kroatischer Art, weisser Wein, Knoblauch, Sellerie, Ölbrot.</p>
+        </article>
+      </div>
+
+      <!-- VOM FEUER -->
+      <div class="menu-cat" data-cat="feuer">
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Lammschulter, <em>geschmort</em></span>
+            <span class="dots"></span>
+            <span class="price">34</span>
+          </div>
+          <p class="desc">7 Stunden in Knoblauch, Zitrone, Rosmarin. Joghurt, Sumach, Pita.</p>
+          <div class="tags"><span>signature</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Wolfsbarsch vom Grill</span>
+            <span class="dots"></span>
+            <span class="price">36</span>
+          </div>
+          <p class="desc">Wildfang, Salzkruste, Fenchel, gegrillte Zitrone, Salsa Verde.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Lammkotelett, Holzkohle</span>
+            <span class="dots"></span>
+            <span class="price">32</span>
+          </div>
+          <p class="desc">Marinade aus Joghurt, Minze und Kardamom. Kichererbse, Granatapfel.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Oktopus, langsam</span>
+            <span class="dots"></span>
+            <span class="price">28</span>
+          </div>
+          <p class="desc">Geschmort und gegrillt, Kartoffel, Paprika, Petersilienöl.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Auberginen-Steak</span>
+            <span class="dots"></span>
+            <span class="price">21</span>
+          </div>
+          <p class="desc">Über Asche geröstet, Misopaste, Tahini, Granatapfel, schwarzer Sesam.</p>
+          <div class="tags"><span>vegan</span></div>
+        </article>
+      </div>
+
+      <!-- SÜSSES -->
+      <div class="menu-cat" data-cat="suess">
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Olivenöl-Kuchen, <em>warm</em></span>
+            <span class="dots"></span>
+            <span class="price">10</span>
+          </div>
+          <p class="desc">Sauerrahmeis, Bitterorange, Maldon-Salz.</p>
+          <div class="tags"><span>signature</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Pistazien-Halva</span>
+            <span class="dots"></span>
+            <span class="price">9</span>
+          </div>
+          <p class="desc">Hausgemacht, geröstete Pistazie, Kardamom, Rosenwasser.</p>
+          <div class="tags"><span>vegan</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Feigen mit Burrata</span>
+            <span class="dots"></span>
+            <span class="price">11</span>
+          </div>
+          <p class="desc">Geröstete Feigen, Vanillezucker, Honig, sizilianischer Mandelkrokant.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Schokolade &amp; Olivenöl</span>
+            <span class="dots"></span>
+            <span class="price">10</span>
+          </div>
+          <p class="desc">Dunkle Ganache aus Madagaskar, Olivenöl Manaki, fleur de sel.</p>
+          <div class="tags"><span>vegan</span></div>
+        </article>
+      </div>
+
+      <!-- TRINKEN -->
+      <div class="menu-cat" data-cat="trinken">
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Naturwein, Glas</span>
+            <span class="dots"></span>
+            <span class="price">7–14</span>
+          </div>
+          <p class="desc">Kleine Karte, ehrlich, ungeschwefelt. Wir empfehlen Ihnen gern.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Aperitivo Soula</span>
+            <span class="dots"></span>
+            <span class="price">11</span>
+          </div>
+          <p class="desc">Wermut Wien, Bitterorange, Tonic, Olivenzweig.</p>
+          <div class="tags"><span>signature</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Verveine, kalt</span>
+            <span class="dots"></span>
+            <span class="price">5</span>
+          </div>
+          <p class="desc">Kaltgezogene Eisenkraut, Zitrone, Honig.</p>
+          <div class="tags"><span>alkoholfrei</span></div>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Espresso, doppelt</span>
+            <span class="dots"></span>
+            <span class="price">3.5</span>
+          </div>
+          <p class="desc">Single Origin, hell geröstet, Wiener Rösterei.</p>
+        </article>
+
+        <article class="dish">
+          <div class="dish-row">
+            <span class="name">Raki, Glas</span>
+            <span class="dots"></span>
+            <span class="price">6</span>
+          </div>
+          <p class="desc">Trauben-Anis, eisgekühlt, Wasser. So wie es sich gehört.</p>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== GALLERY ====== -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">— 04 · Atelier</span>
+        <h2 style="margin-top:14px;">Ein Blick in die <em style="font-style:italic; color:var(--accent);">Küche</em>.</h2>
+      </div>
+      <p class="lead">Bilder aus unserem Alltag — Hände, Kupfer, Feuer, Brot. Folgen Sie uns auf Instagram für die laufende Karte.</p>
+    </div>
+
+    <div class="gal-grid">
+      <a class="gal g1" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80" alt="Tisch mit Mezze" />
+        <span class="gtag">@soula.vienna</span>
+      </a>
+      <a class="gal g2" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1200&q=80" alt="Pasta gerade gemacht" />
+        <span class="gtag">Mafalde</span>
+      </a>
+      <a class="gal g3" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80" alt="Brot aus dem Ofen" />
+        <span class="gtag">Sauerteig</span>
+      </a>
+      <a class="gal g4" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=1200&q=80" alt="Olivenöl wird ausgegossen" />
+        <span class="gtag">Olivenöl Mani</span>
+      </a>
+      <a class="gal g5" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80" alt="Teller mit Granatapfel" />
+        <span class="gtag">Granat</span>
+      </a>
+      <a class="gal g6" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1400&q=80" alt="Tisch beim Service" />
+        <span class="gtag">Service</span>
+      </a>
+    </div>
+
+    <div class="gallery-foot">
+      <div class="ig-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="0.7" fill="currentColor"/>
+        </svg>
+        <span>Folgen Sie uns auf Instagram —
+          <a class="ig-name" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">@soula.vienna</a>
+        </span>
+      </div>
+      <a class="btn btn-ghost" href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">
+        Auf Instagram öffnen <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== RESERVATION / CONTACT ====== -->
+<section class="reserve" id="reserve">
+  <div class="container">
+
+    <div class="sec-head reveal" style="margin-bottom:72px;">
+      <div>
+        <span class="eyebrow" style="color:rgba(245,239,230,.55);">— 05 · Besuch</span>
+        <h2 style="margin-top:14px;">Reservieren Sie<br><span class="it">Ihren Tisch</span>.</h2>
+      </div>
+      <p class="lead">Wir empfehlen Reservierung. Schreiben Sie uns hier oder rufen Sie an — wir antworten persönlich, meistens am selben Tag.</p>
+    </div>
+
+    <div class="reserve-grid">
+
+      <aside class="reserve-info reveal">
+        <div class="info-block">
+          <span class="lbl">Adresse</span>
+          <div class="val">
+            Schleifmühlgasse 8<br>
+            1040 Wien · Österreich
+          </div>
+          <div class="actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Schleifmühlgasse+8,+1040+Wien">
+              Karte öffnen <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <span class="lbl">Öffnungszeiten</span>
+          <ul>
+            <li><span>Mo</span><span>geschlossen</span></li>
+            <li><span>Di — Do</span><span>17:30 — 23:00</span></li>
+            <li><span>Fr — Sa</span><span>17:30 — 24:00</span></li>
+            <li><span>So</span><span>11:00 — 16:00 · Brunch</span></li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <span class="lbl">Direkt</span>
+          <div class="val">
+            <a href="tel:+4319200000">+43 1 920 00 00</a><br>
+            <a href="mailto:hallo@soula.wien">hallo@soula.wien</a>
+          </div>
+          <div class="actions">
+            <a class="btn" href="tel:+4319200000">Anrufen</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/soula.vienna">
+              Instagram
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <form class="form-card reveal d2" id="resForm" novalidate>
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="f-name">Ihr Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Anna Bauer" required />
+            <span class="err" data-for="name"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-people">Personen</label>
+            <select id="f-people" name="people" required>
+              <option value="">Wählen…</option>
+              <option>1 Person</option>
+              <option>2 Personen</option>
+              <option>3 Personen</option>
+              <option>4 Personen</option>
+              <option>5 Personen</option>
+              <option>6 Personen</option>
+              <option>7+ (Anfrage)</option>
+            </select>
+            <span class="err" data-for="people"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-date">Datum</label>
+            <input id="f-date" name="date" type="date" required />
+            <span class="err" data-for="date"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-time">Uhrzeit</label>
+            <select id="f-time" name="time" required>
+              <option value="">Wählen…</option>
+              <option>17:30</option><option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option><option>20:00</option>
+              <option>20:30</option><option>21:00</option><option>21:30</option>
+            </select>
+            <span class="err" data-for="time"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-email">E-Mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="anna@beispiel.at" required />
+            <span class="err" data-for="email"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-phone">Telefon (optional)</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+43 …" />
+            <span class="err" data-for="phone"></span>
+          </div>
+
+          <div class="field full">
+            <label for="f-msg">Eine Notiz für uns (optional)</label>
+            <textarea id="f-msg" name="msg" placeholder="Allergien, Anlass, Lieblingsplatz…"></textarea>
+            <span class="err" data-for="msg"></span>
+          </div>
+
+        </div>
+
+        <div class="form-foot">
+          <span class="note">Wir bestätigen Ihre Reservierung per E-Mail.</span>
+          <button type="submit" class="btn btn-fill">Reservierung senden <span class="arrow">→</span></button>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          Vielen Dank — wir haben Ihre Anfrage erhalten und melden uns kurz. Bis bald bei Soula.
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Soula</div>
+        <p style="max-width:320px;">Mediterrane Küche im Herzen Wiens. Ein kleiner Tisch, eine grosse Sache.</p>
+      </div>
+      <div>
+        <h4>Haus</h4>
+        <a href="#story">Das Haus</a>
+        <a href="#menu">Karte</a>
+        <a href="#gallery">Atelier</a>
+        <a href="#reserve">Reservieren</a>
+      </div>
+      <div>
+        <h4>Besuch</h4>
+        <a href="https://www.google.com/maps/search/?api=1&query=Schleifmühlgasse+8,+1040+Wien" target="_blank" rel="noopener">Schleifmühlgasse 8, 1040 Wien</a>
+        <a href="tel:+4319200000">+43 1 920 00 00</a>
+        <a href="mailto:hallo@soula.wien">hallo@soula.wien</a>
+      </div>
+      <div>
+        <h4>Folgen</h4>
+        <a href="https://www.instagram.com/soula.vienna" target="_blank" rel="noopener">Instagram</a>
+        <a href="#">Newsletter</a>
+        <a href="#">Pressemappe</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Soula Wien — Alle Rechte vorbehalten.</span>
+      <span>Impressum · Datenschutz · AGB</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SOULA · interactions
+   ============================================================ */
+(function(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* preloader */
+  window.addEventListener('load', () => {
+    setTimeout(() => document.body.classList.add('loaded'), 300);
+  });
+
+  /* year */
+  $('#yr').textContent = new Date().getFullYear();
+
+  /* nav scroll state */
+  const nav = $('#nav');
+  let lastY = 0;
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (y > 30) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* burger / mobile menu */
+  const burger = $('#burger');
+  const mob = $('#mobileMenu');
+  burger?.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mob.classList.toggle('open');
+    document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  });
+  $$('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  /* reveal on scroll (IntersectionObserver) */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  $$('.reveal').forEach(el => io.observe(el));
+
+  /* hero parallax (subtle, GPU) */
+  if (!reduce){
+    const heroImg = $('#heroImg');
+    let ticking = false;
+    const onParallax = () => {
+      const y = window.scrollY;
+      if (y > window.innerHeight) return;
+      if (!ticking){
+        requestAnimationFrame(() => {
+          const t = Math.min(y * .35, 240);
+          heroImg.style.transform = `translate3d(0, ${t}px, 0) scale(1.06)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onParallax, {passive:true});
+  }
+
+  /* menu tabs */
+  const tabs = $$('.menu-tab');
+  const cats = $$('.menu-cat');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      const cat = t.dataset.cat;
+      tabs.forEach(x => x.classList.toggle('active', x === t));
+      cats.forEach(c => {
+        const isActive = c.dataset.cat === cat;
+        c.classList.toggle('active', isActive);
+        if (isActive){
+          // restart dish-in animation
+          $$('.dish', c).forEach((d, i) => {
+            d.style.animation = 'none';
+            d.style.opacity = '0';
+            d.style.transform = 'translateY(20px)';
+            // force reflow
+            void d.offsetWidth;
+            d.style.animation = `dishIn .55s var(--ease) ${i*0.04}s forwards`;
+          });
+        }
+      });
+    });
+  });
+  // initialize first cat dishes animation
+  setTimeout(() => {
+    $$('.menu-cat.active .dish').forEach((d, i) => {
+      d.style.animation = `dishIn .55s var(--ease) ${i*0.05}s forwards`;
+    });
+  }, 600);
+
+  /* form validation */
+  const form = $('#resForm');
+  if (form){
+    // min date today
+    const dateInput = $('#f-date');
+    const today = new Date();
+    const iso = today.toISOString().split('T')[0];
+    dateInput.setAttribute('min', iso);
+
+    const setErr = (name, msg) => {
+      const f = form.querySelector(`[name="${name}"]`).closest('.field');
+      const err = f.querySelector('.err');
+      if (msg){ f.classList.add('error'); err.textContent = msg; }
+      else { f.classList.remove('error'); err.textContent = ''; }
+    };
+
+    const validate = () => {
+      let ok = true;
+      const v = (n) => form.querySelector(`[name="${n}"]`).value.trim();
+
+      if (!v('name')) { setErr('name','Bitte Name angeben.'); ok=false; } else setErr('name','');
+      if (!v('people')) { setErr('people','Bitte Personenanzahl wählen.'); ok=false; } else setErr('people','');
+      if (!v('date')) { setErr('date','Bitte ein Datum wählen.'); ok=false; } else setErr('date','');
+      if (!v('time')) { setErr('time','Bitte Uhrzeit wählen.'); ok=false; } else setErr('time','');
+
+      const email = v('email');
+      if (!email){ setErr('email','Bitte E-Mail angeben.'); ok=false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        setErr('email','Bitte eine gültige E-Mail.'); ok=false;
+      } else setErr('email','');
+
+      const phone = v('phone');
+      if (phone && !/^[\d+\s().-]{6,}$/.test(phone)){
+        setErr('phone','Bitte eine gültige Telefonnummer.'); ok=false;
+      } else setErr('phone','');
+
+      return ok;
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.style.opacity = .7;
+      const original = btn.innerHTML;
+      btn.innerHTML = 'Wird gesendet…';
+      setTimeout(() => {
+        $('#formSuccess').classList.add('show');
+        form.reset();
+        btn.disabled = false;
+        btn.style.opacity = 1;
+        btn.innerHTML = original;
+        setTimeout(() => $('#formSuccess').scrollIntoView({behavior:'smooth', block:'center'}), 100);
+      }, 800);
+    });
+
+    // realtime: clear errors as user types
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('input', () => {
+        const name = el.getAttribute('name');
+        if (el.closest('.field').classList.contains('error')) setErr(name,'');
+      });
+    });
+  }
+
+  /* custom cursor (desktop only) */
+  const cursor = $('#cursor');
+  if (cursor && window.matchMedia('(pointer: fine)').matches){
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', (e) => {
+      tx = e.clientX; ty = e.clientY;
+      cursor.classList.add('active');
+    });
+    const tick = () => {
+      cx += (tx - cx) * 0.22;
+      cy += (ty - cy) * 0.22;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%,-50%)`;
+      requestAnimationFrame(tick);
+    };
+    tick();
+
+    // large state on interactive
+    const interactive = 'a, button, .menu-tab, .feat-card, .gal, .dish';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(interactive)) cursor.classList.add('lg');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(interactive)) cursor.classList.remove('lg');
+    });
+
+    document.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+  }
+
+  /* smooth-anchor with header offset (for sticky nav) */
+  $$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1){
+        const tgt = document.querySelector(id);
+        if (tgt){
+          e.preventDefault();
+          const top = tgt.getBoundingClientRect().top + window.scrollY - 20;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

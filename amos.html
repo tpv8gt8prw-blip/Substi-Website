@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" data-i18n-attr="content:metaDesc" content="Amos Restaurant in Wien: frisches Streetfood, schnelle Zubereitung und faire Preise in der Juchgasse 28, 1030 Wien.">
+  <title data-i18n="pageTitle">Amos Restaurant Wien</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://www.google.com">
+  <style>
+    :root {
+      --ink: #111111;
+      --charcoal: #1a1a1a;
+      --charcoal-soft: #25211d;
+      --paper: #fff8ee;
+      --paper-soft: #f8ead8;
+      --muted: #cdbfae;
+      --gold: #ffb347;
+      --orange: #ff7a00;
+      --orange-dark: #d95c00;
+      --line: rgba(255, 248, 238, 0.16);
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
+      --glow: 0 22px 70px rgba(255, 122, 0, 0.28);
+      --radius: 8px;
+      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --nav-height: 78px;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+      letter-spacing: 0;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: 0.05;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.72'/%3E%3C/svg%3E");
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .site-shell {
+      position: relative;
+      min-height: 100vh;
+      overflow: clip;
+      animation: pageFade 700ms var(--ease-out-expo) both;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: 16px;
+      z-index: 1000;
+      transform: translateY(-150%);
+      padding: 12px 16px;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 220ms var(--ease-out-quint);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 248, 238, 0.08);
+      background: rgba(17, 17, 17, 0.34);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: height 260ms var(--ease-out-quint), background 260ms var(--ease-out-quint), box-shadow 260ms var(--ease-out-quint), border-color 260ms var(--ease-out-quint);
+    }
+
+    .nav.is-scrolled {
+      height: 62px;
+      background: rgba(17, 17, 17, 0.82);
+      border-color: rgba(255, 179, 71, 0.18);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 179, 71, 0.5);
+      border-radius: 50%;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      box-shadow: 0 12px 30px rgba(255, 122, 0, 0.22);
+      font-weight: 950;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: rgba(255, 248, 238, 0.82);
+      font-size: 0.94rem;
+      font-weight: 750;
+      transition: color 200ms var(--ease-out-quint), background 200ms var(--ease-out-quint), transform 200ms var(--ease-out-quint);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--paper);
+      background: rgba(255, 248, 238, 0.1);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255, 248, 238, 0.1);
+      color: var(--paper);
+      border: 1px solid rgba(255, 248, 238, 0.14);
+      transition: transform 200ms var(--ease-out-quint), background 200ms var(--ease-out-quint);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 248, 238, 0.08);
+      border: 1px solid rgba(255, 248, 238, 0.14);
+    }
+
+    .lang-switch button {
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(255, 248, 238, 0.72);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      transition: color 200ms var(--ease-out-quint), background 200ms var(--ease-out-quint);
+    }
+
+    .lang-switch button:hover,
+    .lang-switch button:focus-visible {
+      color: var(--paper);
+      outline: none;
+    }
+
+    .lang-switch button[aria-pressed="true"] {
+      color: #1b1208;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      box-shadow: 0 8px 20px rgba(255, 122, 0, 0.28);
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(255, 179, 71, 0.16);
+      outline: none;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform 220ms var(--ease-out-quint), opacity 220ms var(--ease-out-quint);
+    }
+
+    .menu-toggle span {
+      position: relative;
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span::after {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle[aria-expanded="true"] span {
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span::before {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span::after {
+      transform: rotate(90deg);
+    }
+
+    .btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      line-height: 1;
+      overflow: hidden;
+      transform: translateZ(0);
+      transition: transform 220ms var(--ease-out-quint), box-shadow 220ms var(--ease-out-quint), border-color 220ms var(--ease-out-quint), background 220ms var(--ease-out-quint);
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      opacity: 0;
+      background: linear-gradient(110deg, transparent 10%, rgba(255, 248, 238, 0.32), transparent 56%);
+      transform: translateX(-110%);
+      transition: opacity 220ms var(--ease-out-quint);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn:hover::after,
+    .btn:focus-visible::after {
+      opacity: 1;
+      animation: shine 900ms var(--ease-out-quint);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-primary {
+      color: #1b1208;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      box-shadow: 0 14px 38px rgba(255, 122, 0, 0.34);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 20px 58px rgba(255, 122, 0, 0.44);
+    }
+
+    .btn-ghost {
+      color: var(--paper);
+      background: rgba(255, 248, 238, 0.08);
+      border: 1px solid rgba(255, 248, 238, 0.2);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(255, 179, 71, 0.5);
+      box-shadow: 0 18px 52px rgba(255, 122, 0, 0.18);
+    }
+
+    .btn-small {
+      min-height: 42px;
+      padding: 0 15px;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 96svh;
+      display: grid;
+      align-items: end;
+      padding: calc(var(--nav-height) + 44px) 0 52px;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: -8vh 0 -12vh;
+      z-index: 0;
+      will-change: transform;
+      transform: translate3d(0, 0, 0) scale(1.08);
+      background-image:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.88) 0%, rgba(17, 17, 17, 0.62) 38%, rgba(17, 17, 17, 0.16) 78%),
+        linear-gradient(180deg, rgba(17, 17, 17, 0.16), rgba(17, 17, 17, 0.76) 86%),
+        url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=2200&q=86");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 140px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(17, 17, 17, 0), var(--ink));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 780px) minmax(240px, 360px);
+      gap: clamp(28px, 6vw, 80px);
+      align-items: end;
+    }
+
+    .hero-copy {
+      padding-bottom: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 44px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), var(--orange), var(--gold));
+      background-size: 200% 100%;
+      animation: accentFlow 2800ms linear infinite;
+    }
+
+    .hero h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-size: 4.8rem;
+      line-height: 0.93;
+      letter-spacing: 0;
+      font-weight: 950;
+    }
+
+    .hero-subtitle {
+      margin: 22px 0 0;
+      max-width: 620px;
+      color: rgba(255, 248, 238, 0.9);
+      font-size: 1.28rem;
+      font-weight: 700;
+    }
+
+    .hero-text {
+      margin: 14px 0 0;
+      max-width: 60ch;
+      color: rgba(255, 248, 238, 0.72);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-panel {
+      align-self: end;
+      padding: 18px;
+      border: 1px solid rgba(255, 248, 238, 0.16);
+      border-radius: var(--radius);
+      background: rgba(17, 17, 17, 0.46);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transform: translateZ(0);
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 248, 238, 0.12);
+    }
+
+    .status-row strong {
+      display: block;
+      line-height: 1.2;
+      font-size: 1.05rem;
+    }
+
+    .status-row span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 248, 238, 0.68);
+      font-size: 0.9rem;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 0 rgba(255, 179, 71, 0.52);
+      animation: pulse 1800ms var(--ease-out-quint) infinite;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .quick-fact {
+      padding: 11px 9px;
+      border-radius: var(--radius);
+      background: rgba(255, 248, 238, 0.08);
+      text-align: center;
+    }
+
+    .quick-fact strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.05rem;
+      line-height: 1.1;
+    }
+
+    .quick-fact span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 248, 238, 0.68);
+      font-size: 0.78rem;
+      line-height: 1.2;
+    }
+
+    main {
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 0, 0.08), transparent 32rem),
+        linear-gradient(180deg, var(--ink), var(--charcoal) 42%, #130f0c);
+    }
+
+    section {
+      position: relative;
+      padding: 88px 0;
+    }
+
+    .section-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .section-title {
+      margin: 0;
+      max-width: 700px;
+      font-size: 2.8rem;
+      line-height: 1.04;
+      letter-spacing: 0;
+      font-weight: 950;
+    }
+
+    .section-lede {
+      max-width: 68ch;
+      margin: 20px 0 0;
+      color: rgba(255, 248, 238, 0.72);
+      font-size: 1.05rem;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+      gap: clamp(32px, 7vw, 92px);
+      align-items: center;
+    }
+
+    .about-copy p {
+      color: rgba(255, 248, 238, 0.72);
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin: 30px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255, 248, 238, 0.12);
+    }
+
+    .feature-item:last-child {
+      border-bottom: 1px solid rgba(255, 248, 238, 0.12);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 179, 71, 0.13);
+      color: var(--gold);
+      border: 1px solid rgba(255, 179, 71, 0.24);
+    }
+
+    .feature-item strong {
+      display: block;
+      color: var(--paper);
+      font-size: 1.04rem;
+      line-height: 1.2;
+    }
+
+    .feature-item span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 248, 238, 0.66);
+    }
+
+    .about-photo {
+      position: relative;
+      min-height: 520px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--charcoal-soft);
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      transform: scale(1.03);
+      transition: transform 600ms var(--ease-out-quint);
+    }
+
+    .about-photo:hover img {
+      transform: scale(1.07);
+    }
+
+    .about-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 34%, rgba(17, 17, 17, 0.86));
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(17, 17, 17, 0.64);
+      border: 1px solid rgba(255, 248, 238, 0.14);
+    }
+
+    .photo-caption strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.04rem;
+    }
+
+    .photo-caption span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 248, 238, 0.72);
+      font-size: 0.94rem;
+    }
+
+    .menu-section {
+      background:
+        linear-gradient(180deg, rgba(255, 179, 71, 0.07), transparent 22%),
+        var(--paper);
+      color: var(--ink);
+    }
+
+    .menu-section .section-kicker {
+      color: var(--orange-dark);
+    }
+
+    .menu-section .section-lede {
+      color: rgba(17, 17, 17, 0.68);
+    }
+
+    .menu-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .dish-card {
+      position: relative;
+      display: flex;
+      min-height: 410px;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #f6eadb;
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      color: var(--ink);
+      box-shadow: 0 16px 34px rgba(17, 17, 17, 0.08);
+      transform: translateZ(0);
+      transition: transform 260ms var(--ease-out-quint), box-shadow 260ms var(--ease-out-quint), border-color 260ms var(--ease-out-quint);
+      text-align: left;
+    }
+
+    .dish-card:hover,
+    .dish-card:focus-visible,
+    .dish-card.is-picked {
+      transform: translateY(-7px) scale(1.015);
+      border-color: rgba(255, 122, 0, 0.42);
+      box-shadow: 0 28px 70px rgba(255, 122, 0, 0.22), 0 18px 44px rgba(17, 17, 17, 0.14);
+      outline: none;
+    }
+
+    .dish-image {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .dish-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 420ms var(--ease-out-quint), filter 420ms var(--ease-out-quint);
+    }
+
+    .dish-card:hover img,
+    .dish-card:focus-visible img,
+    .dish-card.is-picked img {
+      transform: scale(1.09);
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .dish-price {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      min-width: 72px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #1b1208;
+      box-shadow: 0 12px 28px rgba(255, 122, 0, 0.28);
+      font-weight: 950;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .dish-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 18px;
+    }
+
+    .dish-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .dish-tag {
+      display: inline-flex;
+      min-height: 28px;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255, 122, 0, 0.1);
+      color: var(--orange-dark);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .dish-title {
+      margin: 0;
+      font-size: 1.42rem;
+      line-height: 1.1;
+      font-weight: 950;
+    }
+
+    .dish-card p {
+      margin: 12px 0 0;
+      color: rgba(17, 17, 17, 0.66);
+    }
+
+    .dish-hint {
+      margin-top: auto;
+      padding-top: 18px;
+      color: rgba(17, 17, 17, 0.44);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .reviews {
+      background:
+        linear-gradient(135deg, rgba(255, 122, 0, 0.1), transparent 34%),
+        var(--charcoal);
+    }
+
+    .reviews-layout {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.4fr);
+      gap: clamp(28px, 6vw, 76px);
+      align-items: start;
+    }
+
+    .rating-block {
+      position: sticky;
+      top: 100px;
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 248, 238, 0.14);
+      background: rgba(255, 248, 238, 0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .rating-number {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 0;
+      font-size: 4rem;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .rating-number span {
+      color: rgba(255, 248, 238, 0.56);
+      font-size: 1rem;
+      font-weight: 850;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin: 14px 0 0;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .rating-block p {
+      margin: 16px 0 0;
+      color: rgba(255, 248, 238, 0.7);
+    }
+
+    .review-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .review-card {
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 248, 238, 0.12);
+      background: rgba(255, 248, 238, 0.07);
+      transition: transform 240ms var(--ease-out-quint), border-color 240ms var(--ease-out-quint), background 240ms var(--ease-out-quint);
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 179, 71, 0.34);
+      background: rgba(255, 248, 238, 0.09);
+    }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .review-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #1b1208;
+      font-weight: 950;
+    }
+
+    .review-person strong {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .review-person span {
+      color: rgba(255, 248, 238, 0.56);
+      font-size: 0.86rem;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: rgba(255, 248, 238, 0.74);
+    }
+
+    .location {
+      background: #14110f;
+    }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 34px;
+    }
+
+    .map-wrap {
+      min-height: 480px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255, 248, 238, 0.12);
+      box-shadow: var(--shadow);
+      background: var(--charcoal);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      border: 0;
+      filter: saturate(0.9) contrast(1.04);
+    }
+
+    .location-info {
+      display: grid;
+      gap: 14px;
+    }
+
+    .info-panel {
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 248, 238, 0.12);
+      background: rgba(255, 248, 238, 0.06);
+    }
+
+    .info-panel h3 {
+      margin: 0 0 10px;
+      font-size: 1.36rem;
+      line-height: 1.15;
+    }
+
+    .info-panel p {
+      margin: 0;
+      color: rgba(255, 248, 238, 0.72);
+    }
+
+    .hours {
+      overflow: hidden;
+    }
+
+    .hours-button {
+      width: 100%;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0;
+      background: transparent;
+      color: var(--paper);
+      font-weight: 900;
+      text-align: left;
+    }
+
+    .hours-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: rgba(255, 179, 71, 0.12);
+      color: var(--gold);
+      transition: transform 240ms var(--ease-out-quint);
+    }
+
+    .hours.is-open .hours-icon {
+      transform: rotate(45deg);
+    }
+
+    .hours-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 320ms var(--ease-out-quint);
+    }
+
+    .hours.is-open .hours-content {
+      grid-template-rows: 1fr;
+    }
+
+    .hours-content > div {
+      overflow: hidden;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255, 248, 238, 0.72);
+    }
+
+    .hours-list li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid rgba(255, 248, 238, 0.09);
+      padding-top: 9px;
+    }
+
+    .hours-list strong {
+      color: var(--paper);
+    }
+
+    .contact {
+      padding-bottom: 108px;
+      background:
+        linear-gradient(135deg, rgba(255, 122, 0, 0.18), rgba(255, 179, 71, 0.04) 42%, transparent),
+        var(--ink);
+    }
+
+    .contact-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 179, 71, 0.22);
+      background:
+        linear-gradient(135deg, rgba(255, 179, 71, 0.14), rgba(255, 248, 238, 0.05)),
+        rgba(255, 248, 238, 0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-band h2 {
+      margin: 0;
+      font-size: 2.45rem;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .contact-band p {
+      margin: 12px 0 0;
+      max-width: 64ch;
+      color: rgba(255, 248, 238, 0.72);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .footer {
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 248, 238, 0.1);
+      background: #100d0b;
+      color: rgba(255, 248, 238, 0.62);
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .footer a {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 26px, 0);
+      transition: opacity 620ms var(--ease-out-expo), transform 620ms var(--ease-out-expo);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .dish-dialog {
+      width: min(520px, calc(100% - 32px));
+      padding: 0;
+      border: 1px solid rgba(255, 179, 71, 0.24);
+      border-radius: var(--radius);
+      color: var(--paper);
+      background: #16110e;
+      box-shadow: 0 40px 110px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .dish-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.62);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .dialog-image {
+      height: 240px;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+
+    .dialog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dialog-body {
+      padding: 22px;
+    }
+
+    .dialog-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .dialog-title {
+      margin: 0;
+      font-size: 1.7rem;
+      line-height: 1.08;
+    }
+
+    .dialog-price {
+      flex: 0 0 auto;
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: #1b1208;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .dialog-body p {
+      margin: 14px 0 0;
+      color: rgba(255, 248, 238, 0.72);
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .dialog-close {
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 999px;
+      background: rgba(255, 248, 238, 0.08);
+      color: var(--paper);
+      border: 1px solid rgba(255, 248, 238, 0.14);
+      transition: transform 200ms var(--ease-out-quint), background 200ms var(--ease-out-quint);
+    }
+
+    .dialog-close:hover,
+    .dialog-close:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(255, 248, 238, 0.14);
+      outline: none;
+    }
+
+    @keyframes pageFade {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes shine {
+      from {
+        transform: translateX(-110%);
+      }
+      to {
+        transform: translateX(110%);
+      }
+    }
+
+    @keyframes accentFlow {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 200% 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 179, 71, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(255, 179, 71, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 179, 71, 0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav-inner {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: calc(var(--nav-height) - 4px);
+        left: 12px;
+        right: 12px;
+        display: grid;
+        gap: 6px;
+        padding: 12px;
+        border: 1px solid rgba(255, 248, 238, 0.14);
+        border-radius: var(--radius);
+        background: rgba(17, 17, 17, 0.94);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translate3d(0, -10px, 0);
+        pointer-events: none;
+        transition: opacity 220ms var(--ease-out-quint), transform 220ms var(--ease-out-quint);
+      }
+
+      .nav.is-menu-open .nav-links {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        justify-content: flex-start;
+        min-height: 48px;
+        border-radius: var(--radius);
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .hero-inner,
+      .about-layout,
+      .reviews-layout,
+      .location-layout,
+      .contact-band {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        gap: 26px;
+      }
+
+      .hero h1 {
+        font-size: 3.7rem;
+      }
+
+      .hero-panel {
+        max-width: 460px;
+      }
+
+      .rating-block {
+        position: relative;
+        top: auto;
+      }
+
+      .contact-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      :root {
+        --nav-height: 66px;
+      }
+
+      body {
+        font-size: 15.5px;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        min-height: 94svh;
+        padding: calc(var(--nav-height) + 34px) 0 34px;
+      }
+
+      .hero-media {
+        background-image:
+          linear-gradient(90deg, rgba(17, 17, 17, 0.84), rgba(17, 17, 17, 0.44)),
+          linear-gradient(180deg, rgba(17, 17, 17, 0.12), rgba(17, 17, 17, 0.86) 82%),
+          url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=84");
+      }
+
+      .hero h1 {
+        font-size: 3.05rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.12rem;
+      }
+
+      .hero-actions,
+      .contact-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-panel {
+        padding: 14px;
+      }
+
+      .quick-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title,
+      .contact-band h2 {
+        font-size: 2.08rem;
+      }
+
+      .menu-head {
+        display: block;
+      }
+
+      .menu-head .btn {
+        margin-top: 20px;
+      }
+
+      .dish-card {
+        min-height: 380px;
+      }
+
+      .about-photo,
+      .about-photo img {
+        min-height: 380px;
+      }
+
+      .map-wrap,
+      .map-wrap iframe {
+        min-height: 360px;
+      }
+
+      .contact-band {
+        padding: 22px;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .brand {
+        font-size: 0.95rem;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+      }
+
+      .hero h1 {
+        font-size: 2.62rem;
+      }
+
+      .section-title,
+      .contact-band h2 {
+        font-size: 1.82rem;
+      }
+
+      .review-top,
+      .status-row,
+      .hours-list li {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hero-media {
+        transform: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Zum Inhalt springen</a>
+  <div class="site-shell">
+    <header class="nav" data-nav>
+      <div class="nav-inner">
+        <a class="brand" href="#home" data-i18n-attr="aria-label:brandAria" aria-label="Amos Restaurant Startseite">
+          <span class="brand-mark">A</span>
+          <span>Amos Restaurant</span>
+        </a>
+
+        <nav data-i18n-attr="aria-label:navAria" aria-label="Hauptnavigation">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#about" data-i18n="navAbout">Über uns</a></li>
+            <li><a href="#menu" data-i18n="navMenu">Speisekarte</a></li>
+            <li><a href="#reviews" data-i18n="navReviews">Bewertungen</a></li>
+            <li><a href="#location" data-i18n="navLocation">Location</a></li>
+            <li><a href="#contact" data-i18n="navContact">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:langAria" aria-label="Sprache wählen">
+            <button type="button" data-lang="de" aria-pressed="true">DE</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="btn btn-primary btn-small" href="tel:+4312345678" data-i18n="callNow" data-i18n-attr="aria-label:callAria" aria-label="Amos Restaurant anrufen">Jetzt anrufen</a>
+          <button class="menu-toggle" type="button" data-i18n-attr="aria-label:menuOpen" aria-label="Navigation öffnen" aria-controls="navLinks" aria-expanded="false" data-menu-toggle>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="home" aria-label="Amos Restaurant">
+      <div class="hero-media" data-parallax aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy reveal is-visible">
+          <p class="eyebrow" data-i18n="heroEyebrow">Bistro &amp; Streetfood in Wien Landstraße</p>
+          <h1>Amos Restaurant</h1>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">Frisch. Schnell. Köstlich.</p>
+          <p class="hero-text" data-i18n="heroText">Ein kleiner Ort für ehrliches Essen: knuspriges Schnitzel, saftiger Döner, heiße Pommes und frische Salate, gemacht für Mittagspausen, Abendhunger und spontane Bestellungen.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu" data-i18n="heroCta1">Speisekarte ansehen</a>
+            <a class="btn btn-ghost" href="tel:+4312345678" data-i18n="callNow">Jetzt anrufen</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal is-visible" style="--reveal-delay: 120ms" data-i18n-attr="aria-label:panelAria" aria-label="Kurzinfo">
+          <div class="status-row">
+            <div>
+              <strong data-i18n="statusTitle">Heute frisch am Grill</strong>
+              <span data-i18n="statusAddress">Juchgasse 28, 1030 Wien</span>
+            </div>
+            <span class="status-dot" aria-hidden="true"></span>
+          </div>
+          <div class="quick-facts">
+            <div class="quick-fact">
+              <strong>4.9</strong>
+              <span data-i18n="factGoogle">Google-Style</span>
+            </div>
+            <div class="quick-fact">
+              <strong>€1–10</strong>
+              <span data-i18n="factFair">Fair essen</span>
+            </div>
+            <div class="quick-fact">
+              <strong data-i18n="factTime">10 Min.</strong>
+              <span data-i18n="factFast">Schnell serviert</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <main id="main">
+      <section id="about" class="about">
+        <div class="section-inner about-layout">
+          <div class="about-copy reveal">
+            <p class="section-kicker" data-i18n="aboutKicker">Über uns</p>
+            <h2 class="section-title" data-i18n="aboutTitle">Streetfood, das nach Wien passt: schnell, warm und ohne Umwege gut.</h2>
+            <p class="section-lede" data-i18n="aboutLede">Amos Restaurant ist ein unkompliziertes Bistro in der Juchgasse. Wir kochen für Menschen, die wenig Zeit haben, aber nicht auf Geschmack verzichten wollen: frisch geschnitten, heiß serviert, fair kalkuliert.</p>
+            <p data-i18n="aboutP2">Ob kurzer Lunch, spätes Abendessen oder Abholung für daheim, bei uns steht das Essen im Mittelpunkt. Klare Zutaten, kräftige Aromen und Portionen, die satt machen.</p>
+
+            <ul class="feature-list" data-i18n-attr="aria-label:benefitsAria" aria-label="Vorteile">
+              <li class="feature-item reveal" style="--reveal-delay: 60ms">
+                <span class="feature-icon" aria-hidden="true">✦</span>
+                <span><strong data-i18n="feat1Title">Frische Zutaten</strong><span data-i18n="feat1Text">Knackiges Gemüse, warme Brote, frische Saucen und täglich vorbereitete Klassiker.</span></span>
+              </li>
+              <li class="feature-item reveal" style="--reveal-delay: 120ms">
+                <span class="feature-icon" aria-hidden="true">↯</span>
+                <span><strong data-i18n="feat2Title">Schnelle Zubereitung</strong><span data-i18n="feat2Text">Ideal für die Mittagspause, den Heimweg oder wenn der Hunger sofort ernst wird.</span></span>
+              </li>
+              <li class="feature-item reveal" style="--reveal-delay: 180ms">
+                <span class="feature-icon" aria-hidden="true">€</span>
+                <span><strong data-i18n="feat3Title">Günstige Preise (€1–10)</strong><span data-i18n="feat3Text">Gutes Essen soll erreichbar bleiben: volle Teller, faire Preise, klare Auswahl.</span></span>
+              </li>
+            </ul>
+          </div>
+
+          <figure class="about-photo reveal" style="--reveal-delay: 140ms">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&amp;fit=crop&amp;w=1100&amp;q=84" data-i18n-attr="alt:aboutImgAlt" alt="Warmer Bistro-Tisch mit frisch serviertem Essen">
+            <figcaption class="photo-caption">
+              <strong data-i18n="captionTitle">Direkt, frisch, nahbar.</strong>
+              <span data-i18n="captionText">Ein Bistro für echte Alltage, mit dem kleinen Premium-Gefühl im Detail.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section">
+        <div class="section-inner">
+          <div class="menu-head reveal">
+            <div>
+              <p class="section-kicker" data-i18n="menuKicker">Speisekarte Preview</p>
+              <h2 class="section-title" data-i18n="menuTitle">Vier Favoriten, die immer funktionieren.</h2>
+              <p class="section-lede" data-i18n="menuLede">Knusprig, frisch, herzhaft oder leicht. Tippe ein Gericht an, um mehr zu sehen.</p>
+            </div>
+            <a class="btn btn-primary" href="tel:+4312345678" data-i18n="orderNow">Jetzt bestellen</a>
+          </div>
+
+          <div class="menu-grid" data-i18n-attr="aria-label:menuAria" aria-label="Speisekarte">
+            <button class="dish-card reveal" style="--reveal-delay: 40ms" type="button"
+              data-dish="schnitzel"
+              data-price="€8,90"
+              data-image="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=900&amp;q=84">
+              <span class="dish-image">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=800&amp;q=82" data-i18n-attr="alt:dish1Alt" alt="Knusprig gebratenes Schnitzel mit Beilage" loading="lazy">
+                <span class="dish-price">€8,90</span>
+              </span>
+              <span class="dish-body">
+                <span class="dish-meta"><span class="dish-tag" data-i18n="dish1Tag">Knusprig</span></span>
+                <span class="dish-title" data-i18n="dish1Title">Schnitzel</span>
+                <span data-i18n="dish1Short">Goldbraun, heiß und mit Zitrone serviert. Der schnelle Wiener Favorit.</span>
+                <span class="dish-hint" data-i18n="dishHint">Anklicken für Details</span>
+              </span>
+            </button>
+
+            <button class="dish-card reveal" style="--reveal-delay: 90ms" type="button"
+              data-dish="doener"
+              data-price="€5,90"
+              data-image="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&amp;fit=crop&amp;w=900&amp;q=84">
+              <span class="dish-image">
+                <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&amp;fit=crop&amp;w=800&amp;q=82" data-i18n-attr="alt:dish2Alt" alt="Gefülltes Fladenbrot mit frischem Gemüse" loading="lazy">
+                <span class="dish-price">€5,90</span>
+              </span>
+              <span class="dish-body">
+                <span class="dish-meta"><span class="dish-tag" data-i18n="dish2Tag">Frisch</span></span>
+                <span class="dish-title" data-i18n="dish2Title">Döner</span>
+                <span data-i18n="dish2Short">Warm, saftig, knackig. Mit Sauce, die den letzten Bissen trägt.</span>
+                <span class="dish-hint" data-i18n="dishHint">Anklicken für Details</span>
+              </span>
+            </button>
+
+            <button class="dish-card reveal" style="--reveal-delay: 140ms" type="button"
+              data-dish="pommes"
+              data-price="€3,20"
+              data-image="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&amp;fit=crop&amp;w=900&amp;q=84">
+              <span class="dish-image">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&amp;fit=crop&amp;w=800&amp;q=82" data-i18n-attr="alt:dish3Alt" alt="Goldene knusprige Pommes" loading="lazy">
+                <span class="dish-price">€3,20</span>
+              </span>
+              <span class="dish-body">
+                <span class="dish-meta"><span class="dish-tag" data-i18n="dish3Tag">Heiß</span></span>
+                <span class="dish-title" data-i18n="dish3Title">Pommes</span>
+                <span data-i18n="dish3Short">Goldene Stäbchen, kräftig gewürzt, mit Dip nach Wahl.</span>
+                <span class="dish-hint" data-i18n="dishHint">Anklicken für Details</span>
+              </span>
+            </button>
+
+            <button class="dish-card reveal" style="--reveal-delay: 190ms" type="button"
+              data-dish="salat"
+              data-price="€6,50"
+              data-image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&amp;fit=crop&amp;w=900&amp;q=84">
+              <span class="dish-image">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&amp;fit=crop&amp;w=800&amp;q=82" data-i18n-attr="alt:dish4Alt" alt="Frischer bunter Salat in einer Schale" loading="lazy">
+                <span class="dish-price">€6,50</span>
+              </span>
+              <span class="dish-body">
+                <span class="dish-meta"><span class="dish-tag" data-i18n="dish4Tag">Leicht</span></span>
+                <span class="dish-title" data-i18n="dish4Title">Salat</span>
+                <span data-i18n="dish4Short">Knackig, bunt und frisch angerichtet. Dazu warmes Brot.</span>
+                <span class="dish-hint" data-i18n="dishHint">Anklicken für Details</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="reviews">
+        <div class="section-inner reviews-layout">
+          <div class="rating-block reveal">
+            <p class="section-kicker" data-i18n="reviewsKicker">Bewertungen</p>
+            <p class="rating-number">4.9 <span>/ 5</span></p>
+            <div class="stars" data-i18n-attr="aria-label:starsAria" aria-label="4,9 von 5 Sternen">★★★★★</div>
+            <p data-i18n="reviewsLede">Beispielhafte Google-Style Stimmen von Gästen, die schnelles Essen mit gutem Geschmack verbinden.</p>
+          </div>
+
+          <div class="review-list">
+            <article class="review-card reveal" style="--reveal-delay: 40ms">
+              <div class="review-top">
+                <div class="review-person">
+                  <span class="avatar" aria-hidden="true">MK</span>
+                  <span><strong>Mira K.</strong><span data-i18n="review1Meta">Local Guide</span></span>
+                </div>
+                <div class="stars" data-i18n-attr="aria-label:fiveStars" aria-label="5 Sterne">★★★★★</div>
+              </div>
+              <p data-i18n="review1Text">„Sehr frisch, schnell fertig und richtig gutes Preis-Leistungs-Verhältnis. Perfekt für die Pause.“</p>
+            </article>
+
+            <article class="review-card reveal" style="--reveal-delay: 90ms">
+              <div class="review-top">
+                <div class="review-person">
+                  <span class="avatar" aria-hidden="true">AR</span>
+                  <span><strong>Andreas R.</strong><span data-i18n="review2Meta">vor 2 Wochen</span></span>
+                </div>
+                <div class="stars" data-i18n-attr="aria-label:fiveStars" aria-label="5 Sterne">★★★★★</div>
+              </div>
+              <p data-i18n="review2Text">„Döner war warm, Brot knusprig, Gemüse frisch. Genau so soll ein schneller Lunch sein.“</p>
+            </article>
+
+            <article class="review-card reveal" style="--reveal-delay: 140ms">
+              <div class="review-top">
+                <div class="review-person">
+                  <span class="avatar" aria-hidden="true">SL</span>
+                  <span><strong>Sara L.</strong><span data-i18n="review3Meta">vor 1 Monat</span></span>
+                </div>
+                <div class="stars" data-i18n-attr="aria-label:fiveStars" aria-label="5 Sterne">★★★★★</div>
+              </div>
+              <p data-i18n="review3Text">„Freundlich, sauber, schnell. Das Schnitzel war super knusprig und die Portion groß.“</p>
+            </article>
+
+            <article class="review-card reveal" style="--reveal-delay: 190ms">
+              <div class="review-top">
+                <div class="review-person">
+                  <span class="avatar" aria-hidden="true">NB</span>
+                  <span><strong>Nico B.</strong><span data-i18n="review4Meta">vor 3 Tagen</span></span>
+                </div>
+                <div class="stars" data-i18n-attr="aria-label:fiveStars" aria-label="5 Sterne">★★★★★</div>
+              </div>
+              <p data-i18n="review4Text">„Sehr faire Preise für die Gegend. Ich komme wieder, besonders für Pommes und Salat.“</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="location" class="location">
+        <div class="section-inner">
+          <div class="reveal">
+            <p class="section-kicker" data-i18n="locKicker">Location</p>
+            <h2 class="section-title" data-i18n="locTitle">Mitten in 1030 Wien, direkt in der Juchgasse.</h2>
+            <p class="section-lede" data-i18n="locLede">Komm vorbei, hol dir dein Essen ab oder ruf an, wenn es schnell gehen soll.</p>
+          </div>
+
+          <div class="location-layout">
+            <div class="map-wrap reveal" style="--reveal-delay: 80ms" data-i18n-attr="aria-label:mapAria" aria-label="Google Maps Karte">
+              <iframe
+                data-i18n-attr="title:mapTitle"
+                title="Amos Restaurant, Juchgasse 28, 1030 Wien auf Google Maps"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Juchgasse%2028%2C%201030%20Wien&amp;output=embed">
+              </iframe>
+            </div>
+
+            <div class="location-info">
+              <div class="info-panel reveal" style="--reveal-delay: 120ms">
+                <h3 data-i18n="addressTitle">Adresse</h3>
+                <p>Amos Restaurant<br>Juchgasse 28<br>1030 Wien</p>
+              </div>
+
+              <div class="info-panel hours reveal is-open" style="--reveal-delay: 160ms" data-hours>
+                <button class="hours-button" type="button" aria-expanded="true" aria-controls="hoursList" data-hours-button>
+                  <span data-i18n="hoursTitle">Öffnungszeiten</span>
+                  <span class="hours-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="hours-content" id="hoursList">
+                  <div>
+                    <ul class="hours-list">
+                      <li><strong data-i18n="hoursMonFri">Montag bis Freitag</strong><span>10:30 - 22:00</span></li>
+                      <li><strong data-i18n="hoursSat">Samstag</strong><span>11:00 - 22:00</span></li>
+                      <li><strong data-i18n="hoursSun">Sonntag</strong><span>12:00 - 21:00</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-panel reveal" style="--reveal-delay: 200ms">
+                <h3 data-i18n="contactTitle">Kontakt</h3>
+                <p><a href="tel:+4312345678">+43 1 234 56 78</a><br><span data-i18n="contactSub">Bestellen, abholen, genießen.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="section-inner">
+          <div class="contact-band reveal">
+            <div>
+              <p class="section-kicker" data-i18n="ctaKicker">Hunger?</p>
+              <h2 data-i18n="ctaTitle">Ruf an und dein Essen ist gleich bereit.</h2>
+              <p data-i18n="ctaText">Schnell bestellen, frisch abholen oder direkt vorbeikommen. Amos Restaurant freut sich auf dich in der Juchgasse 28.</p>
+            </div>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="tel:+4312345678" data-i18n="orderNow">Jetzt bestellen</a>
+              <a class="btn btn-ghost" href="#location" data-i18n="viewRoute">Route ansehen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span data-i18n="footerCopy">© 2026 Amos Restaurant, Wien</span>
+        <span>Juchgasse 28, 1030 Wien · <a href="tel:+4312345678">+43 1 234 56 78</a></span>
+      </div>
+    </footer>
+  </div>
+
+  <dialog class="dish-dialog" id="dishDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-image">
+      <img id="dialogImage" src="" alt="">
+    </div>
+    <div class="dialog-body">
+      <div class="dialog-top">
+        <div>
+          <p class="section-kicker" id="dialogTag">Favorit</p>
+          <h3 class="dialog-title" id="dialogTitle">Gericht</h3>
+        </div>
+        <span class="dialog-price" id="dialogPrice">€0,00</span>
+      </div>
+      <p id="dialogDescription"></p>
+      <div class="dialog-actions">
+        <a class="btn btn-primary" href="tel:+4312345678" data-i18n="orderNow">Jetzt bestellen</a>
+        <button class="dialog-close" type="button" data-i18n-attr="aria-label:closeAria" aria-label="Fenster schließen" data-dialog-close>×</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const I18N = {
+        de: {
+          pageTitle: "Amos Restaurant Wien",
+          metaDesc: "Amos Restaurant in Wien: frisches Streetfood, schnelle Zubereitung und faire Preise in der Juchgasse 28, 1030 Wien.",
+          skip: "Zum Inhalt springen",
+          brandAria: "Amos Restaurant Startseite",
+          navAria: "Hauptnavigation",
+          langAria: "Sprache wählen",
+          navAbout: "Über uns",
+          navMenu: "Speisekarte",
+          navReviews: "Bewertungen",
+          navLocation: "Location",
+          navContact: "Kontakt",
+          callNow: "Jetzt anrufen",
+          callAria: "Amos Restaurant anrufen",
+          menuOpen: "Navigation öffnen",
+          menuClose: "Navigation schließen",
+          heroEyebrow: "Bistro & Streetfood in Wien Landstraße",
+          heroSubtitle: "Frisch. Schnell. Köstlich.",
+          heroText: "Ein kleiner Ort für ehrliches Essen: knuspriges Schnitzel, saftiger Döner, heiße Pommes und frische Salate, gemacht für Mittagspausen, Abendhunger und spontane Bestellungen.",
+          heroCta1: "Speisekarte ansehen",
+          panelAria: "Kurzinfo",
+          statusTitle: "Heute frisch am Grill",
+          statusAddress: "Juchgasse 28, 1030 Wien",
+          factGoogle: "Google-Style",
+          factFair: "Fair essen",
+          factTime: "10 Min.",
+          factFast: "Schnell serviert",
+          aboutKicker: "Über uns",
+          aboutTitle: "Streetfood, das nach Wien passt: schnell, warm und ohne Umwege gut.",
+          aboutLede: "Amos Restaurant ist ein unkompliziertes Bistro in der Juchgasse. Wir kochen für Menschen, die wenig Zeit haben, aber nicht auf Geschmack verzichten wollen: frisch geschnitten, heiß serviert, fair kalkuliert.",
+          aboutP2: "Ob kurzer Lunch, spätes Abendessen oder Abholung für daheim, bei uns steht das Essen im Mittelpunkt. Klare Zutaten, kräftige Aromen und Portionen, die satt machen.",
+          benefitsAria: "Vorteile",
+          feat1Title: "Frische Zutaten",
+          feat1Text: "Knackiges Gemüse, warme Brote, frische Saucen und täglich vorbereitete Klassiker.",
+          feat2Title: "Schnelle Zubereitung",
+          feat2Text: "Ideal für die Mittagspause, den Heimweg oder wenn der Hunger sofort ernst wird.",
+          feat3Title: "Günstige Preise (€1–10)",
+          feat3Text: "Gutes Essen soll erreichbar bleiben: volle Teller, faire Preise, klare Auswahl.",
+          aboutImgAlt: "Warmer Bistro-Tisch mit frisch serviertem Essen",
+          captionTitle: "Direkt, frisch, nahbar.",
+          captionText: "Ein Bistro für echte Alltage, mit dem kleinen Premium-Gefühl im Detail.",
+          menuKicker: "Speisekarte Preview",
+          menuTitle: "Vier Favoriten, die immer funktionieren.",
+          menuLede: "Knusprig, frisch, herzhaft oder leicht. Tippe ein Gericht an, um mehr zu sehen.",
+          menuAria: "Speisekarte",
+          orderNow: "Jetzt bestellen",
+          dishHint: "Anklicken für Details",
+          dish1Title: "Schnitzel",
+          dish1Tag: "Knusprig",
+          dish1Short: "Goldbraun, heiß und mit Zitrone serviert. Der schnelle Wiener Favorit.",
+          dish1Desc: "Goldbraun gebraten, außen knusprig, innen saftig. Serviert mit Zitrone und heißen Pommes. Ein Klassiker, der genau dann gut ist, wenn er ohne Spielerei kommt.",
+          dish1Alt: "Knusprig gebratenes Schnitzel mit Beilage",
+          dish2Title: "Döner",
+          dish2Tag: "Frisch",
+          dish2Short: "Warm, saftig, knackig. Mit Sauce, die den letzten Bissen trägt.",
+          dish2Desc: "Frisch geschnittenes Fleisch, knackiger Salat, Tomaten, Zwiebel und hausgemachte Sauce im warmen Brot. Schnell in der Hand, groß im Geschmack.",
+          dish2Alt: "Gefülltes Fladenbrot mit frischem Gemüse",
+          dish3Title: "Pommes",
+          dish3Tag: "Heiß",
+          dish3Short: "Goldene Stäbchen, kräftig gewürzt, mit Dip nach Wahl.",
+          dish3Desc: "Knusprige Pommes, frisch aus der Fritteuse, außen golden und innen weich. Perfekt solo oder als Beilage zu allem, was gut ist.",
+          dish3Alt: "Goldene knusprige Pommes",
+          dish4Title: "Salat",
+          dish4Tag: "Leicht",
+          dish4Short: "Knackig, bunt und frisch angerichtet. Dazu warmes Brot.",
+          dish4Desc: "Frischer Salat mit knackigem Gemüse, Kräutern und Dressing. Leicht genug für mittags, kräftig genug, damit man danach nicht gleich wieder sucht.",
+          dish4Alt: "Frischer bunter Salat in einer Schale",
+          dialogTagFav: "Favorit",
+          dishAltSuffix: "bei Amos Restaurant",
+          reviewsKicker: "Bewertungen",
+          reviewsLede: "Beispielhafte Google-Style Stimmen von Gästen, die schnelles Essen mit gutem Geschmack verbinden.",
+          starsAria: "4,9 von 5 Sternen",
+          fiveStars: "5 Sterne",
+          review1Meta: "Local Guide",
+          review1Text: "„Sehr frisch, schnell fertig und richtig gutes Preis-Leistungs-Verhältnis. Perfekt für die Pause.“",
+          review2Meta: "vor 2 Wochen",
+          review2Text: "„Döner war warm, Brot knusprig, Gemüse frisch. Genau so soll ein schneller Lunch sein.“",
+          review3Meta: "vor 1 Monat",
+          review3Text: "„Freundlich, sauber, schnell. Das Schnitzel war super knusprig und die Portion groß.“",
+          review4Meta: "vor 3 Tagen",
+          review4Text: "„Sehr faire Preise für die Gegend. Ich komme wieder, besonders für Pommes und Salat.“",
+          locKicker: "Location",
+          locTitle: "Mitten in 1030 Wien, direkt in der Juchgasse.",
+          locLede: "Komm vorbei, hol dir dein Essen ab oder ruf an, wenn es schnell gehen soll.",
+          mapAria: "Google Maps Karte",
+          mapTitle: "Amos Restaurant, Juchgasse 28, 1030 Wien auf Google Maps",
+          addressTitle: "Adresse",
+          hoursTitle: "Öffnungszeiten",
+          hoursMonFri: "Montag bis Freitag",
+          hoursSat: "Samstag",
+          hoursSun: "Sonntag",
+          contactTitle: "Kontakt",
+          contactSub: "Bestellen, abholen, genießen.",
+          ctaKicker: "Hunger?",
+          ctaTitle: "Ruf an und dein Essen ist gleich bereit.",
+          ctaText: "Schnell bestellen, frisch abholen oder direkt vorbeikommen. Amos Restaurant freut sich auf dich in der Juchgasse 28.",
+          viewRoute: "Route ansehen",
+          footerCopy: "© 2026 Amos Restaurant, Wien",
+          closeAria: "Fenster schließen"
+        },
+        en: {
+          pageTitle: "Amos Restaurant Vienna",
+          metaDesc: "Amos Restaurant in Vienna: fresh street food, fast preparation and fair prices at Juchgasse 28, 1030 Vienna.",
+          skip: "Skip to content",
+          brandAria: "Amos Restaurant home",
+          navAria: "Main navigation",
+          langAria: "Choose language",
+          navAbout: "About",
+          navMenu: "Menu",
+          navReviews: "Reviews",
+          navLocation: "Location",
+          navContact: "Contact",
+          callNow: "Call now",
+          callAria: "Call Amos Restaurant",
+          menuOpen: "Open navigation",
+          menuClose: "Close navigation",
+          heroEyebrow: "Bistro & street food in Vienna Landstraße",
+          heroSubtitle: "Fresh. Fast. Delicious.",
+          heroText: "A small spot for honest food: crispy schnitzel, juicy döner, hot fries and fresh salads, made for lunch breaks, evening cravings and spontaneous orders.",
+          heroCta1: "View the menu",
+          panelAria: "Quick info",
+          statusTitle: "Fresh off the grill today",
+          statusAddress: "Juchgasse 28, 1030 Vienna",
+          factGoogle: "Google-style",
+          factFair: "Fair pricing",
+          factTime: "10 min",
+          factFast: "Served fast",
+          aboutKicker: "About us",
+          aboutTitle: "Street food made for Vienna: fast, warm and straight-up good.",
+          aboutLede: "Amos Restaurant is a no-fuss bistro on Juchgasse. We cook for people who are short on time but still want flavour: freshly sliced, served hot, fairly priced.",
+          aboutP2: "Whether it's a quick lunch, a late dinner or takeaway for home, the food is what matters here. Clear ingredients, bold flavours and portions that fill you up.",
+          benefitsAria: "Benefits",
+          feat1Title: "Fresh ingredients",
+          feat1Text: "Crunchy vegetables, warm breads, fresh sauces and classics prepared daily.",
+          feat2Title: "Fast preparation",
+          feat2Text: "Perfect for your lunch break, the way home or whenever hunger gets serious.",
+          feat3Title: "Affordable prices (€1–10)",
+          feat3Text: "Good food should stay accessible: full plates, fair prices, a clear menu.",
+          aboutImgAlt: "Warm bistro table with freshly served food",
+          captionTitle: "Direct, fresh, friendly.",
+          captionText: "A bistro for real everyday meals, with a little premium feel in the details.",
+          menuKicker: "Menu preview",
+          menuTitle: "Four favourites that always work.",
+          menuLede: "Crispy, fresh, hearty or light. Tap a dish to see more.",
+          menuAria: "Menu",
+          orderNow: "Order now",
+          dishHint: "Tap for details",
+          dish1Title: "Schnitzel",
+          dish1Tag: "Crispy",
+          dish1Short: "Golden, hot and served with lemon. The quick Viennese favourite.",
+          dish1Desc: "Pan-fried until golden, crispy outside, juicy inside. Served with lemon and hot fries. A classic that shines when it comes without fuss.",
+          dish1Alt: "Crispy fried schnitzel with a side",
+          dish2Title: "Döner",
+          dish2Tag: "Fresh",
+          dish2Short: "Warm, juicy, crunchy. With sauce that carries every last bite.",
+          dish2Desc: "Freshly sliced meat, crunchy salad, tomato, onion and homemade sauce in warm bread. Quick in hand, big on flavour.",
+          dish2Alt: "Filled flatbread with fresh vegetables",
+          dish3Title: "Fries",
+          dish3Tag: "Hot",
+          dish3Short: "Golden sticks, well seasoned, with the dip of your choice.",
+          dish3Desc: "Crispy fries, fresh from the fryer, golden outside and soft inside. Perfect solo or as a side to anything good.",
+          dish3Alt: "Golden crispy fries",
+          dish4Title: "Salad",
+          dish4Tag: "Light",
+          dish4Short: "Crunchy, colourful and freshly tossed. Served with warm bread.",
+          dish4Desc: "Fresh salad with crunchy vegetables, herbs and dressing. Light enough for lunch, hearty enough that you won't be hungry again right after.",
+          dish4Alt: "Fresh colourful salad in a bowl",
+          dialogTagFav: "Favourite",
+          dishAltSuffix: "at Amos Restaurant",
+          reviewsKicker: "Reviews",
+          reviewsLede: "Sample Google-style voices from guests who pair fast food with great flavour.",
+          starsAria: "4.9 out of 5 stars",
+          fiveStars: "5 stars",
+          review1Meta: "Local Guide",
+          review1Text: "“Very fresh, ready quickly and great value for money. Perfect for a break.”",
+          review2Meta: "2 weeks ago",
+          review2Text: "“Döner was warm, bread crispy, veggies fresh. Exactly how a quick lunch should be.”",
+          review3Meta: "1 month ago",
+          review3Text: "“Friendly, clean, fast. The schnitzel was super crispy and the portion was big.”",
+          review4Meta: "3 days ago",
+          review4Text: "“Really fair prices for the area. I'll be back, especially for the fries and salad.”",
+          locKicker: "Location",
+          locTitle: "Right in 1030 Vienna, on Juchgasse.",
+          locLede: "Drop by, pick up your food or give us a call when you need it fast.",
+          mapAria: "Google Maps map",
+          mapTitle: "Amos Restaurant, Juchgasse 28, 1030 Vienna on Google Maps",
+          addressTitle: "Address",
+          hoursTitle: "Opening hours",
+          hoursMonFri: "Monday to Friday",
+          hoursSat: "Saturday",
+          hoursSun: "Sunday",
+          contactTitle: "Contact",
+          contactSub: "Order, pick up, enjoy.",
+          ctaKicker: "Hungry?",
+          ctaTitle: "Call us and your food is ready in minutes.",
+          ctaText: "Order quickly, pick up fresh or just drop by. Amos Restaurant is looking forward to seeing you at Juchgasse 28.",
+          viewRoute: "View route",
+          footerCopy: "© 2026 Amos Restaurant, Vienna",
+          closeAria: "Close window"
+        }
+      };
+
+      const DISH_DATA = {
+        schnitzel: { titleKey: "dish1Title", tagKey: "dish1Tag", descKey: "dish1Desc" },
+        doener:    { titleKey: "dish2Title", tagKey: "dish2Tag", descKey: "dish2Desc" },
+        pommes:    { titleKey: "dish3Title", tagKey: "dish3Tag", descKey: "dish3Desc" },
+        salat:     { titleKey: "dish4Title", tagKey: "dish4Tag", descKey: "dish4Desc" }
+      };
+
+      let currentLang = (() => {
+        try {
+          const saved = localStorage.getItem("amos-lang");
+          if (saved && I18N[saved]) return saved;
+        } catch (_) {}
+        const nav = (navigator.language || "de").slice(0, 2).toLowerCase();
+        return I18N[nav] ? nav : "de";
+      })();
+
+      function applyLang(lang) {
+        const dict = I18N[lang] || I18N.de;
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key] != null) el.textContent = dict[key];
+        });
+
+        document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
+          el.getAttribute("data-i18n-attr").split(";").forEach((pair) => {
+            const [attr, key] = pair.split(":").map((s) => s && s.trim());
+            if (attr && key && dict[key] != null) el.setAttribute(attr, dict[key]);
+          });
+        });
+
+        document.querySelectorAll(".lang-switch button").forEach((btn) => {
+          btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
+        });
+
+        const expanded = menuToggle?.getAttribute("aria-expanded") === "true";
+        menuToggle?.setAttribute("aria-label", expanded ? dict.menuClose : dict.menuOpen);
+
+        currentLang = lang;
+        try { localStorage.setItem("amos-lang", lang); } catch (_) {}
+      }
+
+      const nav = document.querySelector("[data-nav]");
+      const menuToggle = document.querySelector("[data-menu-toggle]");
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const parallax = document.querySelector("[data-parallax]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const dialog = document.getElementById("dishDialog");
+      const dialogImage = document.getElementById("dialogImage");
+      const dialogTitle = document.getElementById("dialogTitle");
+      const dialogTag = document.getElementById("dialogTag");
+      const dialogPrice = document.getElementById("dialogPrice");
+      const dialogDescription = document.getElementById("dialogDescription");
+      let ticking = false;
+
+      applyLang(currentLang);
+
+      document.querySelectorAll(".lang-switch button").forEach((btn) => {
+        btn.addEventListener("click", () => applyLang(btn.dataset.lang));
+      });
+
+      function updateScrollState() {
+        const y = window.scrollY || 0;
+        nav.classList.toggle("is-scrolled", y > 24);
+
+        if (parallax && !reduceMotion.matches) {
+          const limit = Math.min(y, window.innerHeight);
+          parallax.style.transform = `translate3d(0, ${limit * 0.16}px, 0) scale(1.08)`;
+        }
+
+        ticking = false;
+      }
+
+      function requestScrollUpdate() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateScrollState);
+          ticking = true;
+        }
+      }
+
+      updateScrollState();
+      window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+
+      menuToggle?.addEventListener("click", () => {
+        const dict = I18N[currentLang] || I18N.de;
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? dict.menuOpen : dict.menuClose);
+        nav.classList.toggle("is-menu-open", !isOpen);
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const dict = I18N[currentLang] || I18N.de;
+          const targetId = link.getAttribute("href");
+          const target = targetId && targetId.startsWith("#") ? document.querySelector(targetId) : null;
+
+          if (target) {
+            event.preventDefault();
+            target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+          }
+
+          menuToggle?.setAttribute("aria-expanded", "false");
+          menuToggle?.setAttribute("aria-label", dict.menuOpen);
+          nav.classList.remove("is-menu-open");
+        });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        if (anchor.closest(".nav-links")) return;
+        anchor.addEventListener("click", (event) => {
+          const target = document.querySelector(anchor.getAttribute("href"));
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+        });
+      });
+
+      const revealItems = document.querySelectorAll(".reveal:not(.is-visible)");
+      if ("IntersectionObserver" in window && !reduceMotion.matches) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      }
+
+      document.querySelectorAll(".dish-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const dict = I18N[currentLang] || I18N.de;
+          const info = DISH_DATA[card.dataset.dish] || {};
+          const title = (info.titleKey && dict[info.titleKey]) || "";
+          const tag = (info.tagKey && dict[info.tagKey]) || dict.dialogTagFav;
+          const desc = (info.descKey && dict[info.descKey]) || "";
+
+          document.querySelectorAll(".dish-card.is-picked").forEach((item) => item.classList.remove("is-picked"));
+          card.classList.add("is-picked");
+
+          dialogTitle.textContent = title;
+          dialogTag.textContent = tag;
+          dialogPrice.textContent = card.dataset.price || "";
+          dialogDescription.textContent = desc;
+          dialogImage.src = card.dataset.image || "";
+          dialogImage.alt = `${title} ${dict.dishAltSuffix}`;
+
+          if (typeof dialog.showModal === "function") {
+            dialog.showModal();
+          }
+        });
+      });
+
+      document.querySelector("[data-dialog-close]")?.addEventListener("click", () => {
+        dialog.close();
+      });
+
+      dialog?.addEventListener("click", (event) => {
+        const rect = dialog.getBoundingClientRect();
+        const isOutside =
+          event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom;
+
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      const hours = document.querySelector("[data-hours]");
+      const hoursButton = document.querySelector("[data-hours-button]");
+      hoursButton?.addEventListener("click", () => {
+        const isOpen = hours.classList.toggle("is-open");
+        hoursButton.setAttribute("aria-expanded", String(isOpen));
+      });
+    })();
+  </script>
+</body>
+</html>
