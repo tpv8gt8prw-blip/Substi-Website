@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/interactive/ScrollReveal";
 type PageHeroProps = {
   eyebrow: string;
   title: string;
-  gradientWords?: number[];
+  highlight?: string;
   description?: string;
   children?: ReactNode;
 };
@@ -16,7 +16,7 @@ type PageHeroProps = {
 export function PageHero({
   eyebrow,
   title,
-  gradientWords = [],
+  highlight,
   description,
   children,
 }: PageHeroProps) {
@@ -36,7 +36,7 @@ export function PageHero({
         <AnimatedHeading
           as="h1"
           text={title}
-          gradientWords={gradientWords}
+          highlight={highlight}
           className="mt-5 justify-center text-center font-display text-4xl font-extrabold tracking-tight sm:text-6xl"
         />
         {description && (

@@ -1,14 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FiCheck } from "react-icons/fi";
-import { CHANGELOG, ROADMAP } from "@/lib/content";
 import { fromLeft, fromRight, fadeUp, viewportOnce } from "@/lib/animations";
 
+type Entry = {
+  version: string;
+  date: string;
+  title: string;
+  points: string[];
+};
+
+type Roadmap = { title: string; body: string };
+
 export function Timeline() {
+  const t = useTranslations("changelog");
+  const entries = t.raw("entries") as Entry[];
+  const roadmap = t.raw("roadmap") as Roadmap[];
+
   return (
     <div className="relative mx-auto max-w-4xl">
-      {/* drawing center line */}
       <motion.div
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
@@ -18,7 +30,7 @@ export function Timeline() {
       />
 
       <ul className="space-y-10">
-        {CHANGELOG.map((entry, i) => {
+        {entries.map((entry, i) => {
           const left = i % 2 === 0;
           return (
             <motion.li
@@ -31,7 +43,6 @@ export function Timeline() {
                 left ? "sm:pr-12 sm:text-right" : "sm:ml-auto sm:pl-12"
               }`}
             >
-              {/* node */}
               <motion.span
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
@@ -47,9 +58,9 @@ export function Timeline() {
               <div className="rounded-3xl border border-line bg-bg-elevated/70 p-6 backdrop-blur-md">
                 <div className={`flex items-center gap-2 ${left ? "sm:justify-end" : ""}`}>
                   <span className="font-display text-xl font-bold">v{entry.version}</span>
-                  {entry.tag && (
+                  {i === 0 && (
                     <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold text-white">
-                      {entry.tag}
+                      {t("latest")}
                     </span>
                   )}
                 </div>
@@ -74,7 +85,6 @@ export function Timeline() {
         })}
       </ul>
 
-      {/* roadmap */}
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -82,9 +92,11 @@ export function Timeline() {
         viewport={viewportOnce}
         className="mt-16"
       >
-        <h2 className="text-center font-display text-2xl font-bold">On the roadmap</h2>
+        <h2 className="text-center font-display text-2xl font-bold">
+          {t("roadmapTitle")}
+        </h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          {ROADMAP.map((r) => (
+          {roadmap.map((r) => (
             <div
               key={r.title}
               className="rounded-3xl border border-dashed border-line bg-bg-elevated/40 p-6"

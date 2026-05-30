@@ -1,15 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { FiArrowRight, FiArrowDown } from "react-icons/fi";
 import { FaApple } from "react-icons/fa";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { PhoneMockup } from "@/components/interactive/PhoneMockup";
 
 export function HeroSection() {
+  const t = useTranslations("hero");
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -58,13 +60,13 @@ export function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Now with iOS 26 Liquid Glass
+            {t("badge")}
           </motion.div>
 
           <AnimatedHeading
             as="h1"
-            text="Your schedule, finally gamified"
-            gradientWords={[3]}
+            text={`${t("titleLead")} ${t("titleHighlight")}`}
+            highlight={t("titleHighlight")}
             delay={0.1}
             className="mt-6 font-display text-[clamp(2.6rem,6vw,4.5rem)] font-extrabold leading-[1.04] tracking-tight"
           />
@@ -75,8 +77,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="mt-6 max-w-lg text-lg leading-relaxed text-fg-muted"
           >
-            Substi syncs your WebUntis timetable, predicts substitutions, and
-            turns the school day into a game you actually want to check.
+            {t("subtitle")}
           </motion.p>
 
           <motion.div
@@ -87,11 +88,11 @@ export function HeroSection() {
           >
             <Button size="lg" variant="secondary">
               <FaApple className="h-5 w-5" />
-              Download on App Store
+              {t("downloadApp")}
             </Button>
             <Link href="/community">
               <Button size="lg" variant="outline">
-                Join Community
+                {t("joinCommunity")}
                 <FiArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -103,9 +104,9 @@ export function HeroSection() {
             transition={{ delay: 1 }}
             className="mt-8 flex items-center gap-6 text-sm text-fg-subtle"
           >
-            <span>★★★★★ 4.9 rating</span>
+            <span>{t("rating")}</span>
             <span className="hidden sm:inline">·</span>
-            <span className="hidden sm:inline">12,000+ predictions placed</span>
+            <span className="hidden sm:inline">{t("predictions")}</span>
           </motion.div>
         </div>
 
@@ -120,7 +121,7 @@ export function HeroSection() {
         style={{ opacity }}
         className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-fg-subtle"
       >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <span className="text-xs uppercase tracking-widest">{t("scroll")}</span>
         <FiArrowDown className="animate-bounce-down h-5 w-5" />
       </motion.a>
     </section>

@@ -1,13 +1,15 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { FaApple } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { ScrollReveal } from "@/components/interactive/ScrollReveal";
 
 export function CTASection() {
+  const t = useTranslations("cta");
   return (
     <section className="px-5 py-20 sm:px-8 sm:py-28">
       <div className="relative mx-auto max-w-5xl overflow-hidden rounded-5xl border border-line p-10 text-center sm:p-16">
@@ -20,13 +22,12 @@ export function CTASection() {
         <div className="animate-float-medium absolute bottom-10 right-12 h-16 w-16 rounded-full border border-white/20 bg-white/5" />
 
         <AnimatedHeading
-          text="Ready to play your schedule?"
+          text={t("title")}
           className="justify-center text-center font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl"
         />
         <ScrollReveal delay={0.15}>
           <p className="mx-auto mt-5 max-w-xl text-lg text-white/85">
-            Download Substi, connect WebUntis, and place your first prediction in
-            under five minutes.
+            {t("subtitle")}
           </p>
         </ScrollReveal>
 
@@ -37,7 +38,7 @@ export function CTASection() {
               className="bg-white text-slate-900 shadow-xl shadow-black/20 hover:bg-white"
             >
               <FaApple className="h-5 w-5" />
-              Download on App Store
+              {t("downloadApp")}
             </Button>
             <Link href="/docs">
               <Button
@@ -45,7 +46,7 @@ export function CTASection() {
                 variant="outline"
                 className="border-white/40 bg-white/10 text-white backdrop-blur-md hover:border-white"
               >
-                Read the docs
+                {t("readDocs")}
                 <FiArrowRight className="h-4 w-4" />
               </Button>
             </Link>

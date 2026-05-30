@@ -1,0 +1,395 @@
+{
+  "meta": {
+    "defaultTitle": "Substi — Your schedule, gamified",
+    "description": "Substi turns your school timetable into a game. Track classes, predict substitutions, and climb the leaderboard — beautifully designed for iOS.",
+    "ogDescription": "Track classes, predict substitutions, and climb the leaderboard."
+  },
+  "nav": {
+    "home": "Home",
+    "docs": "Docs",
+    "changelog": "Changelog",
+    "community": "Community",
+    "privacy": "Privacy",
+    "feedback": "Feedback",
+    "getApp": "Get the app",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle color theme",
+    "switchLanguage": "Switch language",
+    "backToTop": "Back to top"
+  },
+  "hero": {
+    "badge": "Now with iOS 26 Liquid Glass",
+    "titleLead": "Your schedule, finally",
+    "titleHighlight": "gamified",
+    "subtitle": "Substi syncs your WebUntis timetable, predicts substitutions, and turns the school day into a game you actually want to check.",
+    "downloadApp": "Download on App Store",
+    "joinCommunity": "Join Community",
+    "rating": "★★★★★ 4.9 rating",
+    "predictions": "12,000+ predictions placed",
+    "scroll": "Scroll"
+  },
+  "phone": {
+    "weekday": "Wednesday",
+    "today": "Today",
+    "coins": "coins",
+    "room": "Room",
+    "substituted": "Substituted",
+    "cancelled": "Cancelled",
+    "predictionWon": "Prediction won! 🎉",
+    "coinsWon": "+150 coins · ×3",
+    "subjects": {
+      "math": "Mathematics",
+      "physics": "Physics",
+      "english": "English",
+      "history": "History",
+      "cs": "Computer Sci"
+    }
+  },
+  "features": {
+    "eyebrow": "Features",
+    "title": "Everything your timetable wishes it could do",
+    "titleHighlight": "could do",
+    "subtitle": "Four pillars that make Substi the schedule app students actually open on purpose.",
+    "learnMore": "Learn more",
+    "items": [
+      {
+        "title": "Live Timetable",
+        "short": "Your whole week, synced from WebUntis in real time.",
+        "long": "Substi pulls your schedule straight from WebUntis and keeps it in sync. Day and week views, color-coded subjects, room changes, and a clean glassy interface designed to feel native on iOS. Swipe between days, jump to today, and never miss a room change again."
+      },
+      {
+        "title": "Substitution Predictions",
+        "short": "Bet coins on whether a lesson gets cancelled or moved.",
+        "long": "Turn the daily uncertainty of school into a game. Predict whether a lesson will be normal, substituted, or cancelled and wager virtual coins. Correct calls pay out with multipliers up to ×3 — building a streak feels incredible."
+      },
+      {
+        "title": "Casino Mode",
+        "short": "Spin wheels, climb multipliers, chase the jackpot.",
+        "long": "An optional casino layer with a spin wheel, animated reels, and risk-tuned payouts. Everything is play-money and purely for fun — a delightful little dopamine loop wrapped in liquid-glass visuals."
+      },
+      {
+        "title": "Smart Notifications",
+        "short": "Get pinged the moment your schedule changes.",
+        "long": "Substi watches your timetable and notifies you the instant a substitution, cancellation, or room change lands — so you find out before you walk to the wrong room."
+      }
+    ]
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "From login to leaderboard in minutes",
+    "titleHighlight": "leaderboard",
+    "steps": [
+      {
+        "title": "Connect WebUntis",
+        "body": "Sign in with your school server and credentials. Substi reads your timetable — nothing else."
+      },
+      {
+        "title": "See your week",
+        "body": "Your schedule appears instantly in a beautiful day or week view, color-coded and always current."
+      },
+      {
+        "title": "Make predictions",
+        "body": "Spot a teacher who's often out? Wager coins on whether the lesson gets substituted."
+      },
+      {
+        "title": "Climb the board",
+        "body": "Win coins, build streaks, and rise up the global leaderboard against classmates."
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "label": "Predictions placed" },
+      { "label": "Sync accuracy" },
+      { "label": "App Store rating" },
+      { "label": "Privacy-first" }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Loved by students",
+    "title": "The schedule app people rave about",
+    "titleHighlight": "rave",
+    "items": [
+      {
+        "quote": "I used to walk to the wrong room twice a week. Now Substi pings me before I even leave. The predictions are weirdly addictive.",
+        "name": "Lena M.",
+        "role": "11th grade"
+      },
+      {
+        "quote": "The Liquid Glass dock genuinely looks better than half the apps Apple ships. Buttery smooth on my iPhone.",
+        "name": "Tobias K.",
+        "role": "Student dev"
+      },
+      {
+        "quote": "Casino mode during a free period is dangerous. My whole class is on the leaderboard now.",
+        "name": "Sara P.",
+        "role": "12th grade"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to play your schedule?",
+    "subtitle": "Download Substi, connect WebUntis, and place your first prediction in under five minutes.",
+    "downloadApp": "Download on App Store",
+    "readDocs": "Read the docs"
+  },
+  "footer": {
+    "tagline": "Your school schedule, gamified. Track classes, predict substitutions, and climb the leaderboard.",
+    "madeWith": "Made with care for students.",
+    "rights": "powered by SiteBuilt",
+    "columns": {
+      "product": {
+        "title": "Product",
+        "features": "Features",
+        "how": "How it works",
+        "changelog": "Changelog",
+        "docs": "Docs"
+      },
+      "community": {
+        "title": "Community",
+        "discord": "Discord",
+        "leaderboard": "Leaderboard",
+        "feedback": "Feedback"
+      },
+      "legal": {
+        "title": "Legal",
+        "privacy": "Privacy",
+        "terms": "Terms"
+      }
+    }
+  },
+  "docs": {
+    "eyebrow": "Docs",
+    "title": "Set up Substi in minutes",
+    "titleHighlight": "minutes",
+    "desc": "From connecting WebUntis to mastering predictions — here's everything.",
+    "sidebar": "Documentation",
+    "copy": "Copy",
+    "copied": "Copied",
+    "nav": {
+      "gettingStarted": "Getting started",
+      "connecting": "Connecting WebUntis",
+      "predictions": "Predictions",
+      "casino": "Casino mode",
+      "faq": "FAQ"
+    },
+    "gettingStarted": {
+      "stepLabel": "Step 1",
+      "heading": "Getting started",
+      "body": "Substi is available for iPhone on the App Store. Once installed, the onboarding flow walks you through connecting your school account.",
+      "code": "1. Open the App Store and search \"Substi\"\n2. Install and open the app\n3. Tap \"Connect WebUntis\""
+    },
+    "connecting": {
+      "heading": "Connecting WebUntis",
+      "body": "You'll need three things from your school: the server URL, the school name, and your personal login. Substi uses these only to read your timetable.",
+      "note": "Credentials are stored securely on-device using the iOS Keychain."
+    },
+    "predictions": {
+      "heading": "Predictions",
+      "intro": "Switch the segmented control to Casino and tap any lesson to place a prediction. Choose an outcome and a wager:",
+      "outcomes": [
+        { "name": "Normal", "desc": "×1.5 — the lesson runs as scheduled" },
+        { "name": "Substituted", "desc": "×3 — a different teacher takes over" },
+        { "name": "Cancelled", "desc": "×3 — the lesson is dropped entirely" }
+      ]
+    },
+    "casino": {
+      "heading": "Casino mode",
+      "body": "Casino mode adds an optional spin wheel and reels for when you've got a free period. Everything is play-money — there is never any real currency involved."
+    },
+    "faqHeading": "FAQ"
+  },
+  "faq": {
+    "items": [
+      {
+        "q": "Is Substi free?",
+        "a": "Yes. Substi is completely free to download and use. There are no ads and no real-money transactions — all coins are virtual and just for fun."
+      },
+      {
+        "q": "Which schools are supported?",
+        "a": "Any school that uses WebUntis. You simply enter your school's server and your normal WebUntis login."
+      },
+      {
+        "q": "Is my data safe?",
+        "a": "Your credentials are used only to fetch your timetable and are stored securely on your device. We never sell or share your data. See the Privacy page for full details."
+      },
+      {
+        "q": "Is real money involved in the predictions?",
+        "a": "Never. Every coin in Substi is virtual. Casino mode and predictions are purely for entertainment and bragging rights."
+      },
+      {
+        "q": "Does it work offline?",
+        "a": "Your last-synced timetable is cached, so you can view your schedule offline. Predictions and the leaderboard require a connection."
+      }
+    ]
+  },
+  "privacy": {
+    "eyebrow": "Privacy",
+    "title": "Your data, handled with respect",
+    "titleHighlight": "respect",
+    "desc": "The short version: we collect the minimum, store it safely, and never sell it.",
+    "toc": "On this page",
+    "lastUpdated": "Last updated: May 2026",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "body": [
+          "Substi is built privacy-first. We collect the absolute minimum needed to show your timetable and run the prediction game, and we never sell your data.",
+          "This page explains exactly what we store, where, and why."
+        ]
+      },
+      {
+        "id": "data",
+        "title": "What we collect",
+        "list": [
+          "Your WebUntis server, school, and login — used only to fetch your timetable.",
+          "Your in-app coins, predictions, and leaderboard score.",
+          "Basic, anonymous usage signals to fix crashes and improve performance."
+        ]
+      },
+      {
+        "id": "storage",
+        "title": "Where it lives",
+        "body": [
+          "Your credentials are stored securely on your device. Game state (coins, predictions) syncs to our servers so you can switch devices, and is tied to an anonymous identifier — not your real name."
+        ]
+      },
+      {
+        "id": "sharing",
+        "title": "Sharing",
+        "body": [
+          "We do not sell, rent, or trade your personal data. The only data visible to others is your chosen leaderboard display name and score."
+        ]
+      },
+      {
+        "id": "control",
+        "title": "Your control",
+        "list": [
+          "Log out any time to remove your credentials from the device.",
+          "Request deletion of your synced game data from the Account screen.",
+          "Disable the leaderboard to keep your score private."
+        ]
+      },
+      {
+        "id": "terms",
+        "title": "Terms",
+        "body": [
+          "Substi is provided as-is for personal, non-commercial use. All in-app coins are virtual, have no monetary value, and cannot be exchanged for real money or goods."
+        ]
+      }
+    ]
+  },
+  "feedback": {
+    "eyebrow": "Feedback",
+    "title": "Tell us what to build next",
+    "titleHighlight": "build",
+    "desc": "Found a bug, have an idea, or just want to say hi? We'd love to hear from you.",
+    "perks": [
+      { "title": "We read everything", "body": "Every message lands in our inbox and shapes the roadmap." },
+      { "title": "Built with students", "body": "Most features started as a single suggestion just like yours." },
+      { "title": "Fast replies", "body": "We usually get back within a day or two." }
+    ],
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Alex Student",
+      "email": "Email",
+      "emailPlaceholder": "you@school.edu",
+      "topic": "Topic",
+      "topics": ["General feedback", "Bug report", "Feature request", "Other"],
+      "message": "Message",
+      "messagePlaceholder": "Tell us what you think…",
+      "submit": "Send feedback",
+      "successTitle": "Message sent!",
+      "successBody": "Thanks for the feedback — we read every message.",
+      "sendAnother": "Send another",
+      "errors": {
+        "name": "Please tell us your name.",
+        "email": "Enter a valid email address.",
+        "message": "Message should be at least 10 characters."
+      }
+    }
+  },
+  "changelog": {
+    "eyebrow": "Changelog",
+    "title": "Shipping, constantly",
+    "titleHighlight": "constantly",
+    "desc": "A look at how Substi has evolved — and a peek at what's next.",
+    "latest": "Latest",
+    "roadmapTitle": "On the roadmap",
+    "entries": [
+      {
+        "version": "4.0",
+        "date": "May 2026",
+        "title": "Liquid Glass redesign",
+        "points": [
+          "All-new iOS 26 Liquid Glass dock with real-time refraction",
+          "Swipeable Day/Week and Plan/Casino segmented controls",
+          "Classic (opaque) theme option for non-glass devices",
+          "Smoother 60fps animations across the board"
+        ]
+      },
+      {
+        "version": "3.2",
+        "date": "Mar 2026",
+        "title": "Casino mode overhaul",
+        "points": [
+          "Redesigned spin wheel with physics-based easing",
+          "New payout multipliers and streak bonuses",
+          "Fixed leaderboard flicker on refresh"
+        ]
+      },
+      {
+        "version": "3.0",
+        "date": "Jan 2026",
+        "title": "Predictions & leaderboard",
+        "points": [
+          "Introduced substitution predictions with coin wagering",
+          "Global leaderboard with weekly resets",
+          "Cloud sync across devices"
+        ]
+      },
+      {
+        "version": "2.0",
+        "date": "Sep 2025",
+        "title": "Week view & themes",
+        "points": [
+          "Added full week grid view",
+          "Seven accent color themes",
+          "Dark mode polish"
+        ]
+      }
+    ],
+    "roadmap": [
+      { "title": "Android beta", "body": "Bringing Substi to Android via a React Native build." },
+      { "title": "Friend leagues", "body": "Private leaderboards you can share with your class." },
+      { "title": "Widgets", "body": "Home-screen and lock-screen widgets for your next lesson." }
+    ]
+  },
+  "community": {
+    "eyebrow": "Community",
+    "title": "You're not predicting alone",
+    "titleHighlight": "alone",
+    "desc": "Join thousands of students comparing streaks, sharing tips, and climbing the leaderboard together.",
+    "joinDiscord": "Join the Discord",
+    "stats": [
+      { "label": "Discord members" },
+      { "label": "Predictions placed" },
+      { "label": "Messages" }
+    ],
+    "featuredEyebrow": "Featured members",
+    "featuredTitle": "Meet the people on the board",
+    "featuredHighlight": "board",
+    "featured": [
+      { "role": "32-day streak", "quote": "Predicting cancellations got me the #1 spot. The community keeps me coming back." },
+      { "role": "Top predictor", "quote": "Casino mode during free periods with my class is the best part of school now." },
+      { "role": "Beta tester", "quote": "Reported a bug on Discord and it was fixed the next day. These devs actually listen." }
+    ],
+    "leaderboardEyebrow": "Leaderboard",
+    "leaderboardTitle": "This week's top predictors",
+    "leaderboardHighlight": "top",
+    "leaderboardCaption": "Download Substi and start climbing — the board resets every Monday."
+  }
+}
