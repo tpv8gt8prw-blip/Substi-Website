@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 import { forwardRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +15,7 @@ type ButtonProps = Omit<HTMLMotionProps<"button">, "children"> & {
 };
 
 const base =
-  "group relative inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight overflow-hidden select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-60 disabled:pointer-events-none";
+  "btn-interactive group relative inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight overflow-hidden select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
@@ -35,18 +35,30 @@ const sizes: Record<Size, string> = {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = "primary", size = "md", glow = false, className, children, ...props }, ref) => {
+    const reduceMotion = useReducedMotion();
+    const hasSheen = variant === "primary" || variant === "secondary";
+
     return (
       <motion.button
         ref={ref}
-        whileHover={{ scale: 1.045, y: -2 }}
-        whileTap={{ scale: 0.96 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        className={cn(base, variants[variant], sizes[size], glow && "glow-accent", className)}
+        whileHover={reduceMotion ? undefined : { scale: 1.03 }}
+        whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className={cn(
+          base,
+          !reduceMotion && "transition-[transform,box-shadow] duration-200 ease-out",
+          variants[variant],
+          sizes[size],
+          glow && "glow-accent",
+          className
+        )}
         {...props}
       >
-        {/* sheen on hover */}
-        {(variant === "primary" || variant === "secondary") && (
-          <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+        {hasSheen && (
+          <span
+            aria-hidden
+            className="btn-sheen pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          />
         )}
         <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
       </motion.button>

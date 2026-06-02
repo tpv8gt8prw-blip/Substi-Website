@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import { FaDiscord } from "react-icons/fa";
 import { PageHero } from "@/components/layout/PageHero";
+import { CommunityHeroCtas } from "@/components/community/CommunityHeroCtas";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/interactive/ScrollReveal";
 import { AnimatedCounter } from "@/components/interactive/AnimatedCounter";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { Carousel } from "@/components/interactive/Carousel";
 import { Leaderboard } from "@/components/community/Leaderboard";
-import { Button } from "@/components/ui/Button";
 import { COMMUNITY_STAT_META, FEATURED_COUNT } from "@/lib/content";
 
 export async function generateMetadata({
@@ -69,14 +68,7 @@ export default async function CommunityPage({
         highlight={t("titleHighlight")}
         description={t("desc")}
       >
-        <ScrollReveal delay={0.25}>
-          <div className="mt-8 flex justify-center">
-            <Button size="lg" className="bg-[#5865F2] hover:bg-[#5865F2]">
-              <FaDiscord className="h-5 w-5" />
-              {t("joinDiscord")}
-            </Button>
-          </div>
-        </ScrollReveal>
+        <CommunityHeroCtas />
       </PageHero>
 
       <Section className="pt-6">

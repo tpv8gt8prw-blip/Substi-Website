@@ -63,6 +63,9 @@ export const COMMUNITY_STAT_META: {
 
 export const FEATURED_COUNT = 3;
 
+/** TODO: Replace with your real Patreon campaign URL. */
+export const PATREON_URL = "https://patreon.com/substi";
+
 /** Leaderboard rows — names/coins are data, not copy. */
 export const LEADERBOARD_ROWS = [
   { rank: 1, name: "streakwizard", coins: 48210 },

@@ -390,6 +390,10 @@
     "leaderboardEyebrow": "Leaderboard",
     "leaderboardTitle": "This week's top predictors",
     "leaderboardHighlight": "top",
-    "leaderboardCaption": "Download Substi and start climbing — the board resets every Monday."
+    "leaderboardCaption": "Download Substi and start climbing — the board resets every Monday.",
+    "patreon": {
+      "cta": "Support on Patreon",
+      "description": "Substi is a self-funded project built by students. If you want to help, optional Patreon support covers server costs and keeps development going — completely voluntary. Supporters may receive small perks over time, such as a supporter badge or early access to updates, as we roll them out step by step."
+    }
   }
 }

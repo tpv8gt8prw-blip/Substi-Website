@@ -390,6 +390,10 @@
     "leaderboardEyebrow": "Rangliste",
     "leaderboardTitle": "Die Top-Vorhersager dieser Woche",
     "leaderboardHighlight": "Top-Vorhersager",
-    "leaderboardCaption": "Lade Substi und fang an zu klettern — das Board wird jeden Montag zurückgesetzt."
+    "leaderboardCaption": "Lade Substi und fang an zu klettern — das Board wird jeden Montag zurückgesetzt.",
+    "patreon": {
+      "cta": "Auf Patreon unterstützen",
+      "description": "Substi ist ein selbst finanziertes Projekt von Schülern für Schüler. Wenn du mithelfen möchtest, deckt freiwillige Unterstützung auf Patreon Serverkosten und hält die Weiterentwicklung am Laufen — ganz ohne Druck. Unterstützer können mit der Zeit kleine Vorteile bekommen, etwa ein Supporter-Badge oder Early Access zu Updates, die wir Schritt für Schritt ausrollen."
+    }
   }
 }
