@@ -25,6 +25,8 @@
     "titleHighlight": "gamified",
     "subtitle": "Substi syncs your WebUntis timetable, predicts substitutions, and turns the school day into a game you actually want to check.",
     "downloadApp": "Download on App Store",
+    "downloadAndroid": "Download for Android (.apk)",
+    "androidSideloadHint": "Direct install: Enable \"Install unknown apps\" in Android settings if you see a security warning.",
     "joinCommunity": "Join Community",
     "rating": "★★★★★ 4.9 rating",
     "predictions": "12,000+ predictions placed",
@@ -133,6 +135,8 @@
     "title": "Ready to play your schedule?",
     "subtitle": "Download Substi, connect WebUntis, and place your first prediction in under five minutes.",
     "downloadApp": "Download on App Store",
+    "downloadAndroid": "Download for Android (.apk)",
+    "androidSideloadHint": "Direct install: Enable \"Install unknown apps\" in Android settings if you see a security warning.",
     "readDocs": "Read the docs"
   },
   "footer": {

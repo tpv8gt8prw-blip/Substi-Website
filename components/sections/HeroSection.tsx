@@ -4,9 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { FiArrowRight, FiArrowDown } from "react-icons/fi";
-import { FaApple } from "react-icons/fa";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
+import { AppDownloadButtons } from "@/components/sections/AppDownloadButtons";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { PhoneMockup } from "@/components/interactive/PhoneMockup";
 
@@ -84,18 +84,16 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.65 }}
-            className="mt-8 flex flex-wrap items-center gap-4"
+            className="mt-8"
           >
-            <Button size="lg" variant="secondary">
-              <FaApple className="h-5 w-5" />
-              {t("downloadApp")}
-            </Button>
-            <Link href="/community">
-              <Button size="lg" variant="outline">
-                {t("joinCommunity")}
-                <FiArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
+            <AppDownloadButtons variant="hero">
+              <Link href="/community">
+                <Button size="lg" variant="outline">
+                  {t("joinCommunity")}
+                  <FiArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            </AppDownloadButtons>
           </motion.div>
 
           <motion.div

@@ -25,6 +25,8 @@
     "titleHighlight": "spielerisch",
     "subtitle": "Substi synchronisiert deinen WebUntis-Stundenplan, sagt Vertretungen voraus und macht den Schultag zu einem Spiel, das du wirklich öffnen willst.",
     "downloadApp": "Im App Store laden",
+    "downloadAndroid": "Für Android laden (.apk)",
+    "androidSideloadHint": "Direkte Installation: Aktiviere „Installation aus unbekannten Quellen“ in den Android-Einstellungen, falls die Warnung erscheint.",
     "joinCommunity": "Community beitreten",
     "rating": "★★★★★ 4,9 Bewertung",
     "predictions": "12.000+ Vorhersagen getroffen",
@@ -133,6 +135,8 @@
     "title": "Bereit, deinen Stundenplan zu spielen?",
     "subtitle": "Lade Substi, verbinde WebUntis und platziere deine erste Vorhersage in unter fünf Minuten.",
     "downloadApp": "Im App Store laden",
+    "downloadAndroid": "Für Android laden (.apk)",
+    "androidSideloadHint": "Direkte Installation: Aktiviere „Installation aus unbekannten Quellen“ in den Android-Einstellungen, falls die Warnung erscheint.",
     "readDocs": "Doku lesen"
   },
   "footer": {

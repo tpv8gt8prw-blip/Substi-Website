@@ -1,10 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { FaApple } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
+import { AppDownloadButtons } from "@/components/sections/AppDownloadButtons";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { ScrollReveal } from "@/components/interactive/ScrollReveal";
 
@@ -32,24 +32,19 @@ export function CTASection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.25}>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-white text-slate-900 shadow-xl shadow-black/20 hover:bg-white"
-            >
-              <FaApple className="h-5 w-5" />
-              {t("downloadApp")}
-            </Button>
-            <Link href="/docs">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/40 bg-white/10 text-white backdrop-blur-md hover:border-white"
-              >
-                {t("readDocs")}
-                <FiArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
+          <div className="mx-auto mt-9 flex w-full max-w-2xl flex-col items-center gap-4">
+            <AppDownloadButtons variant="cta" className="items-center text-center [&_p]:mx-auto">
+              <Link href="/docs">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/40 bg-white/10 text-white backdrop-blur-md hover:border-white"
+                >
+                  {t("readDocs")}
+                  <FiArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            </AppDownloadButtons>
           </div>
         </ScrollReveal>
       </div>
