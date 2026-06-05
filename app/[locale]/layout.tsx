@@ -54,8 +54,12 @@ export async function generateMetadata({
       images: [{ url: "/substi-icon.png", width: 512, height: 512, alt: "Substi" }],
     },
     icons: {
-      icon: "/substi-icon.png",
-      apple: "/substi-icon.png",
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: "/apple-icon.png",
     },
   };
 }
