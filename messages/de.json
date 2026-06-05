@@ -231,57 +231,171 @@
   },
   "privacy": {
     "eyebrow": "Datenschutz",
-    "title": "Deine Daten, mit Respekt behandelt",
-    "titleHighlight": "Respekt",
-    "desc": "Die Kurzfassung: Wir erheben das Minimum, speichern es sicher und verkaufen es nie.",
+    "title": "Datenschutzerklärung",
+    "titleHighlight": "Substi",
+    "desc": "Gültig ab 5. Juni 2026 — transparent erklärt, was wir speichern und was nicht.",
     "toc": "Auf dieser Seite",
-    "lastUpdated": "Zuletzt aktualisiert: Mai 2026",
+    "lastUpdated": "Letzte Aktualisierung: 5. Juni 2026",
+    "doNotStoreLabel": "Wir speichern NICHT:",
+    "doStoreLocalLabel": "Wir speichern lokal auf deinem iPhone:",
+    "doStoreServerLabel": "Wir speichern auf unserem Server (Upstash):",
+    "whereLabel": "Wo:",
+    "notStoredLabel": "Was NICHT gespeichert wird:",
+    "visibleLabel": "Was du siehst:",
+    "notVisibleLabel": "Was NICHT sichtbar ist:",
     "sections": [
       {
+        "id": "controller",
+        "title": "1. Verantwortlicher",
+        "body": [
+          "Aco2577 (Entwickler)",
+          "Substi iOS App",
+          "E-Mail: sitebuiltcontact@gmail.com"
+        ]
+      },
+      {
         "id": "overview",
-        "title": "Überblick",
-        "body": [
-          "Substi ist datenschutzorientiert gebaut. Wir erheben nur das absolute Minimum, das nötig ist, um deinen Stundenplan anzuzeigen und das Vorhersage-Spiel zu betreiben, und wir verkaufen deine Daten nie.",
-          "Diese Seite erklärt genau, was wir speichern, wo und warum."
+        "title": "2. Übersicht: Was wir speichern & was nicht",
+        "doNotStore": [
+          "WebUntis-Passwörter",
+          "WebUntis-Benutzernamen",
+          "Schulemails oder echte Namen",
+          "Schulnummern",
+          "Biometrische Daten",
+          "Standortdaten"
+        ],
+        "doStoreLocal": [
+          "WebUntis-Credentials (nur lokal in iOS Keychain zum Aktualisieren des Stundenplans)",
+          "Dein Stundenplan",
+          "Hausübungen und Prüfungen",
+          "Fotos (die du hinzufügst)"
+        ],
+        "doStoreServer": [
+          "Substi-Username (z. B. „paco_gaming“)",
+          "Avatar-ID (z. B. „avatar_blue_cat“)",
+          "Coins/Punkte (für Leaderboard)",
+          "Schule (zum Leaderboard-Filter)"
         ]
       },
       {
-        "id": "data",
-        "title": "Was wir erheben",
+        "id": "details",
+        "title": "3. Detailliert: Wie wir mit deinen Daten umgehen",
+        "subsections": [
+          {
+            "title": "3.1 WebUntis-Login (einmalig)",
+            "steps": [
+              "Du gibst deine WebUntis-Benutzerdaten ein",
+              "Die App sendet diese einmalig an unser Backend",
+              "Backend lädt deinen Stundenplan von WebUntis",
+              "Dein Passwort wird NICHT gespeichert",
+              "Der Stundenplan wird lokal auf deinem iPhone gecacht"
+            ],
+            "where": [
+              "Dein Passwort: Lokal in iOS Keychain (nur auf deinem Gerät)",
+              "Dein Stundenplan: Lokal auf deinem iPhone",
+              "Upstash Server: Nichts davon!"
+            ]
+          },
+          {
+            "title": "3.2 Substi-Profil-Erstellung",
+            "steps": [
+              "Du wählst einen Username (z. B. „paco_gaming“)",
+              "Du wählst einen Avatar",
+              "Die App speichert: substi_username, avatar_id, school und coins"
+            ],
+            "where": [
+              "Upstash Redis (unser Server)",
+              "Sichtbar: Nur im Leaderboard mit deinem Username + Avatar"
+            ],
+            "notStored": [
+              "Dein echter Name",
+              "Deine Schulnummer",
+              "Deine Schulmail",
+              "Deine WebUntis-Daten"
+            ]
+          },
+          {
+            "title": "3.3 Leaderboard",
+            "visible": [
+              "Rang #1–10",
+              "Username (z. B. „paco_gaming“)",
+              "Avatar",
+              "Coins"
+            ],
+            "notVisible": [
+              "Schulinformationen",
+              "Echte Namen",
+              "Schulemails",
+              "Persönliche Daten"
+            ]
+          },
+          {
+            "title": "3.4 Hausübungen & Fotos",
+            "body": [
+              "Deine Fotos werden lokal auf deinem iPhone gespeichert, werden nicht zu unserem Server gesendet und bleiben dein Eigentum."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sync",
+        "title": "4. Background-Sync (Tägliche Updates)",
+        "steps": [
+          "Täglich um 7 Uhr versucht die App, deinen Stundenplan zu aktualisieren",
+          "Die App lädt deine WebUntis-Credentials aus der Keychain",
+          "Die App kontaktiert WebUntis direkt (nicht unser Backend)",
+          "Unser Backend sieht deine Passwörter NICHT",
+          "Nur der neue Stundenplan wird lokal aktualisiert"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "5. Datensicherheit",
         "list": [
-          "Deinen WebUntis-Server, deine Schule und deinen Login — nur zum Abrufen deines Stundenplans.",
-          "Deine In-App-Münzen, Vorhersagen und deinen Ranglistenstand.",
-          "Grundlegende, anonyme Nutzungssignale zur Fehlerbehebung und Leistungsverbesserung."
+          "HTTPS für alle API-Verbindungen",
+          "iOS Keychain für WebUntis-Credentials",
+          "Upstash Redis mit Authentifizierung",
+          "Wir haben keinen Zugriff auf deine WebUntis-Daten",
+          "Wir können dein Passwort nicht sehen",
+          "Du kannst dich jederzeit abmelden (alles wird gelöscht)"
         ]
       },
       {
-        "id": "storage",
-        "title": "Wo es liegt",
-        "body": [
-          "Deine Zugangsdaten werden sicher auf deinem Gerät gespeichert. Der Spielstand (Münzen, Vorhersagen) synchronisiert mit unseren Servern, damit du das Gerät wechseln kannst, und ist an eine anonyme Kennung gebunden — nicht an deinen echten Namen."
-        ]
-      },
-      {
-        "id": "sharing",
-        "title": "Weitergabe",
-        "body": [
-          "Wir verkaufen, vermieten oder handeln deine persönlichen Daten nicht. Die einzigen für andere sichtbaren Daten sind dein gewählter Ranglisten-Anzeigename und dein Punktestand."
-        ]
-      },
-      {
-        "id": "control",
-        "title": "Deine Kontrolle",
+        "id": "cookies",
+        "title": "6. Cookies & Tracking",
         "list": [
-          "Melde dich jederzeit ab, um deine Zugangsdaten vom Gerät zu entfernen.",
-          "Fordere im Account-Bereich die Löschung deiner synchronisierten Spieldaten an.",
-          "Deaktiviere die Rangliste, um deinen Stand privat zu halten."
+          "Keine Cookies",
+          "Kein Tracking",
+          "Keine Analytics auf sensible Daten",
+          "Nur technisch notwendige Daten (für Login/Sync)"
         ]
       },
       {
-        "id": "terms",
-        "title": "Nutzungsbedingungen",
+        "id": "rights",
+        "title": "7. Deine Rechte (DSGVO)",
+        "rights": [
+          "Auskunft: Frag, welche Daten wir speichern",
+          "Berichtigung: Falsche Daten korrigieren",
+          "Löschung: Recht auf Vergessenwerden",
+          "Datenmitnahme: Deine Daten exportieren"
+        ],
         "body": [
-          "Substi wird wie besehen für den persönlichen, nicht-kommerziellen Gebrauch bereitgestellt. Alle In-App-Münzen sind virtuell, haben keinen Geldwert und können nicht gegen echtes Geld oder Waren eingetauscht werden."
+          "Kontakt: sitebuiltcontact@gmail.com"
+        ]
+      },
+      {
+        "id": "changes",
+        "title": "8. Änderungen dieser Datenschutzerklärung",
+        "body": [
+          "Wir können diese Richtlinie jederzeit aktualisieren. Die aktuelle Version ist immer auf unserer Website verfügbar."
+        ]
+      },
+      {
+        "id": "contact",
+        "title": "9. Kontakt",
+        "body": [
+          "Fragen zum Datenschutz? Schreib an sitebuiltcontact@gmail.com",
+          "Oder auf der Website: substi-website.vercel.app/privacy"
         ]
       }
     ]
