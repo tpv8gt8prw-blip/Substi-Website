@@ -14,6 +14,7 @@ import { NAV_KEYS } from "@/lib/content";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { LanguageSwitcher } from "@/components/theme/LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -46,9 +47,9 @@ export function Header() {
             <motion.span
               whileHover={{ rotate: -8, scale: 1.08 }}
               transition={{ type: "spring", stiffness: 400, damping: 12 }}
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-base font-extrabold text-white shadow-md shadow-accent/30"
+              className="shadow-md shadow-accent/20"
             >
-              S
+              <SubstiLogo size={36} priority />
             </motion.span>
             <span className="font-display text-lg font-extrabold tracking-tight">
               Substi
@@ -113,7 +114,10 @@ export function Header() {
               className="fixed inset-y-0 right-0 z-[80] flex w-[78%] max-w-sm flex-col border-l border-line bg-bg-elevated p-6 shadow-2xl lg:hidden"
             >
               <div className="flex items-center justify-between">
-                <span className="font-display text-lg font-bold">{t("menu")}</span>
+                <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
+                  <SubstiLogo size={32} />
+                  <span className="font-display text-base font-bold">Substi</span>
+                </Link>
                 <button
                   aria-label={t("closeMenu")}
                   onClick={() => setOpen(false)}

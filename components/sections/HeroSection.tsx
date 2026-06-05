@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { AppDownloadButtons } from "@/components/sections/AppDownloadButtons";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { PhoneMockup } from "@/components/interactive/PhoneMockup";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 
 export function HeroSection() {
   const t = useTranslations("hero");
@@ -54,12 +55,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-fg-muted backdrop-blur-md"
+            className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-fg-muted backdrop-blur-md"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
+            <SubstiLogo size={20} />
             {t("badge")}
           </motion.div>
 

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { AppDownloadButtons } from "@/components/sections/AppDownloadButtons";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { ScrollReveal } from "@/components/interactive/ScrollReveal";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 
 export function CTASection() {
   const t = useTranslations("cta");
@@ -20,6 +21,14 @@ export function CTASection() {
         {/* floating shapes */}
         <div className="animate-float-slow absolute left-10 top-10 h-20 w-20 rounded-2xl border border-white/20 bg-white/5" />
         <div className="animate-float-medium absolute bottom-10 right-12 h-16 w-16 rounded-full border border-white/20 bg-white/5" />
+
+        <ScrollReveal>
+          <SubstiLogo
+            size={56}
+            className="mx-auto justify-center"
+            imageClassName="shadow-xl shadow-black/20"
+          />
+        </ScrollReveal>
 
         <AnimatedHeading
           text={t("title")}

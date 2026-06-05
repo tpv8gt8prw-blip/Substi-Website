@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { FiCalendar, FiZap, FiBell, FiUser } from "react-icons/fi";
+import { SUBSTI_ICON_SRC } from "@/components/ui/SubstiLogo";
 
 const LESSONS = [
   { time: "08:00", subjectKey: "math", room: "A2.14", tone: "normal" },
@@ -52,7 +54,17 @@ export function PhoneMockup() {
           {/* status bar */}
           <div className="flex items-center justify-between px-6 pb-1 pt-3 text-[11px] font-semibold text-slate-900 dark:text-white">
             <span>9:41</span>
-            <span className="opacity-60">Substi</span>
+            <span className="flex items-center gap-1 opacity-80">
+              <Image
+                src={SUBSTI_ICON_SRC}
+                alt=""
+                width={14}
+                height={14}
+                className="rounded-[22%]"
+                aria-hidden
+              />
+              Substi
+            </span>
           </div>
 
           {/* header */}

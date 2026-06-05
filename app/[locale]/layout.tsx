@@ -51,6 +51,11 @@ export async function generateMetadata({
       description: t("ogDescription"),
       type: "website",
       locale,
+      images: [{ url: "/substi-icon.png", width: 512, height: 512, alt: "Substi" }],
+    },
+    icons: {
+      icon: "/substi-icon.png",
+      apple: "/substi-icon.png",
     },
   };
 }

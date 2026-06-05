@@ -3,8 +3,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
-import { FiCheck, FiChevronDown } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 import { Confetti } from "./Confetti";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 import { cn } from "@/lib/utils";
 
 type Status = "idle" | "loading" | "success";
@@ -76,9 +77,9 @@ export function FeedbackForm() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 260, damping: 16, delay: 0.1 }}
-          className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 text-white shadow-lg shadow-accent/30"
+          className="mx-auto shadow-lg shadow-accent/20"
         >
-          <FiCheck className="h-10 w-10" strokeWidth={3} />
+          <SubstiLogo size={80} imageClassName="shadow-lg shadow-accent/30" />
         </motion.div>
         <h3 className="mt-6 font-display text-2xl font-bold">{t("successTitle")}</h3>
         <p className="mt-2 text-fg-muted">{t("successBody")}</p>

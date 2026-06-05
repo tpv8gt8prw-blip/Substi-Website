@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { FiGithub, FiTwitter, FiMessageCircle, FiMail } from "react-icons/fi";
 import { Link } from "@/i18n/navigation";
 import { useParallax } from "@/hooks/useParallax";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 
 const COLUMNS = [
   {
@@ -61,9 +62,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-base font-extrabold text-white">
-                S
-              </span>
+              <SubstiLogo size={36} />
               <span className="font-display text-lg font-extrabold">Substi</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
