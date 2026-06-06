@@ -233,9 +233,9 @@
     "eyebrow": "Privacy",
     "title": "Privacy Policy",
     "titleHighlight": "Substi",
-    "desc": "Effective June 5, 2026 — a clear breakdown of what we store and what we don't.",
+    "desc": "Effective June 4, 2026 — a clear breakdown of what we store and what we don't.",
     "toc": "On this page",
-    "lastUpdated": "Last updated: June 5, 2026",
+    "lastUpdated": "Last updated: June 4, 2026",
     "doNotStoreLabel": "We do NOT store:",
     "doStoreLocalLabel": "We store locally on your iPhone:",
     "doStoreServerLabel": "We store on our server (Upstash):",
@@ -278,11 +278,15 @@
         ]
       },
       {
-        "id": "upstash",
-        "title": "3. Upstash (third-party provider)",
+        "id": "infrastructure",
+        "title": "3. Technical infrastructure",
         "body": [
-          "Profile and leaderboard data is stored on Upstash (upstash.com) — a cloud Redis service with HTTPS and token authentication.",
-          "Upstash only stores Substi profile data (username, avatar, coins, password hash). WebUntis passwords and school names are not stored there."
+          "Hosting: Vercel Inc., 340 Pine Street Suite 701, San Francisco, CA 94104, USA",
+          "Privacy Policy: https://vercel.com/legal/privacy-policy",
+          "Database: Upstash Inc. (Redis database)",
+          "Privacy Policy: https://upstash.com/trust/privacy.pdf",
+          "Stored data: Substi username, avatar, coins, game progress",
+          "Storage location: Frankfurt, Germany (EU)"
         ]
       },
       {
@@ -290,7 +294,11 @@
         "title": "4. In detail: How we handle your data",
         "subsections": [
           {
-            "title": "4.1 WebUntis login (one-time)",
+            "title": "4.1 WebUntis credentials",
+            "body": [
+              "Your WebUntis login credentials (username and password) are used exclusively for one-time authentication with WebUntis. They are NOT stored on our servers and remain exclusively on your device (iOS Keychain).",
+              "Timetable data, homework and exam information are retrieved from the WebUntis server and temporarily transmitted through our backend server, but are not permanently stored."
+            ],
             "steps": [
               "You enter your WebUntis credentials",
               "The app sends them once to our backend",
@@ -325,7 +333,11 @@
             ]
           },
           {
-            "title": "4.3 Leaderboard",
+            "title": "4.3 Public leaderboard",
+            "body": [
+              "Your Substi username, avatar and coin balance are displayed in the app's public leaderboard. This data is visible to all app users.",
+              "You can avoid this by not creating a Substi account or by deleting your account."
+            ],
             "visible": [
               "Rank #1–10",
               "Username (e.g. \"paco_gaming\")",
@@ -371,11 +383,17 @@
       },
       {
         "id": "deletion",
-        "title": "7. Deleting your data",
+        "title": "7. Right to erasure (GDPR Art. 17)",
+        "body": [
+          "You can delete your Substi account and all associated data at any time. This is possible directly in the app: Settings → Account → Delete Account.",
+          "The following data will be permanently deleted:"
+        ],
         "list": [
-          "Delete profile → all Upstash data is removed",
-          "Log out → local data on your device is cleared",
-          "Deletion requests: sitebuiltcontact@gmail.com"
+          "Substi username and password hash",
+          "Avatar and coin balance",
+          "Game history and predictions",
+          "Leaderboard entry",
+          "For manual deletion requests: sitebuiltcontact@gmail.com"
         ]
       },
       {
