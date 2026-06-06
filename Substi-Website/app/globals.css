@@ -220,6 +220,41 @@ body {
   animation: shimmer 1.6s infinite;
 }
 
+/* GPU-friendly CTA sheen (transform-only, clipped by parent overflow) */
+.btn-sheen {
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.group:hover .btn-sheen,
+.group:focus-visible .btn-sheen {
+  transform: translate3d(100%, 0, 0);
+}
+
+.btn-interactive {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  contain: layout style;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-sheen {
+    display: none;
+  }
+
+  .btn-interactive {
+    transition: none !important;
+  }
+
+  .btn-interactive:hover,
+  .btn-interactive:active {
+    transform: translateZ(0) !important;
+  }
+}
+
 /* ============================================================
    ACCESSIBILITY
 ============================================================ */

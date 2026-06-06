@@ -10,7 +10,31 @@ Framer Motion animations, and a polished dark/light theme.
 - **Tailwind CSS v4** (CSS-first config, theme tokens via CSS variables)
 - **Framer Motion** — scroll-linked parallax, reveals, gestures
 - **next-themes** — dark / light / system with smooth transitions
+- **next-intl** — English / Deutsch i18n with `/[locale]` routing
 - **react-icons**, **clsx**, **tailwind-merge**
+
+## Internationalization (i18n)
+
+The site is fully localized in **English (`/en`)** and **Deutsch (`/de`)** via
+[next-intl](https://next-intl.dev).
+
+- **Routing:** every page lives under `app/[locale]/…`. Visiting `/` redirects
+  to the best matching locale (cookie → `Accept-Language` → default `en`).
+- **Locale detection & cookie:** handled by `proxy.ts` (Next 16's renamed
+  middleware) using `createMiddleware(routing)`.
+- **Config:** `i18n/routing.ts` (locales), `i18n/navigation.ts` (locale-aware
+  `Link`/`useRouter`/`usePathname`), `i18n/request.ts` (loads messages).
+- **Messages:** all copy lives in `messages/en.json` and `messages/de.json`.
+  Components read it with `useTranslations()` / `getTranslations()`; arrays use
+  `t.raw()`.
+- **Language switcher:** the EN/DE pill in the navbar (next to the theme
+  toggle) swaps locale client-side via `router.replace(pathname, { locale })`
+  — no full reload, current path preserved.
+- **Static rendering:** each locale is prerendered at build time
+  (`generateStaticParams` + `setRequestLocale`).
+
+To add a locale: add it to `routing.locales`, drop in a `messages/<locale>.json`,
+and you're done.
 
 ## Getting started
 
@@ -35,7 +59,12 @@ npm run lint     # eslint
 ## Project structure
 
 ```
-app/                     # routes (home + 5 pages) and root layout
+app/
+  layout.tsx             # pass-through root layout
+  [locale]/              # localized routes (home + 5 pages) + html shell
+i18n/                    # routing, navigation, request config (next-intl)
+messages/                # en.json, de.json — all UI copy
+proxy.ts                 # locale detection / routing (Next 16 middleware)
 components/
   layout/                # Header, Footer, PageHero
   sections/              # Hero, Features, HowItWorks, Stats, Testimonials, CTA
@@ -62,8 +91,9 @@ Theme tokens live in `app/globals.css` as CSS variables (`--accent`, `--fg`,
 
 ## Customising
 
-- **Copy & data:** edit `lib/content.ts` (features, stats, steps, FAQ, changelog,
-  testimonials, nav links).
+- **Copy & translations:** edit `messages/en.json` and `messages/de.json`. All
+  user-facing text lives here. `lib/content.ts` now only holds non-text
+  metadata (icons, accent colors, numeric stat values, hrefs).
 - **Feedback form:** set your Formspree endpoint in
   `components/interactive/FeedbackForm.tsx` (`FORMSPREE_ENDPOINT`). Until then it
   runs in demo mode and always shows the success state.

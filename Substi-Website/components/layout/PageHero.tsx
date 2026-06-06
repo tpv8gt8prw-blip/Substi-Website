@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/interactive/ScrollReveal";
 type PageHeroProps = {
   eyebrow: string;
   title: string;
-  gradientWords?: number[];
+  highlight?: string;
   description?: string;
   children?: ReactNode;
 };
@@ -16,7 +16,7 @@ type PageHeroProps = {
 export function PageHero({
   eyebrow,
   title,
-  gradientWords = [],
+  highlight,
   description,
   children,
 }: PageHeroProps) {
@@ -25,8 +25,8 @@ export function PageHero({
       {/* parallax-ish floating background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="grid-bg absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="animate-aurora absolute -left-40 -top-20 h-96 w-96 rounded-full bg-accent/15 blur-[120px]" />
-        <div className="animate-aurora absolute -right-20 top-0 h-80 w-80 rounded-full bg-secondary/15 blur-[120px] [animation-delay:-10s]" />
+        <div className="animate-aurora absolute -left-40 -top-20 h-72 w-72 rounded-full bg-accent/15 blur-[72px] will-change-transform sm:h-96 sm:w-96 sm:blur-[100px] motion-reduce:animate-none" />
+        <div className="animate-aurora absolute -right-20 top-0 hidden h-80 w-80 rounded-full bg-secondary/15 blur-[100px] [animation-delay:-10s] will-change-transform sm:block motion-reduce:animate-none" />
       </div>
 
       <div className="mx-auto max-w-3xl text-center">
@@ -36,7 +36,7 @@ export function PageHero({
         <AnimatedHeading
           as="h1"
           text={title}
-          gradientWords={gradientWords}
+          highlight={highlight}
           className="mt-5 justify-center text-center font-display text-4xl font-extrabold tracking-tight sm:text-6xl"
         />
         {description && (

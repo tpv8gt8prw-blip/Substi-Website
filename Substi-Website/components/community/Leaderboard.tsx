@@ -2,15 +2,8 @@
 
 import { motion } from "framer-motion";
 import { AnimatedCounter } from "@/components/interactive/AnimatedCounter";
+import { LEADERBOARD_ROWS } from "@/lib/content";
 import { staggerContainer, viewportOnce } from "@/lib/animations";
-
-const ROWS = [
-  { rank: 1, name: "streakwizard", coins: 48210 },
-  { rank: 2, name: "lena.m", coins: 41980 },
-  { rank: 3, name: "tobi_k", coins: 39740 },
-  { rank: 4, name: "freeperiod", coins: 31220 },
-  { rank: 5, name: "sara.predicts", coins: 28650 },
-];
 
 const medal = ["#ffd60a", "#cbd5e1", "#d97706"];
 
@@ -23,7 +16,7 @@ export function Leaderboard() {
       viewport={viewportOnce}
       className="overflow-hidden rounded-4xl border border-line bg-bg-elevated/70 backdrop-blur-md"
     >
-      {ROWS.map((row) => (
+      {LEADERBOARD_ROWS.map((row) => (
         <motion.div
           key={row.rank}
           variants={{

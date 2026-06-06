@@ -1,14 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FiStar } from "react-icons/fi";
 import { useParallax } from "@/hooks/useParallax";
-import { TESTIMONIALS } from "@/lib/content";
+import { TESTIMONIAL_COUNT } from "@/lib/content";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { AnimatedHeading } from "@/components/interactive/AnimatedHeading";
 import { ScrollReveal } from "@/components/interactive/ScrollReveal";
 
-function Card({ t, offset }: { t: (typeof TESTIMONIALS)[number]; offset: number }) {
+function Card({
+  quote,
+  name,
+  role,
+  offset,
+}: {
+  quote: string;
+  name: string;
+  role: string;
+  offset: number;
+}) {
   const { ref, y } = useParallax(offset);
   return (
     <motion.div
@@ -18,7 +29,7 @@ function Card({ t, offset }: { t: (typeof TESTIMONIALS)[number]; offset: number 
     >
       <span className="font-display text-5xl leading-none text-accent/30">&ldquo;</span>
       <div className="-mt-3 flex gap-1">
-        {Array.from({ length: t.rating }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <motion.span
             key={i}
             initial={{ opacity: 0, scale: 0 }}
@@ -30,7 +41,7 @@ function Card({ t, offset }: { t: (typeof TESTIMONIALS)[number]; offset: number 
           </motion.span>
         ))}
       </div>
-      <p className="mt-4 flex-1 leading-relaxed text-fg">{t.quote}</p>
+      <p className="mt-4 flex-1 leading-relaxed text-fg">{quote}</p>
       <div className="mt-6 flex items-center gap-3">
         <motion.span
           initial={{ scale: 0 }}
@@ -39,11 +50,11 @@ function Card({ t, offset }: { t: (typeof TESTIMONIALS)[number]; offset: number 
           transition={{ type: "spring", stiffness: 260, damping: 16 }}
           className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 font-bold text-white"
         >
-          {t.name.charAt(0)}
+          {name.charAt(0)}
         </motion.span>
         <div>
-          <p className="text-sm font-semibold">{t.name}</p>
-          <p className="text-xs text-fg-muted">{t.role}</p>
+          <p className="text-sm font-semibold">{name}</p>
+          <p className="text-xs text-fg-muted">{role}</p>
         </div>
       </div>
     </motion.div>
@@ -51,23 +62,32 @@ function Card({ t, offset }: { t: (typeof TESTIMONIALS)[number]; offset: number 
 }
 
 export function TestimonialsSection() {
+  const t = useTranslations("testimonials");
   const offsets = [50, -30, 40];
+  const items = Array.from({ length: TESTIMONIAL_COUNT }, (_, i) => i);
+
   return (
     <Section className="bg-bg-subtle">
       <div className="mx-auto max-w-2xl text-center">
         <ScrollReveal>
-          <Eyebrow>Loved by students</Eyebrow>
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
         </ScrollReveal>
         <AnimatedHeading
-          text="The schedule app people rave about"
-          gradientWords={[5]}
+          text={t("title")}
+          highlight={t("titleHighlight")}
           className="mt-5 justify-center text-center font-display text-4xl font-extrabold tracking-tight sm:text-5xl"
         />
       </div>
 
       <div className="mt-16 grid gap-6 md:grid-cols-3">
-        {TESTIMONIALS.map((t, i) => (
-          <Card key={t.name} t={t} offset={offsets[i]} />
+        {items.map((i) => (
+          <Card
+            key={i}
+            quote={t(`items.${i}.quote`)}
+            name={t(`items.${i}.name`)}
+            role={t(`items.${i}.role`)}
+            offset={offsets[i]}
+          />
         ))}
       </div>
     </Section>

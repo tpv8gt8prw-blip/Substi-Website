@@ -20,8 +20,12 @@ type AnimatedHeadingProps = {
   text: string;
   className?: string;
   as?: Tag;
-  /** indices of words to wrap in the gradient accent */
-  gradientWords?: number[];
+  /**
+   * A substring of `text` to render with the gradient accent. Locale-safe:
+   * we compute which word indices fall inside the highlight, so it works
+   * regardless of word order across languages.
+   */
+  highlight?: string;
   delay?: number;
 };
 
@@ -30,11 +34,27 @@ export function AnimatedHeading({
   text,
   className,
   as = "h2",
-  gradientWords = [],
+  highlight,
   delay = 0,
 }: AnimatedHeadingProps) {
   const MotionTag = TAGS[as];
   const words = text.split(" ");
+
+  // Derive the set of word indices that belong to the highlight phrase.
+  const gradientWords = new Set<number>();
+  if (highlight) {
+    const start = text.toLowerCase().indexOf(highlight.toLowerCase());
+    if (start >= 0) {
+      const end = start + highlight.length;
+      let cursor = 0;
+      words.forEach((word, i) => {
+        const wordStart = cursor;
+        const wordEnd = cursor + word.length;
+        if (wordEnd > start && wordStart < end) gradientWords.add(i);
+        cursor = wordEnd + 1; // +1 for the split space
+      });
+    }
+  }
 
   return (
     <MotionTag
@@ -51,7 +71,7 @@ export function AnimatedHeading({
             variants={wordReveal}
             className={cn(
               "inline-block",
-              gradientWords.includes(i) && "text-gradient"
+              gradientWords.has(i) && "text-gradient"
             )}
             style={{ transformOrigin: "bottom" }}
           >

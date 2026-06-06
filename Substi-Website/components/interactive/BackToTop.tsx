@@ -2,10 +2,12 @@
 
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { FiArrowUp } from "react-icons/fi";
 
 export function BackToTop() {
   const { scrollY } = useScroll();
+  const t = useTranslations("nav");
   const [visible, setVisible] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -16,7 +18,7 @@ export function BackToTop() {
     <AnimatePresence>
       {visible && (
         <motion.button
-          aria-label="Back to top"
+          aria-label={t("backToTop")}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           initial={{ opacity: 0, y: 24, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
