@@ -274,7 +274,6 @@
           "Substi username (e.g. \"paco_gaming\")",
           "Avatar ID (e.g. \"avatar_blue_cat\")",
           "Coins/points (for the leaderboard)",
-          "School (for leaderboard filtering)",
           "Password hash (bcrypt — not plaintext)"
         ]
       },
@@ -283,7 +282,7 @@
         "title": "3. Upstash (third-party provider)",
         "body": [
           "Profile and leaderboard data is stored on Upstash (upstash.com) — a cloud Redis service with HTTPS and token authentication.",
-          "Upstash only stores Substi profile data (username, avatar, coins, school, password hash). WebUntis passwords are not stored there."
+          "Upstash only stores Substi profile data (username, avatar, coins, password hash). WebUntis passwords and school names are not stored there."
         ]
       },
       {
@@ -311,7 +310,7 @@
               "You choose a username (e.g. \"paco_gaming\")",
               "You choose an avatar and a Substi password",
               "The password is hashed with bcrypt — only the hash is sent to Upstash",
-              "Stored fields: substi_username, avatar_id, school, coins"
+              "Stored fields: substi_username, avatar_id, coins"
             ],
             "where": [
               "Upstash Redis (our server)",
