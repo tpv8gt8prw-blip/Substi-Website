@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   AnimatePresence,
   motion,
@@ -9,13 +7,18 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NAV_LINKS } from "@/lib/content";
+import { Link, usePathname } from "@/i18n/navigation";
+import { NAV_KEYS } from "@/lib/content";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { LanguageSwitcher } from "@/components/theme/LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 import { cn } from "@/lib/utils";
 
 export function Header() {
+  const t = useTranslations("nav");
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
@@ -40,34 +43,30 @@ export function Header() {
         )}
       >
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
-          {/* Logo */}
           <Link href="/" className="group flex items-center gap-2.5">
             <motion.span
               whileHover={{ rotate: -8, scale: 1.08 }}
               transition={{ type: "spring", stiffness: 400, damping: 12 }}
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-base font-extrabold text-white shadow-md shadow-accent/30"
+              className="shadow-md shadow-accent/20"
             >
-              S
+              <SubstiLogo size={36} priority />
             </motion.span>
             <span className="font-display text-lg font-extrabold tracking-tight">
               Substi
             </span>
           </Link>
 
-          {/* Desktop nav */}
           <ul className="hidden items-center gap-1 lg:flex">
-            {NAV_LINKS.map((link) => (
+            {NAV_KEYS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={cn(
                     "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                    isActive(link.href)
-                      ? "text-fg"
-                      : "text-fg-muted hover:text-fg"
+                    isActive(link.href) ? "text-fg" : "text-fg-muted hover:text-fg"
                   )}
                 >
-                  {link.label}
+                  {t(link.key)}
                   {isActive(link.href) && (
                     <motion.span
                       layoutId="nav-underline"
@@ -81,12 +80,13 @@ export function Header() {
           </ul>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             <Link href="/feedback" className="hidden sm:block">
-              <Button size="sm">Get the app</Button>
+              <Button size="sm">{t("getApp")}</Button>
             </Link>
             <button
-              aria-label="Open menu"
+              aria-label={t("openMenu")}
               onClick={() => setOpen(true)}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-fg backdrop-blur-md lg:hidden"
             >
@@ -96,7 +96,6 @@ export function Header() {
         </nav>
       </motion.header>
 
-      {/* Mobile slide-out menu */}
       <AnimatePresence>
         {open && (
           <>
@@ -115,9 +114,12 @@ export function Header() {
               className="fixed inset-y-0 right-0 z-[80] flex w-[78%] max-w-sm flex-col border-l border-line bg-bg-elevated p-6 shadow-2xl lg:hidden"
             >
               <div className="flex items-center justify-between">
-                <span className="font-display text-lg font-bold">Menu</span>
+                <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
+                  <SubstiLogo size={32} />
+                  <span className="font-display text-base font-bold">Substi</span>
+                </Link>
                 <button
-                  aria-label="Close menu"
+                  aria-label={t("closeMenu")}
                   onClick={() => setOpen(false)}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-line"
                 >
@@ -133,7 +135,7 @@ export function Header() {
                   visible: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
                 }}
               >
-                {NAV_LINKS.map((link) => (
+                {NAV_KEYS.map((link) => (
                   <motion.li
                     key={link.href}
                     variants={{
@@ -151,16 +153,20 @@ export function Header() {
                           : "text-fg-muted hover:bg-fg/5 hover:text-fg"
                       )}
                     >
-                      {link.label}
+                      {t(link.key)}
                     </Link>
                   </motion.li>
                 ))}
               </motion.ul>
 
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <LanguageSwitcher />
+                  <ThemeToggle />
+                </div>
                 <Link href="/feedback" onClick={() => setOpen(false)}>
                   <Button className="w-full" size="lg">
-                    Get the app
+                    {t("getApp")}
                   </Button>
                 </Link>
               </div>

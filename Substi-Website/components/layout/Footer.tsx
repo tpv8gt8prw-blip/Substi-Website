@@ -1,36 +1,38 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FiGithub, FiTwitter, FiMessageCircle, FiMail } from "react-icons/fi";
+import { Link } from "@/i18n/navigation";
 import { useParallax } from "@/hooks/useParallax";
+import { SubstiLogo } from "@/components/ui/SubstiLogo";
 
 const COLUMNS = [
   {
-    title: "Product",
+    key: "product",
     links: [
-      { label: "Features", href: "/#features" },
-      { label: "How it works", href: "/#how" },
-      { label: "Changelog", href: "/changelog" },
-      { label: "Docs", href: "/docs" },
+      { key: "features", href: "/#features" },
+      { key: "how", href: "/#how" },
+      { key: "changelog", href: "/changelog" },
+      { key: "docs", href: "/docs" },
     ],
   },
   {
-    title: "Community",
+    key: "community",
     links: [
-      { label: "Discord", href: "/community" },
-      { label: "Leaderboard", href: "/community#leaderboard" },
-      { label: "Feedback", href: "/feedback" },
+      { key: "discord", href: "/community" },
+      { key: "leaderboard", href: "/community#leaderboard" },
+      { key: "feedback", href: "/feedback" },
     ],
   },
   {
-    title: "Legal",
+    key: "legal",
     links: [
-      { label: "Privacy", href: "/privacy" },
-      { label: "Terms", href: "/privacy#terms" },
+      { key: "privacy", href: "/privacy" },
+      { key: "terms", href: "/privacy#terms" },
     ],
   },
-];
+] as const;
 
 const SOCIALS = [
   { icon: FiGithub, href: "#", label: "GitHub" },
@@ -40,6 +42,7 @@ const SOCIALS = [
 ];
 
 export function Footer() {
+  const t = useTranslations("footer");
   const { ref, y } = useParallax(40);
 
   return (
@@ -47,7 +50,6 @@ export function Footer() {
       ref={ref}
       className="relative overflow-hidden border-t border-line bg-bg-subtle"
     >
-      {/* Parallax oversized wordmark */}
       <motion.div
         style={{ y }}
         aria-hidden
@@ -60,14 +62,11 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-base font-extrabold text-white">
-                S
-              </span>
+              <SubstiLogo size={36} />
               <span className="font-display text-lg font-extrabold">Substi</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
-              Your school schedule, gamified. Track classes, predict
-              substitutions, and climb the leaderboard.
+              {t("tagline")}
             </p>
             <div className="mt-6 flex gap-2.5">
               {SOCIALS.map(({ icon: Icon, href, label }) => (
@@ -87,17 +86,19 @@ export function Footer() {
           </div>
 
           {COLUMNS.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-sm font-semibold text-fg">{col.title}</h4>
+            <div key={col.key}>
+              <h4 className="text-sm font-semibold text-fg">
+                {t(`columns.${col.key}.title`)}
+              </h4>
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
-                  <li key={link.label}>
+                  <li key={link.key}>
                     <Link
                       href={link.href}
                       className="group inline-flex items-center text-sm text-fg-muted transition-colors hover:text-accent"
                     >
                       <span className="h-px w-0 bg-accent transition-all duration-300 group-hover:mr-2 group-hover:w-3" />
-                      {link.label}
+                      {t(`columns.${col.key}.${link.key}`)}
                     </Link>
                   </li>
                 ))}
@@ -107,8 +108,8 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 text-sm text-fg-subtle sm:flex-row">
-          <span>© {new Date().getFullYear()} Substi · powered by SiteBuilt</span>
-          <span>Made with care for students.</span>
+          <span>© {new Date().getFullYear()} Substi · {t("rights")}</span>
+          <span>{t("madeWith")}</span>
         </div>
       </div>
     </footer>

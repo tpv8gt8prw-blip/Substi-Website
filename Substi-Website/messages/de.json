@@ -1,0 +1,557 @@
+{
+  "meta": {
+    "defaultTitle": "Substi — Dein Stundenplan, spielerisch",
+    "description": "Substi macht aus deinem Stundenplan ein Spiel. Verfolge Stunden, sage Vertretungen voraus und klettere in der Rangliste — wunderschön für iOS gestaltet.",
+    "ogDescription": "Verfolge Stunden, sage Vertretungen voraus und klettere in der Rangliste."
+  },
+  "nav": {
+    "home": "Startseite",
+    "docs": "Dokumentation",
+    "changelog": "Änderungen",
+    "community": "Community",
+    "privacy": "Datenschutz",
+    "feedback": "Feedback",
+    "getApp": "App holen",
+    "menu": "Menü",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "toggleTheme": "Farbschema wechseln",
+    "switchLanguage": "Sprache wechseln",
+    "backToTop": "Nach oben"
+  },
+  "hero": {
+    "badge": "Jetzt mit iOS 26 Liquid Glass",
+    "titleLead": "Dein Stundenplan, endlich",
+    "titleHighlight": "spielerisch",
+    "subtitle": "Substi synchronisiert deinen WebUntis-Stundenplan, sagt Vertretungen voraus und macht den Schultag zu einem Spiel, das du wirklich öffnen willst.",
+    "downloadApp": "Im App Store laden",
+    "downloadAndroid": "Für Android laden (.apk)",
+    "androidSideloadHint": "Direkte Installation: Aktiviere „Installation aus unbekannten Quellen“ in den Android-Einstellungen, falls die Warnung erscheint.",
+    "joinCommunity": "Community beitreten",
+    "rating": "★★★★★ 4,9 Bewertung",
+    "predictions": "12.000+ Vorhersagen getroffen",
+    "scroll": "Scrollen"
+  },
+  "phone": {
+    "weekday": "Mittwoch",
+    "today": "Heute",
+    "coins": "Münzen",
+    "room": "Raum",
+    "substituted": "Vertretung",
+    "cancelled": "Entfällt",
+    "predictionWon": "Vorhersage gewonnen! 🎉",
+    "coinsWon": "+150 Münzen · ×3",
+    "subjects": {
+      "math": "Mathematik",
+      "physics": "Physik",
+      "english": "Englisch",
+      "history": "Geschichte",
+      "cs": "Informatik"
+    }
+  },
+  "features": {
+    "eyebrow": "Funktionen",
+    "title": "Alles, was dein Stundenplan können wollte",
+    "titleHighlight": "können wollte",
+    "subtitle": "Vier Säulen, die Substi zur Stundenplan-App machen, die Schüler wirklich freiwillig öffnen.",
+    "learnMore": "Mehr erfahren",
+    "items": [
+      {
+        "title": "Live-Stundenplan",
+        "short": "Deine ganze Woche, in Echtzeit aus WebUntis synchronisiert.",
+        "long": "Substi holt deinen Stundenplan direkt aus WebUntis und hält ihn synchron. Tages- und Wochenansicht, farbcodierte Fächer, Raumänderungen und eine klare Glas-Oberfläche, die sich auf iOS nativ anfühlt. Wische zwischen Tagen, springe zu heute und verpasse nie wieder eine Raumänderung."
+      },
+      {
+        "title": "Vertretungs-Vorhersagen",
+        "short": "Setze Münzen darauf, ob eine Stunde entfällt oder verlegt wird.",
+        "long": "Mach aus der täglichen Ungewissheit der Schule ein Spiel. Sage voraus, ob eine Stunde normal, vertreten oder entfallen ist, und setze virtuelle Münzen. Richtige Tipps zahlen mit Multiplikatoren bis ×3 aus — eine Serie aufzubauen fühlt sich großartig an."
+      },
+      {
+        "title": "Casino-Modus",
+        "short": "Dreh am Rad, klettere die Multiplikatoren hoch, jage den Jackpot.",
+        "long": "Eine optionale Casino-Ebene mit Glücksrad, animierten Walzen und risikoabgestimmten Auszahlungen. Alles ist Spielgeld und rein zum Spaß — eine wunderbare kleine Dopamin-Schleife im Liquid-Glass-Look."
+      },
+      {
+        "title": "Clevere Benachrichtigungen",
+        "short": "Werde benachrichtigt, sobald sich dein Plan ändert.",
+        "long": "Substi überwacht deinen Stundenplan und benachrichtigt dich in dem Moment, in dem eine Vertretung, ein Entfall oder eine Raumänderung eintrifft — damit du es erfährst, bevor du zum falschen Raum läufst."
+      }
+    ]
+  },
+  "how": {
+    "eyebrow": "So funktioniert's",
+    "title": "Vom Login zur Rangliste in Minuten",
+    "titleHighlight": "Rangliste",
+    "steps": [
+      {
+        "title": "WebUntis verbinden",
+        "body": "Melde dich mit Schulserver und Zugangsdaten an. Substi liest nur deinen Stundenplan — sonst nichts."
+      },
+      {
+        "title": "Deine Woche sehen",
+        "body": "Dein Plan erscheint sofort in einer schönen Tages- oder Wochenansicht, farbcodiert und immer aktuell."
+      },
+      {
+        "title": "Vorhersagen treffen",
+        "body": "Ein Lehrer, der oft fehlt? Setze Münzen darauf, ob die Stunde vertreten wird."
+      },
+      {
+        "title": "Nach oben klettern",
+        "body": "Gewinne Münzen, baue Serien auf und steige in der globalen Rangliste gegen deine Mitschüler auf."
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "label": "Vorhersagen getroffen" },
+      { "label": "Sync-Genauigkeit" },
+      { "label": "App-Store-Bewertung" },
+      { "label": "Datenschutz zuerst" }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Von Schülern geliebt",
+    "title": "Die Stundenplan-App, von der alle schwärmen",
+    "titleHighlight": "schwärmen",
+    "items": [
+      {
+        "quote": "Früher bin ich zweimal pro Woche zum falschen Raum gelaufen. Jetzt meldet sich Substi, bevor ich überhaupt losgehe. Die Vorhersagen machen seltsam süchtig.",
+        "name": "Lena M.",
+        "role": "11. Klasse"
+      },
+      {
+        "quote": "Der Liquid-Glass-Dock sieht ehrlich besser aus als die Hälfte der Apps von Apple. Butterweich auf meinem iPhone.",
+        "name": "Tobias K.",
+        "role": "Schüler-Entwickler"
+      },
+      {
+        "quote": "Casino-Modus in der Freistunde ist gefährlich. Meine ganze Klasse ist jetzt in der Rangliste.",
+        "name": "Sara P.",
+        "role": "12. Klasse"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Bereit, deinen Stundenplan zu spielen?",
+    "subtitle": "Lade Substi, verbinde WebUntis und platziere deine erste Vorhersage in unter fünf Minuten.",
+    "downloadApp": "Im App Store laden",
+    "downloadAndroid": "Für Android laden (.apk)",
+    "androidSideloadHint": "Direkte Installation: Aktiviere „Installation aus unbekannten Quellen“ in den Android-Einstellungen, falls die Warnung erscheint.",
+    "readDocs": "Doku lesen"
+  },
+  "footer": {
+    "tagline": "Dein Stundenplan, spielerisch. Verfolge Stunden, sage Vertretungen voraus und klettere in der Rangliste.",
+    "madeWith": "Mit Sorgfalt für Schüler gemacht.",
+    "rights": "powered by SiteBuilt",
+    "columns": {
+      "product": {
+        "title": "Produkt",
+        "features": "Funktionen",
+        "how": "So funktioniert's",
+        "changelog": "Änderungen",
+        "docs": "Dokumentation"
+      },
+      "community": {
+        "title": "Community",
+        "discord": "Discord",
+        "leaderboard": "Rangliste",
+        "feedback": "Feedback"
+      },
+      "legal": {
+        "title": "Rechtliches",
+        "privacy": "Datenschutz",
+        "terms": "Nutzungsbedingungen"
+      }
+    }
+  },
+  "docs": {
+    "eyebrow": "Doku",
+    "title": "Richte Substi in Minuten ein",
+    "titleHighlight": "Minuten",
+    "desc": "Vom Verbinden von WebUntis bis zum Meistern der Vorhersagen — hier ist alles.",
+    "sidebar": "Dokumentation",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "nav": {
+      "gettingStarted": "Erste Schritte",
+      "connecting": "WebUntis verbinden",
+      "predictions": "Vorhersagen",
+      "casino": "Casino-Modus",
+      "faq": "FAQ"
+    },
+    "gettingStarted": {
+      "stepLabel": "Schritt 1",
+      "heading": "Erste Schritte",
+      "body": "Substi ist für das iPhone im App Store verfügbar. Nach der Installation führt dich der Onboarding-Ablauf durch das Verbinden deines Schulkontos.",
+      "code": "1. Öffne den App Store und suche \"Substi\"\n2. Installiere und öffne die App\n3. Tippe auf \"WebUntis verbinden\""
+    },
+    "connecting": {
+      "heading": "WebUntis verbinden",
+      "body": "Du brauchst drei Dinge von deiner Schule: die Server-URL, den Schulnamen und deinen persönlichen Login. Substi nutzt diese nur, um deinen Stundenplan zu lesen.",
+      "note": "Zugangsdaten werden sicher auf dem Gerät im iOS-Schlüsselbund gespeichert."
+    },
+    "predictions": {
+      "heading": "Vorhersagen",
+      "intro": "Stelle den Schalter auf Casino und tippe auf eine Stunde, um eine Vorhersage zu platzieren. Wähle ein Ergebnis und einen Einsatz:",
+      "outcomes": [
+        { "name": "Normal", "desc": "×1,5 — die Stunde findet wie geplant statt" },
+        { "name": "Vertretung", "desc": "×3 — ein anderer Lehrer übernimmt" },
+        { "name": "Entfall", "desc": "×3 — die Stunde fällt komplett aus" }
+      ]
+    },
+    "casino": {
+      "heading": "Casino-Modus",
+      "body": "Der Casino-Modus fügt ein optionales Glücksrad und Walzen hinzu, für wenn du eine Freistunde hast. Alles ist Spielgeld — es ist nie echtes Geld im Spiel."
+    },
+    "faqHeading": "FAQ"
+  },
+  "faq": {
+    "items": [
+      {
+        "q": "Ist Substi kostenlos?",
+        "a": "Ja. Substi ist völlig kostenlos zum Laden und Nutzen. Es gibt keine Werbung und keine Echtgeld-Transaktionen — alle Münzen sind virtuell und nur zum Spaß."
+      },
+      {
+        "q": "Welche Schulen werden unterstützt?",
+        "a": "Jede Schule, die WebUntis nutzt. Du gibst einfach den Server deiner Schule und deinen normalen WebUntis-Login ein."
+      },
+      {
+        "q": "Sind meine Daten sicher?",
+        "a": "Deine Zugangsdaten werden nur zum Abrufen deines Stundenplans verwendet und sicher auf deinem Gerät gespeichert. Wir verkaufen oder teilen deine Daten nie. Alle Details findest du auf der Datenschutzseite."
+      },
+      {
+        "q": "Ist bei den Vorhersagen echtes Geld im Spiel?",
+        "a": "Niemals. Jede Münze in Substi ist virtuell. Casino-Modus und Vorhersagen dienen rein der Unterhaltung und dem Angeben."
+      },
+      {
+        "q": "Funktioniert es offline?",
+        "a": "Dein zuletzt synchronisierter Stundenplan wird zwischengespeichert, sodass du ihn offline sehen kannst. Vorhersagen und die Rangliste benötigen eine Verbindung."
+      }
+    ]
+  },
+  "privacy": {
+    "eyebrow": "Datenschutz",
+    "title": "Datenschutzerklärung",
+    "titleHighlight": "Substi",
+    "desc": "Gültig ab 5. Juni 2026 — transparent erklärt, was wir speichern und was nicht.",
+    "toc": "Auf dieser Seite",
+    "lastUpdated": "Letzte Aktualisierung: 5. Juni 2026",
+    "doNotStoreLabel": "Wir speichern NICHT:",
+    "doStoreLocalLabel": "Wir speichern lokal auf deinem iPhone:",
+    "doStoreServerLabel": "Wir speichern auf unserem Server (Upstash):",
+    "whereLabel": "Wo:",
+    "notStoredLabel": "Was NICHT gespeichert wird:",
+    "visibleLabel": "Was du siehst:",
+    "notVisibleLabel": "Was NICHT sichtbar ist:",
+    "sections": [
+      {
+        "id": "controller",
+        "title": "1. Verantwortlicher",
+        "body": [
+          "Aco2577 (Entwickler)",
+          "Substi iOS App",
+          "E-Mail: sitebuiltcontact@gmail.com"
+        ]
+      },
+      {
+        "id": "overview",
+        "title": "2. Übersicht: Was wir speichern & was nicht",
+        "doNotStore": [
+          "WebUntis-Passwörter (niemals!)",
+          "WebUntis-Benutzernamen auf dem Server",
+          "Schulemails oder echte Namen",
+          "Schulnummern",
+          "Biometrische Daten",
+          "Standortdaten"
+        ],
+        "doStoreLocal": [
+          "WebUntis-Credentials (nur lokal in iOS Keychain für tägliche Updates)",
+          "Dein Stundenplan",
+          "Hausübungen und Prüfungen",
+          "Fotos (die du hinzufügst)"
+        ],
+        "doStoreServer": [
+          "Substi-Username (z. B. „paco_gaming“)",
+          "Avatar-ID (z. B. „avatar_blue_cat“)",
+          "Coins/Punkte (für Leaderboard)",
+          "Schule (zum Leaderboard-Filter)",
+          "Passwort-Hash (bcrypt — kein Klartext-Passwort)"
+        ]
+      },
+      {
+        "id": "upstash",
+        "title": "3. Upstash (Drittanbieter)",
+        "body": [
+          "Profil- und Leaderboard-Daten werden auf Upstash (upstash.com) gespeichert — einem Cloud-Redis-Dienst mit HTTPS und Token-Authentifizierung.",
+          "Upstash speichert nur Substi-Profildaten (Username, Avatar, Coins, Schule, Passwort-Hash). WebUntis-Passwörter werden dort nicht gespeichert."
+        ]
+      },
+      {
+        "id": "details",
+        "title": "4. Detailliert: Wie wir mit deinen Daten umgehen",
+        "subsections": [
+          {
+            "title": "4.1 WebUntis-Login (einmalig)",
+            "steps": [
+              "Du gibst deine WebUntis-Benutzerdaten ein",
+              "Die App sendet diese einmalig an unser Backend",
+              "Backend lädt deinen Stundenplan von WebUntis",
+              "Dein Passwort wird NICHT gespeichert",
+              "Der Stundenplan wird lokal auf deinem iPhone gecacht"
+            ],
+            "where": [
+              "Dein Passwort: Lokal in iOS Keychain (nur auf deinem Gerät)",
+              "Dein Stundenplan: Lokal auf deinem iPhone",
+              "Upstash Server: Nichts davon!"
+            ]
+          },
+          {
+            "title": "4.2 Substi-Profil-Erstellung",
+            "steps": [
+              "Du wählst einen Username (z. B. „paco_gaming“)",
+              "Du wählst einen Avatar und ein Substi-Passwort",
+              "Das Passwort wird mit bcrypt gehasht — nur der Hash geht zu Upstash",
+              "Gespeichert werden: substi_username, avatar_id, school, coins"
+            ],
+            "where": [
+              "Upstash Redis (unser Server)",
+              "Sichtbar: Nur im Leaderboard mit deinem Username + Avatar"
+            ],
+            "notStored": [
+              "Dein echter Name",
+              "Deine Schulnummer",
+              "Deine Schulmail",
+              "Deine WebUntis-Daten",
+              "Dein Substi-Passwort im Klartext"
+            ]
+          },
+          {
+            "title": "4.3 Leaderboard",
+            "visible": [
+              "Rang #1–10",
+              "Username (z. B. „paco_gaming“)",
+              "Avatar",
+              "Coins"
+            ],
+            "notVisible": [
+              "Echter Name",
+              "Schulmail",
+              "Klasse",
+              "WebUntis-Daten",
+              "Schulinformationen anderer Nutzer"
+            ]
+          },
+          {
+            "title": "4.4 Hausübungen & Fotos",
+            "body": [
+              "Deine Fotos werden lokal auf deinem iPhone gespeichert, werden nicht zu unserem Server gesendet und bleiben dein Eigentum."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "passwords",
+        "title": "5. Passwort-Sicherheit",
+        "list": [
+          "Substi-Passwort: bcrypt-Hash auf Upstash (niemals Klartext)",
+          "WebUntis-Passwort: nur lokal in iOS Keychain",
+          "WebUntis-Passwort wird nicht an Upstash gesendet",
+          "Vorhersagen speichern keine WebUntis-Passwörter"
+        ]
+      },
+      {
+        "id": "sync",
+        "title": "6. Background-Sync (Tägliche Updates)",
+        "steps": [
+          "Täglich um 7 Uhr versucht die App, deinen Stundenplan zu aktualisieren",
+          "Die App lädt deine WebUntis-Credentials aus der Keychain",
+          "Die App kontaktiert WebUntis direkt (nicht unser Backend)",
+          "Unser Backend sieht deine WebUntis-Passwörter NICHT",
+          "Nur der neue Stundenplan wird lokal aktualisiert"
+        ]
+      },
+      {
+        "id": "deletion",
+        "title": "7. Daten löschen",
+        "list": [
+          "Profil löschen → alle Upstash-Daten werden entfernt",
+          "Abmelden → lokale Daten auf dem Gerät werden gelöscht",
+          "Kontakt für Löschanfragen: sitebuiltcontact@gmail.com"
+        ]
+      },
+      {
+        "id": "retention",
+        "title": "8. Speicherfristen",
+        "list": [
+          "Substi-Profil: 365 Tage (oder bis zur Löschung)",
+          "Coins/Leaderboard: bis zur Profil-Löschung",
+          "Stundenplan (lokal): bis zur App-Deinstallation",
+          "Vorhersagen: ohne Passwörter, nur Spielmetadaten"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "9. Sicherheitsmaßnahmen (Art. 32 DSGVO)",
+        "list": [
+          "bcrypt-Hashing für Substi-Passwörter",
+          "HTTPS für alle API-Verbindungen",
+          "iOS Keychain für WebUntis-Credentials",
+          "Upstash Redis mit Authentifizierung",
+          "Keine Speicherung von WebUntis-Passwörtern auf dem Server"
+        ]
+      },
+      {
+        "id": "cookies",
+        "title": "10. Cookies & Tracking",
+        "list": [
+          "Keine Cookies",
+          "Kein Tracking",
+          "Keine Analytics auf sensible Daten",
+          "Nur technisch notwendige Daten (für Login/Sync)"
+        ]
+      },
+      {
+        "id": "rights",
+        "title": "11. Deine Rechte (DSGVO)",
+        "rights": [
+          "Auskunft: Frag, welche Daten wir speichern",
+          "Berichtigung: Falsche Daten korrigieren",
+          "Löschung: Recht auf Vergessenwerden",
+          "Datenmitnahme: Deine Daten exportieren"
+        ],
+        "body": [
+          "Kontakt: sitebuiltcontact@gmail.com"
+        ]
+      },
+      {
+        "id": "changes",
+        "title": "12. Änderungen dieser Datenschutzerklärung",
+        "body": [
+          "Wir können diese Richtlinie jederzeit aktualisieren. Die aktuelle Version ist immer auf unserer Website verfügbar."
+        ]
+      },
+      {
+        "id": "contact",
+        "title": "13. Kontakt",
+        "body": [
+          "Fragen zum Datenschutz? Schreib an sitebuiltcontact@gmail.com",
+          "Oder auf der Website: substi-website.vercel.app/privacy"
+        ]
+      }
+    ]
+  },
+  "feedback": {
+    "eyebrow": "Feedback",
+    "title": "Sag uns, was wir als Nächstes bauen sollen",
+    "titleHighlight": "bauen",
+    "desc": "Einen Fehler gefunden, eine Idee oder einfach Lust, Hallo zu sagen? Wir freuen uns auf deine Nachricht.",
+    "perks": [
+      { "title": "Wir lesen alles", "body": "Jede Nachricht landet in unserem Postfach und prägt die Roadmap." },
+      { "title": "Mit Schülern gebaut", "body": "Die meisten Funktionen begannen als ein einzelner Vorschlag wie deiner." },
+      { "title": "Schnelle Antworten", "body": "Wir melden uns meist innerhalb von ein bis zwei Tagen." }
+    ],
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Alex Schüler",
+      "email": "E-Mail",
+      "emailPlaceholder": "du@schule.de",
+      "topic": "Thema",
+      "topics": ["Allgemeines Feedback", "Fehlerbericht", "Funktionswunsch", "Sonstiges"],
+      "message": "Nachricht",
+      "messagePlaceholder": "Sag uns, was du denkst…",
+      "submit": "Feedback senden",
+      "successTitle": "Nachricht gesendet!",
+      "successBody": "Danke für dein Feedback — wir lesen jede Nachricht.",
+      "sendAnother": "Weitere senden",
+      "errors": {
+        "name": "Bitte sag uns deinen Namen.",
+        "email": "Gib eine gültige E-Mail-Adresse ein.",
+        "message": "Die Nachricht sollte mindestens 10 Zeichen lang sein."
+      }
+    }
+  },
+  "changelog": {
+    "eyebrow": "Änderungen",
+    "title": "Ständig neue Releases",
+    "titleHighlight": "Releases",
+    "desc": "Ein Blick darauf, wie sich Substi entwickelt hat — und ein Ausblick auf das, was kommt.",
+    "latest": "Neueste",
+    "roadmapTitle": "Auf der Roadmap",
+    "entries": [
+      {
+        "version": "4.0",
+        "date": "Mai 2026",
+        "title": "Liquid-Glass-Neugestaltung",
+        "points": [
+          "Brandneuer iOS-26-Liquid-Glass-Dock mit Echtzeit-Lichtbrechung",
+          "Wischbare Tag/Woche- und Plan/Casino-Schalter",
+          "Klassische (undurchsichtige) Theme-Option für Geräte ohne Glas",
+          "Flüssigere 60-fps-Animationen überall"
+        ]
+      },
+      {
+        "version": "3.2",
+        "date": "Mär 2026",
+        "title": "Überarbeitung des Casino-Modus",
+        "points": [
+          "Neu gestaltetes Glücksrad mit physikbasiertem Easing",
+          "Neue Auszahlungs-Multiplikatoren und Serien-Boni",
+          "Flackern der Rangliste beim Aktualisieren behoben"
+        ]
+      },
+      {
+        "version": "3.0",
+        "date": "Jan 2026",
+        "title": "Vorhersagen & Rangliste",
+        "points": [
+          "Vertretungs-Vorhersagen mit Münzeinsatz eingeführt",
+          "Globale Rangliste mit wöchentlichem Reset",
+          "Cloud-Sync über mehrere Geräte"
+        ]
+      },
+      {
+        "version": "2.0",
+        "date": "Sep 2025",
+        "title": "Wochenansicht & Themes",
+        "points": [
+          "Volle Wochen-Rasteransicht hinzugefügt",
+          "Sieben Akzentfarben-Themes",
+          "Dark-Mode-Feinschliff"
+        ]
+      }
+    ],
+    "roadmap": [
+      { "title": "Android-Beta", "body": "Substi kommt über einen React-Native-Build auf Android." },
+      { "title": "Freundes-Ligen", "body": "Private Ranglisten, die du mit deiner Klasse teilen kannst." },
+      { "title": "Widgets", "body": "Home- und Sperrbildschirm-Widgets für deine nächste Stunde." }
+    ]
+  },
+  "community": {
+    "eyebrow": "Community",
+    "title": "Du sagst nicht allein voraus",
+    "titleHighlight": "allein",
+    "desc": "Schließe dich Tausenden Schülern an, die Serien vergleichen, Tipps teilen und gemeinsam in der Rangliste klettern.",
+    "joinDiscord": "Discord beitreten",
+    "stats": [
+      { "label": "Discord-Mitglieder" },
+      { "label": "Vorhersagen getroffen" },
+      { "label": "Nachrichten" }
+    ],
+    "featuredEyebrow": "Vorgestellte Mitglieder",
+    "featuredTitle": "Triff die Leute auf dem Board",
+    "featuredHighlight": "Board",
+    "featured": [
+      { "role": "32-Tage-Serie", "quote": "Entfälle vorherzusagen hat mir Platz 1 gebracht. Die Community holt mich immer wieder zurück." },
+      { "role": "Top-Vorhersager", "quote": "Casino-Modus in Freistunden mit meiner Klasse ist jetzt das Beste an der Schule." },
+      { "role": "Beta-Tester", "quote": "Habe einen Fehler auf Discord gemeldet und er war am nächsten Tag behoben. Diese Entwickler hören wirklich zu." }
+    ],
+    "leaderboardEyebrow": "Rangliste",
+    "leaderboardTitle": "Die Top-Vorhersager dieser Woche",
+    "leaderboardHighlight": "Top-Vorhersager",
+    "leaderboardCaption": "Lade Substi und fang an zu klettern — das Board wird jeden Montag zurückgesetzt.",
+    "patreon": {
+      "cta": "Auf Patreon unterstützen",
+      "description": "Substi ist ein selbst finanziertes Projekt von Schülern für Schüler. Wenn du mithelfen möchtest, deckt freiwillige Unterstützung auf Patreon Serverkosten und hält die Weiterentwicklung am Laufen — ganz ohne Druck. Unterstützer können mit der Zeit kleine Vorteile bekommen, etwa ein Supporter-Badge oder Early Access zu Updates, die wir Schritt für Schritt ausrollen."
+    }
+  }
+}

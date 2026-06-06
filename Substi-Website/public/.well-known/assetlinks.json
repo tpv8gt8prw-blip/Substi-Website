@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.onrender.substi.twa",
+      "sha256_cert_fingerprints": [
+        "19:AF:BB:E8:00:F2:AA:62:BE:EC:4C:E3:DC:8C:20:BB:9C:3C:FC:E0:88:87:F3:14:CA:36:ED:5E:D7:DB:A1:2B"
+      ]
+    }
+  }
+]

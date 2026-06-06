@@ -1,15 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { FiCalendar, FiZap, FiBell, FiUser } from "react-icons/fi";
+import { SUBSTI_ICON_SRC } from "@/components/ui/SubstiLogo";
 
 const LESSONS = [
-  { time: "08:00", subject: "Mathematics", room: "A2.14", tone: "normal" },
-  { time: "08:55", subject: "Physics", room: "Lab 3", tone: "sub" },
-  { time: "09:50", subject: "English", room: "B1.02", tone: "normal" },
-  { time: "10:45", subject: "History", room: "—", tone: "cancel" },
-  { time: "11:40", subject: "Computer Sci", room: "C0.07", tone: "normal" },
-];
+  { time: "08:00", subjectKey: "math", room: "A2.14", tone: "normal" },
+  { time: "08:55", subjectKey: "physics", room: "Lab 3", tone: "sub" },
+  { time: "09:50", subjectKey: "english", room: "B1.02", tone: "normal" },
+  { time: "10:45", subjectKey: "history", room: "—", tone: "cancel" },
+  { time: "11:40", subjectKey: "cs", room: "C0.07", tone: "normal" },
+] as const;
 
 const toneStyles: Record<string, string> = {
   normal: "border-l-[3px] border-l-blue-500",
@@ -17,14 +20,20 @@ const toneStyles: Record<string, string> = {
   cancel: "border-l-[3px] border-l-red-500 opacity-60",
 };
 
-const toneBadge: Record<string, { label: string; cls: string }> = {
-  normal: { label: "Room", cls: "text-slate-400" },
-  sub: { label: "Substituted", cls: "text-accent" },
-  cancel: { label: "Cancelled", cls: "text-red-500" },
+const toneColor: Record<string, string> = {
+  normal: "text-slate-400",
+  sub: "text-accent",
+  cancel: "text-red-500",
 };
 
 /** A self-contained, animated mock of the Substi iOS app. */
 export function PhoneMockup() {
+  const t = useTranslations("phone");
+  const badgeLabel = (tone: string, room: string) => {
+    if (tone === "sub") return t("substituted");
+    if (tone === "cancel") return t("cancelled");
+    return room;
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, rotateY: -12 }}
@@ -45,21 +54,31 @@ export function PhoneMockup() {
           {/* status bar */}
           <div className="flex items-center justify-between px-6 pb-1 pt-3 text-[11px] font-semibold text-slate-900 dark:text-white">
             <span>9:41</span>
-            <span className="opacity-60">Substi</span>
+            <span className="flex items-center gap-1 opacity-80">
+              <Image
+                src={SUBSTI_ICON_SRC}
+                alt=""
+                width={14}
+                height={14}
+                className="rounded-[22%]"
+                aria-hidden
+              />
+              Substi
+            </span>
           </div>
 
           {/* header */}
           <div className="px-5 pt-3">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[11px] font-medium text-slate-400">Wednesday</p>
+                <p className="text-[11px] font-medium text-slate-400">{t("weekday")}</p>
                 <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">
-                  Today
+                  {t("today")}
                 </h3>
               </div>
               <div className="flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5">
                 <span className="text-sm font-bold text-accent">2,480</span>
-                <span className="text-[10px] text-accent/70">coins</span>
+                <span className="text-[10px] text-accent/70">{t("coins")}</span>
               </div>
             </div>
           </div>
@@ -68,7 +87,7 @@ export function PhoneMockup() {
           <div className="space-y-2 px-4 py-4">
             {LESSONS.map((l, i) => (
               <motion.div
-                key={l.subject}
+                key={l.subjectKey}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 + i * 0.12, ease: "easeOut" }}
@@ -77,11 +96,11 @@ export function PhoneMockup() {
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-[11px] text-slate-400">{l.time}</span>
                   <span className="text-sm font-semibold text-slate-900 dark:text-white">
-                    {l.subject}
+                    {t(`subjects.${l.subjectKey}`)}
                   </span>
                 </div>
-                <span className={`text-[10px] font-medium ${toneBadge[l.tone].cls}`}>
-                  {l.tone === "normal" ? l.room : toneBadge[l.tone].label}
+                <span className={`text-[10px] font-medium ${toneColor[l.tone]}`}>
+                  {badgeLabel(l.tone, l.room)}
                 </span>
               </motion.div>
             ))}
@@ -117,8 +136,8 @@ export function PhoneMockup() {
         transition={{ delay: 1.6, type: "spring", stiffness: 260, damping: 18 }}
         className="absolute -right-6 top-28 hidden rounded-2xl border border-line bg-bg-elevated px-3.5 py-2.5 shadow-xl sm:block"
       >
-        <p className="text-[11px] font-semibold text-fg">Prediction won! 🎉</p>
-        <p className="text-[10px] text-accent">+150 coins · ×3</p>
+        <p className="text-[11px] font-semibold text-fg">{t("predictionWon")}</p>
+        <p className="text-[10px] text-accent">{t("coinsWon")}</p>
       </motion.div>
     </motion.div>
   );
