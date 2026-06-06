@@ -257,15 +257,15 @@
         "id": "overview",
         "title": "2. Overview: What we store & what we don't",
         "doNotStore": [
-          "WebUntis passwords",
-          "WebUntis usernames",
+          "WebUntis passwords (never!)",
+          "WebUntis usernames on our server",
           "School emails or real names",
           "Student ID numbers",
           "Biometric data",
           "Location data"
         ],
         "doStoreLocal": [
-          "WebUntis credentials (local iOS Keychain only, for timetable updates)",
+          "WebUntis credentials (local iOS Keychain only, for daily updates)",
           "Your timetable",
           "Homework and exams",
           "Photos you add"
@@ -274,15 +274,24 @@
           "Substi username (e.g. \"paco_gaming\")",
           "Avatar ID (e.g. \"avatar_blue_cat\")",
           "Coins/points (for the leaderboard)",
-          "School (for leaderboard filtering)"
+          "School (for leaderboard filtering)",
+          "Password hash (bcrypt — not plaintext)"
+        ]
+      },
+      {
+        "id": "upstash",
+        "title": "3. Upstash (third-party provider)",
+        "body": [
+          "Profile and leaderboard data is stored on Upstash (upstash.com) — a cloud Redis service with HTTPS and token authentication.",
+          "Upstash only stores Substi profile data (username, avatar, coins, school, password hash). WebUntis passwords are not stored there."
         ]
       },
       {
         "id": "details",
-        "title": "3. In detail: How we handle your data",
+        "title": "4. In detail: How we handle your data",
         "subsections": [
           {
-            "title": "3.1 WebUntis login (one-time)",
+            "title": "4.1 WebUntis login (one-time)",
             "steps": [
               "You enter your WebUntis credentials",
               "The app sends them once to our backend",
@@ -297,11 +306,12 @@
             ]
           },
           {
-            "title": "3.2 Substi profile creation",
+            "title": "4.2 Substi profile creation",
             "steps": [
               "You choose a username (e.g. \"paco_gaming\")",
-              "You choose an avatar",
-              "The app stores: substi_username, avatar_id, school, and coins"
+              "You choose an avatar and a Substi password",
+              "The password is hashed with bcrypt — only the hash is sent to Upstash",
+              "Stored fields: substi_username, avatar_id, school, coins"
             ],
             "where": [
               "Upstash Redis (our server)",
@@ -311,11 +321,12 @@
               "Your real name",
               "Your student ID",
               "Your school email",
-              "Your WebUntis data"
+              "Your WebUntis data",
+              "Your Substi password in plaintext"
             ]
           },
           {
-            "title": "3.3 Leaderboard",
+            "title": "4.3 Leaderboard",
             "visible": [
               "Rank #1–10",
               "Username (e.g. \"paco_gaming\")",
@@ -323,14 +334,15 @@
               "Coins"
             ],
             "notVisible": [
-              "School information",
               "Real names",
               "School emails",
-              "Personal data"
+              "Class/grade",
+              "WebUntis data",
+              "Other users' school details"
             ]
           },
           {
-            "title": "3.4 Homework & photos",
+            "title": "4.4 Homework & photos",
             "body": [
               "Your photos are stored locally on your iPhone, are not sent to our server, and remain your property."
             ]
@@ -338,31 +350,59 @@
         ]
       },
       {
+        "id": "passwords",
+        "title": "5. Password security",
+        "list": [
+          "Substi password: bcrypt hash on Upstash (never plaintext)",
+          "WebUntis password: local iOS Keychain only",
+          "WebUntis password is not sent to Upstash",
+          "Predictions do not store WebUntis passwords"
+        ]
+      },
+      {
         "id": "sync",
-        "title": "4. Background sync (daily updates)",
+        "title": "6. Background sync (daily updates)",
         "steps": [
           "Every day at 7 a.m., the app tries to refresh your timetable",
           "The app loads your WebUntis credentials from the Keychain",
           "The app contacts WebUntis directly (not our backend)",
-          "Our backend does NOT see your passwords",
+          "Our backend does NOT see your WebUntis passwords",
           "Only the updated timetable is saved locally"
         ]
       },
       {
-        "id": "security",
-        "title": "5. Data security",
+        "id": "deletion",
+        "title": "7. Deleting your data",
         "list": [
+          "Delete profile → all Upstash data is removed",
+          "Log out → local data on your device is cleared",
+          "Deletion requests: sitebuiltcontact@gmail.com"
+        ]
+      },
+      {
+        "id": "retention",
+        "title": "8. Retention periods",
+        "list": [
+          "Substi profile: 365 days (or until deletion)",
+          "Coins/leaderboard: until profile deletion",
+          "Timetable (local): until app uninstall",
+          "Predictions: no passwords, game metadata only"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "9. Security measures (GDPR Art. 32)",
+        "list": [
+          "bcrypt hashing for Substi passwords",
           "HTTPS for all API connections",
           "iOS Keychain for WebUntis credentials",
           "Authenticated Upstash Redis",
-          "We have no access to your WebUntis data",
-          "We cannot see your password",
-          "You can log out at any time (everything is deleted)"
+          "No WebUntis password storage on the server"
         ]
       },
       {
         "id": "cookies",
-        "title": "6. Cookies & tracking",
+        "title": "10. Cookies & tracking",
         "list": [
           "No cookies",
           "No tracking",
@@ -372,7 +412,7 @@
       },
       {
         "id": "rights",
-        "title": "7. Your rights (GDPR)",
+        "title": "11. Your rights (GDPR)",
         "rights": [
           "Access: Ask what data we store",
           "Rectification: Correct inaccurate data",
@@ -385,14 +425,14 @@
       },
       {
         "id": "changes",
-        "title": "8. Changes to this privacy policy",
+        "title": "12. Changes to this privacy policy",
         "body": [
           "We may update this policy at any time. The current version is always available on our website."
         ]
       },
       {
         "id": "contact",
-        "title": "9. Contact",
+        "title": "13. Contact",
         "body": [
           "Privacy questions? Email sitebuiltcontact@gmail.com",
           "Or on the website: substi-website.vercel.app/privacy"
