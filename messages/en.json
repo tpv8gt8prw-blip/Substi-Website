@@ -248,8 +248,10 @@
         "id": "controller",
         "title": "1. Controller",
         "body": [
-          "Aco",
-          "Contact for privacy requests: Substi.Contact@gmail.com"
+          "Responsible for data processing under the GDPR:",
+          "Aco (Developer of the Substi app)",
+          "Email: Substi.Contact@gmail.com",
+          "Substi is a non-commercial project. For all privacy requests, please use the email address above."
         ]
       },
       {
@@ -281,25 +283,40 @@
         ]
       },
       {
+        "id": "legal-basis",
+        "title": "5. Legal Basis for Processing",
+        "body": [
+          "Your data is processed in accordance with Art. 6(1)(b) GDPR to provide the app's functions and to fulfill the usage relationship. Display in the public leaderboard is based on your consent (Art. 6(1)(a) GDPR), which you give by creating a game profile and can withdraw by deleting your account."
+        ]
+      },
+      {
         "id": "infrastructure",
-        "title": "5. Technical Infrastructure",
+        "title": "6. Technical Infrastructure",
         "body": [
           "Hosting: Vercel Inc., San Francisco, CA, USA (https://vercel.com/legal/privacy-policy)",
+          "Since Vercel Inc. is based in the USA, personal data may be transferred to the USA. For such transfers to third countries, the Standard Contractual Clauses approved by the European Commission are used.",
           "Database: Upstash Inc. (Redis database), server location Frankfurt, Germany (EU) (https://upstash.com/trust/privacy.pdf)",
           "Upstash Inc. is used as a data processor. The Upstash Data Processing Agreement (https://upstash.com/trust/dpa.pdf) applies, which includes the EU Standard Contractual Clauses.",
           "The database only stores the profile data listed under point 4."
         ]
       },
       {
+        "id": "server-logs",
+        "title": "7. Server Logs",
+        "body": [
+          "When using the app, technical server logs (e.g. IP address, timestamp and error logs) may be automatically processed by our hosting providers. These are used solely to ensure operation and technical security and are not merged with your game profile."
+        ]
+      },
+      {
         "id": "leaderboard",
-        "title": "6. Public Leaderboard",
+        "title": "8. Public Leaderboard",
         "body": [
           "Your self-chosen username, avatar and coin balance are shown in the app's public leaderboard and are visible to other users. If you do not want this, do not create a game profile or delete your account."
         ]
       },
       {
         "id": "deletion",
-        "title": "7. Right to Erasure (Art. 17 GDPR)",
+        "title": "9. Right to Erasure (Art. 17 GDPR)",
         "body": [
           "You can delete your account and all associated data at any time: Settings → Account → Delete Account.",
           "The following will be permanently removed:"
@@ -315,14 +332,26 @@
       },
       {
         "id": "rights",
-        "title": "8. Your Rights",
+        "title": "10. Your Rights",
         "body": [
-          "Under the GDPR, you have the right to access, rectify, erase and restrict the processing of your data. Contact us at: Substi.Contact@gmail.com"
+          "Under the GDPR, you have the following rights regarding your data:"
+        ],
+        "list": [
+          "Right to access (Art. 15 GDPR)",
+          "Right to rectification (Art. 16 GDPR)",
+          "Right to erasure (Art. 17 GDPR)",
+          "Right to restriction of processing (Art. 18 GDPR)",
+          "Right to data portability (Art. 20 GDPR)",
+          "Right to object (Art. 21 GDPR)"
+        ],
+        "rights": [
+          "You also have the right to lodge a complaint with a data protection supervisory authority. In Austria, this is the Austrian Data Protection Authority (dsb.gv.at).",
+          "For all matters, contact us at: Substi.Contact@gmail.com"
         ]
       },
       {
         "id": "changes",
-        "title": "9. Changes",
+        "title": "11. Changes",
         "body": [
           "This privacy policy may be updated when necessary. The date above shows the last modification."
         ]

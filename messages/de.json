@@ -248,8 +248,10 @@
         "id": "controller",
         "title": "1. Verantwortlicher",
         "body": [
-          "Aco",
-          "Kontakt für Datenschutzanfragen: Substi.Contact@gmail.com"
+          "Verantwortlich für die Datenverarbeitung im Sinne der DSGVO:",
+          "Aco (Entwickler der Substi-App)",
+          "E-Mail: Substi.Contact@gmail.com",
+          "Substi ist ein nicht-kommerzielles Projekt. Für alle Datenschutzanfragen nutze bitte die oben genannte E-Mail-Adresse."
         ]
       },
       {
@@ -281,25 +283,40 @@
         ]
       },
       {
+        "id": "legal-basis",
+        "title": "5. Rechtsgrundlage der Verarbeitung",
+        "body": [
+          "Die Verarbeitung deiner Daten erfolgt gemäß Art. 6 Abs. 1 lit. b DSGVO zur Bereitstellung der App-Funktionen und zur Durchführung des Nutzungsverhältnisses. Die Anzeige im öffentlichen Leaderboard erfolgt auf Grundlage deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du durch das Erstellen eines Spielprofils erteilst und durch Löschen des Accounts widerrufen kannst."
+        ]
+      },
+      {
         "id": "infrastructure",
-        "title": "5. Technische Infrastruktur",
+        "title": "6. Technische Infrastruktur",
         "body": [
           "Hosting: Vercel Inc., San Francisco, CA, USA (https://vercel.com/legal/privacy-policy)",
+          "Da Vercel Inc. seinen Sitz in den USA hat, können personenbezogene Daten in die USA übermittelt werden. Für solche Datenübermittlungen in Drittländer werden die von der Europäischen Kommission genehmigten Standardvertragsklauseln (Standard Contractual Clauses) verwendet.",
           "Datenbank: Upstash Inc. (Redis-Datenbank), Serverstandort Frankfurt, Deutschland (EU) (https://upstash.com/trust/privacy.pdf)",
           "Als Auftragsverarbeiter wird Upstash Inc. eingesetzt. Es gilt das Upstash Data Processing Agreement (https://upstash.com/trust/dpa.pdf), welches die EU-Standardvertragsklauseln beinhaltet.",
           "In der Datenbank werden ausschließlich die unter Punkt 4 genannten Profildaten gespeichert."
         ]
       },
       {
+        "id": "server-logs",
+        "title": "7. Server-Logs",
+        "body": [
+          "Beim Aufruf der App können technische Server-Logs (z. B. IP-Adresse, Zeitstempel und Fehlerprotokolle) automatisch durch unsere Hosting-Anbieter verarbeitet werden. Diese dienen ausschließlich der Sicherstellung des Betriebs und der technischen Sicherheit und werden nicht mit deinem Spielprofil zusammengeführt."
+        ]
+      },
+      {
         "id": "leaderboard",
-        "title": "6. Öffentliches Leaderboard",
+        "title": "8. Öffentliches Leaderboard",
         "body": [
           "Dein selbstgewählter Benutzername, dein Avatar und dein Münzstand werden im öffentlichen Leaderboard der App angezeigt und sind für andere Nutzer sichtbar. Wenn du dies nicht möchtest, erstelle kein Spielprofil oder lösche deinen Account."
         ]
       },
       {
         "id": "deletion",
-        "title": "7. Recht auf Löschung (Art. 17 DSGVO)",
+        "title": "9. Recht auf Löschung (Art. 17 DSGVO)",
         "body": [
           "Du kannst deinen Account und alle damit verbundenen Daten jederzeit selbst löschen: Einstellungen → Account → Account löschen.",
           "Dabei werden dauerhaft entfernt:"
@@ -315,14 +332,26 @@
       },
       {
         "id": "rights",
-        "title": "8. Deine Rechte",
+        "title": "10. Deine Rechte",
         "body": [
-          "Nach der DSGVO hast du das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner Daten. Kontaktiere uns dazu unter: Substi.Contact@gmail.com"
+          "Nach der DSGVO hast du folgende Rechte bezüglich deiner Daten:"
+        ],
+        "list": [
+          "Recht auf Auskunft (Art. 15 DSGVO)",
+          "Recht auf Berichtigung (Art. 16 DSGVO)",
+          "Recht auf Löschung (Art. 17 DSGVO)",
+          "Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)",
+          "Recht auf Datenübertragbarkeit (Art. 20 DSGVO)",
+          "Recht auf Widerspruch (Art. 21 DSGVO)"
+        ],
+        "rights": [
+          "Außerdem hast du das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. In Österreich ist dies die Österreichische Datenschutzbehörde (dsb.gv.at).",
+          "Für alle Anliegen kontaktiere uns unter: Substi.Contact@gmail.com"
         ]
       },
       {
         "id": "changes",
-        "title": "9. Änderungen",
+        "title": "11. Änderungen",
         "body": [
           "Diese Datenschutzerklärung kann bei Bedarf aktualisiert werden. Das Datum oben zeigt die letzte Änderung."
         ]
