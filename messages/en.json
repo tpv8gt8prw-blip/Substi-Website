@@ -286,7 +286,7 @@
         "id": "legal-basis",
         "title": "5. Legal Basis for Processing",
         "body": [
-          "Your data is processed in accordance with Art. 6(1)(b) GDPR to provide the app's functions and to fulfill the usage relationship. Display in the public leaderboard is based on your consent (Art. 6(1)(a) GDPR), which you give by creating a game profile and can withdraw by deleting your account."
+          "Your data is processed in accordance with Art. 6(1)(b) GDPR to provide the app's functions and to fulfill the usage relationship. Display in the public leaderboard is part of the game functionality and is therefore also based on Art. 6(1)(b) GDPR. Deleting your account removes your leaderboard entry."
         ]
       },
       {
@@ -327,7 +327,8 @@
           "Your leaderboard entry"
         ],
         "rights": [
-          "Since timetable data is not stored anyway, no personal data remains with us after deletion. For manual requests: Substi.Contact@gmail.com"
+          "After deletion of the game profile, the profile data stored by Substi is removed. There are no legal retention obligations. Technical server logs of the hosting providers (see Server Logs section) may remain unaffected.",
+          "For manual requests: Substi.Contact@gmail.com"
         ]
       },
       {

@@ -286,7 +286,7 @@
         "id": "legal-basis",
         "title": "5. Rechtsgrundlage der Verarbeitung",
         "body": [
-          "Die Verarbeitung deiner Daten erfolgt gemäß Art. 6 Abs. 1 lit. b DSGVO zur Bereitstellung der App-Funktionen und zur Durchführung des Nutzungsverhältnisses. Die Anzeige im öffentlichen Leaderboard erfolgt auf Grundlage deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du durch das Erstellen eines Spielprofils erteilst und durch Löschen des Accounts widerrufen kannst."
+          "Die Verarbeitung deiner Daten erfolgt gemäß Art. 6 Abs. 1 lit. b DSGVO zur Bereitstellung der App-Funktionen und zur Durchführung des Nutzungsverhältnisses. Die Anzeige im öffentlichen Leaderboard ist Bestandteil der Spielfunktion und erfolgt daher ebenfalls auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Durch Löschen deines Accounts wird dein Leaderboard-Eintrag entfernt."
         ]
       },
       {
@@ -327,7 +327,8 @@
           "Dein Leaderboard-Eintrag"
         ],
         "rights": [
-          "Da Stundenplandaten ohnehin nicht gespeichert werden, sind nach der Löschung keine personenbezogenen Daten mehr bei uns vorhanden. Für manuelle Anfragen: Substi.Contact@gmail.com"
+          "Nach der Löschung des Spielprofils werden die von Substi gespeicherten Profildaten entfernt. Gesetzliche Aufbewahrungspflichten bestehen nicht. Technische Server-Logs der Hosting-Anbieter (siehe Abschnitt Server-Logs) können davon unberührt bleiben.",
+          "Für manuelle Anfragen: Substi.Contact@gmail.com"
         ]
       },
       {
