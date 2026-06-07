@@ -233,9 +233,9 @@
     "eyebrow": "Privacy",
     "title": "Privacy Policy",
     "titleHighlight": "Substi",
-    "desc": "Effective June 4, 2026 — a clear breakdown of what we store and what we don't.",
+    "desc": "Substi is an app that displays your timetable from your school system (WebUntis) and adds a playful coin and prediction system. Protecting your data is important to us. This policy describes what data is processed and how.",
     "toc": "On this page",
-    "lastUpdated": "Last updated: June 4, 2026",
+    "lastUpdated": "Last updated: June 2026",
     "doNotStoreLabel": "We do NOT store:",
     "doStoreLocalLabel": "We store locally on your iPhone:",
     "doStoreServerLabel": "We store on our server (Upstash):",
@@ -246,213 +246,84 @@
     "sections": [
       {
         "id": "controller",
-        "title": "1. Data Controller",
+        "title": "1. Controller",
         "body": [
-          "Aco2577 (Developer)",
-          "Substi iOS App",
-          "Email: Substi.Contact@gmail.com"
+          "Aco",
+          "Contact for privacy requests: Substi.Contact@gmail.com"
         ]
       },
       {
-        "id": "overview",
-        "title": "2. Overview: What we store & what we don't",
-        "doNotStore": [
-          "WebUntis passwords (never!)",
-          "WebUntis usernames on our server",
-          "School emails or real names",
-          "Student ID numbers",
-          "Biometric data",
-          "Location data"
+        "id": "credentials",
+        "title": "2. School Platform Credentials",
+        "body": [
+          "Your login credentials for the school system (username and password) are used solely for one-time authentication. They are NOT stored on our servers and remain encrypted on your device only (iOS Keychain)."
+        ]
+      },
+      {
+        "id": "timetable",
+        "title": "3. Timetable Data",
+        "body": [
+          "Your timetable and related school information are retrieved live from the school system each time you use the app and transmitted through our server to the app. This data is NOT stored permanently. It only exists temporarily in memory during transmission."
+        ]
+      },
+      {
+        "id": "profile",
+        "title": "4. Substi Game Profile",
+        "body": [
+          "A separate profile is created for the playful features. We store:",
+          "Your actual password is never stored, only an irreversible hash."
         ],
-        "doStoreLocal": [
-          "WebUntis credentials (local iOS Keychain only, for daily updates)",
-          "Your timetable",
-          "Homework and exams",
-          "Photos you add"
-        ],
-        "doStoreServer": [
-          "Substi username (e.g. \"paco_gaming\")",
-          "Avatar ID (e.g. \"avatar_blue_cat\")",
-          "Coins/points (for the leaderboard)",
-          "Password hash (bcrypt — not plaintext)"
+        "list": [
+          "Self-chosen username",
+          "Avatar selection",
+          "Coin balance",
+          "Encrypted password hash (bcrypt)"
         ]
       },
       {
         "id": "infrastructure",
-        "title": "3. Technical infrastructure",
+        "title": "5. Technical Infrastructure",
         "body": [
-          "Hosting: Vercel Inc., 340 Pine Street Suite 701, San Francisco, CA 94104, USA",
-          "Privacy Policy: https://vercel.com/legal/privacy-policy",
-          "Database: Upstash Inc. (Redis database)",
-          "Privacy Policy: https://upstash.com/trust/privacy.pdf",
-          "Stored data: Substi username, avatar, coins, game progress",
-          "Storage location: Frankfurt, Germany (EU)"
+          "Hosting: Vercel Inc., San Francisco, CA, USA (https://vercel.com/legal/privacy-policy)",
+          "Database: Upstash Inc. (Redis database), server location Frankfurt, Germany (EU) (https://upstash.com/trust/privacy.pdf)",
+          "The database only stores the profile data listed under point 4."
         ]
       },
       {
-        "id": "details",
-        "title": "4. In detail: How we handle your data",
-        "subsections": [
-          {
-            "title": "4.1 WebUntis credentials",
-            "body": [
-              "Your WebUntis login credentials (username and password) are used exclusively for one-time authentication with WebUntis. They are NOT stored on our servers and remain exclusively on your device (iOS Keychain).",
-              "Timetable data, homework and exam information are retrieved from the WebUntis server and temporarily transmitted through our backend server, but are not permanently stored."
-            ],
-            "steps": [
-              "You enter your WebUntis credentials",
-              "The app sends them once to our backend",
-              "The backend fetches your timetable from WebUntis",
-              "Your password is NOT stored",
-              "The timetable is cached locally on your iPhone"
-            ],
-            "where": [
-              "Your password: Local iOS Keychain (on your device only)",
-              "Your timetable: Local on your iPhone",
-              "Upstash server: None of the above!"
-            ]
-          },
-          {
-            "title": "4.2 Substi profile creation",
-            "steps": [
-              "You choose a username (e.g. \"paco_gaming\")",
-              "You choose an avatar and a Substi password",
-              "The password is hashed with bcrypt — only the hash is sent to Upstash",
-              "Stored fields: substi_username, avatar_id, coins"
-            ],
-            "where": [
-              "Upstash Redis (our server)",
-              "Visible: Leaderboard only, with your username + avatar"
-            ],
-            "notStored": [
-              "Your real name",
-              "Your student ID",
-              "Your school email",
-              "Your WebUntis data",
-              "Your Substi password in plaintext"
-            ]
-          },
-          {
-            "title": "4.3 Public leaderboard",
-            "body": [
-              "Your Substi username, avatar and coin balance are displayed in the app's public leaderboard. This data is visible to all app users.",
-              "You can avoid this by not creating a Substi account or by deleting your account."
-            ],
-            "visible": [
-              "Rank #1–10",
-              "Username (e.g. \"paco_gaming\")",
-              "Avatar",
-              "Coins"
-            ],
-            "notVisible": [
-              "Real names",
-              "School emails",
-              "Class/grade",
-              "WebUntis data",
-              "Other users' school details"
-            ]
-          },
-          {
-            "title": "4.4 Homework & photos",
-            "body": [
-              "Your photos are stored locally on your iPhone, are not sent to our server, and remain your property."
-            ]
-          }
-        ]
-      },
-      {
-        "id": "passwords",
-        "title": "5. Password security",
-        "list": [
-          "Substi password: bcrypt hash on Upstash (never plaintext)",
-          "WebUntis password: local iOS Keychain only",
-          "WebUntis password is not sent to Upstash",
-          "Predictions do not store WebUntis passwords"
-        ]
-      },
-      {
-        "id": "sync",
-        "title": "6. Background sync (daily updates)",
-        "steps": [
-          "Every day at 7 a.m., the app tries to refresh your timetable",
-          "The app loads your WebUntis credentials from the Keychain",
-          "The app contacts WebUntis directly (not our backend)",
-          "Our backend does NOT see your WebUntis passwords",
-          "Only the updated timetable is saved locally"
+        "id": "leaderboard",
+        "title": "6. Public Leaderboard",
+        "body": [
+          "Your self-chosen username, avatar and coin balance are shown in the app's public leaderboard and are visible to other users. If you do not want this, do not create a game profile or delete your account."
         ]
       },
       {
         "id": "deletion",
-        "title": "7. Right to erasure (GDPR Art. 17)",
+        "title": "7. Right to Erasure (Art. 17 GDPR)",
         "body": [
-          "You can delete your Substi account and all associated data at any time. This is possible directly in the app: Settings → Account → Delete Account.",
-          "The following data will be permanently deleted:"
+          "You can delete your account and all associated data at any time: Settings → Account → Delete Account.",
+          "The following will be permanently removed:"
         ],
         "list": [
-          "Substi username and password hash",
-          "Avatar and coin balance",
-          "Game history and predictions",
-          "Leaderboard entry",
-          "For manual deletion requests: Substi.Contact@gmail.com"
-        ]
-      },
-      {
-        "id": "retention",
-        "title": "8. Retention periods",
-        "list": [
-          "Substi profile: 365 days (or until deletion)",
-          "Coins/leaderboard: until profile deletion",
-          "Timetable (local): until app uninstall",
-          "Predictions: no passwords, game metadata only"
-        ]
-      },
-      {
-        "id": "security",
-        "title": "9. Security measures (GDPR Art. 32)",
-        "list": [
-          "bcrypt hashing for Substi passwords",
-          "HTTPS for all API connections",
-          "iOS Keychain for WebUntis credentials",
-          "Authenticated Upstash Redis",
-          "No WebUntis password storage on the server"
-        ]
-      },
-      {
-        "id": "cookies",
-        "title": "10. Cookies & tracking",
-        "list": [
-          "No cookies",
-          "No tracking",
-          "No analytics on sensitive data",
-          "Only technically necessary data (for login/sync)"
+          "Your username and password hash",
+          "Your avatar and coin balance",
+          "Your leaderboard entry"
+        ],
+        "rights": [
+          "Since timetable data is not stored anyway, no personal data remains with us after deletion. For manual requests: Substi.Contact@gmail.com"
         ]
       },
       {
         "id": "rights",
-        "title": "11. Your rights (GDPR)",
-        "rights": [
-          "Access: Ask what data we store",
-          "Rectification: Correct inaccurate data",
-          "Erasure: Right to be forgotten",
-          "Portability: Export your data"
-        ],
+        "title": "8. Your Rights",
         "body": [
-          "Contact: Substi.Contact@gmail.com"
+          "Under the GDPR, you have the right to access, rectify, erase and restrict the processing of your data. Contact us at: Substi.Contact@gmail.com"
         ]
       },
       {
         "id": "changes",
-        "title": "12. Changes to this privacy policy",
+        "title": "9. Changes",
         "body": [
-          "We may update this policy at any time. The current version is always available on our website."
-        ]
-      },
-      {
-        "id": "contact",
-        "title": "13. Contact",
-        "body": [
-          "Privacy questions? Email Substi.Contact@gmail.com",
-          "Or on the website: substi-website.vercel.app/privacy"
+          "This privacy policy may be updated when necessary. The date above shows the last modification."
         ]
       }
     ]
