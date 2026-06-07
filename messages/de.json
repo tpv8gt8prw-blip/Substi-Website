@@ -286,6 +286,7 @@
         "body": [
           "Hosting: Vercel Inc., San Francisco, CA, USA (https://vercel.com/legal/privacy-policy)",
           "Datenbank: Upstash Inc. (Redis-Datenbank), Serverstandort Frankfurt, Deutschland (EU) (https://upstash.com/trust/privacy.pdf)",
+          "Als Auftragsverarbeiter wird Upstash Inc. eingesetzt. Es gilt das Upstash Data Processing Agreement (https://upstash.com/trust/dpa.pdf), welches die EU-Standardvertragsklauseln beinhaltet.",
           "In der Datenbank werden ausschließlich die unter Punkt 4 genannten Profildaten gespeichert."
         ]
       },
