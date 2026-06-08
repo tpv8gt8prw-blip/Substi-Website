@@ -58,7 +58,7 @@
     "items": [
       {
         "title": "Live-Stundenplan",
-        "short": "Deine ganze Woche, in Echtzeit aus WebUntis synchronisiert.",
+        "short": "Deine ganze Woche, in Echtzeit aus deinem Schul-System synchronisiert.",
         "long": "Substi holt deinen Stundenplan direkt aus WebUntis und hält ihn synchron. Tages- und Wochenansicht, farbcodierte Fächer, Raumänderungen und eine klare Glas-Oberfläche, die sich auf iOS nativ anfühlt. Wische zwischen Tagen, springe zu heute und verpasse nie wieder eine Raumänderung."
       },
       {
@@ -398,7 +398,7 @@
     "roadmapTitle": "Auf der Roadmap",
     "entries": [
       {
-        "version": "4.0",
+        "version": "0.4.0",
         "date": "Mai 2026",
         "title": "Liquid-Glass-Neugestaltung",
         "points": [
@@ -409,9 +409,9 @@
         ]
       },
       {
-        "version": "3.2",
+        "version": "0.3.0",
         "date": "Mär 2026",
-        "title": "Überarbeitung des Casino-Modus",
+        "title": "Überarbeitung des Bidding-Modus",
         "points": [
           "Neu gestaltetes Glücksrad mit physikbasiertem Easing",
           "Neue Auszahlungs-Multiplikatoren und Serien-Boni",
@@ -419,17 +419,17 @@
         ]
       },
       {
-        "version": "3.0",
+        "version": "0.2.0",
         "date": "Jan 2026",
         "title": "Vorhersagen & Rangliste",
         "points": [
-          "Vertretungs-Vorhersagen mit Münzeinsatz eingeführt",
-          "Globale Rangliste mit wöchentlichem Reset",
+          "Vertretungs-Vorhersagen mit Punkten eingeführt",
+          "Globale Rangliste",
           "Cloud-Sync über mehrere Geräte"
         ]
       },
       {
-        "version": "2.0",
+        "version": "0.1.0",
         "date": "Sep 2025",
         "title": "Wochenansicht & Themes",
         "points": [
@@ -440,7 +440,7 @@
       }
     ],
     "roadmap": [
-      { "title": "Android-Beta", "body": "Substi kommt über einen React-Native-Build auf Android." },
+      { "title": "Android-Beta", "body": "Substi wird auf Android bald verfügbar sein." },
       { "title": "Freundes-Ligen", "body": "Private Ranglisten, die du mit deiner Klasse teilen kannst." },
       { "title": "Widgets", "body": "Home- und Sperrbildschirm-Widgets für deine nächste Stunde." }
     ]

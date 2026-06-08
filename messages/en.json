@@ -58,7 +58,7 @@
     "items": [
       {
         "title": "Live Timetable",
-        "short": "Your whole week, synced from WebUntis in real time.",
+        "short": "Your whole week, synced from your school system in real time.",
         "long": "Substi pulls your schedule straight from WebUntis and keeps it in sync. Day and week views, color-coded subjects, room changes, and a clean glassy interface designed to feel native on iOS. Swipe between days, jump to today, and never miss a room change again."
       },
       {
@@ -398,7 +398,7 @@
     "roadmapTitle": "On the roadmap",
     "entries": [
       {
-        "version": "4.0",
+        "version": "0.4.0",
         "date": "May 2026",
         "title": "Liquid Glass redesign",
         "points": [
@@ -409,9 +409,9 @@
         ]
       },
       {
-        "version": "3.2",
+        "version": "0.3.0",
         "date": "Mar 2026",
-        "title": "Casino mode overhaul",
+        "title": "Bidding mode overhaul",
         "points": [
           "Redesigned spin wheel with physics-based easing",
           "New payout multipliers and streak bonuses",
@@ -419,17 +419,17 @@
         ]
       },
       {
-        "version": "3.0",
+        "version": "0.2.0",
         "date": "Jan 2026",
         "title": "Predictions & leaderboard",
         "points": [
-          "Introduced substitution predictions with coin wagering",
+          "Introduced substitution predictions with points wagering",
           "Global leaderboard with weekly resets",
           "Cloud sync across devices"
         ]
       },
       {
-        "version": "2.0",
+        "version": "0.1.0",
         "date": "Sep 2025",
         "title": "Week view & themes",
         "points": [
@@ -440,7 +440,7 @@
       }
     ],
     "roadmap": [
-      { "title": "Android beta", "body": "Bringing Substi to Android via a React Native build." },
+      { "title": "Android beta", "body": "Bringing Substi to Android soon." },
       { "title": "Friend leagues", "body": "Private leaderboards you can share with your class." },
       { "title": "Widgets", "body": "Home-screen and lock-screen widgets for your next lesson." }
     ]
